@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SandboxVille - a town of sandboxed rooms for your AI</title>
-<meta name="description" content="A town of sandboxed rooms for AI agents. Each door says exactly what its room can touch, and a capability broker checks every request. In development.">
+<title>SandboxVille - your AI gets a room, and the door stays locked</title>
+<meta name="description" content="A free 3D town for the AI tools you already use. Every room has a locked door that says exactly what it can touch. Early access opens through our Discord.">
 <link rel="canonical" href="https://sandboxville.com/">
 <meta name="theme-color" content="#0a0e1a">
 <meta name="color-scheme" content="dark">
@@ -14,19 +14,19 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SandboxVille">
 <meta property="og:url" content="https://sandboxville.com/">
-<meta property="og:title" content="SandboxVille: a town for your AI. Every door is locked.">
-<meta property="og:description" content="A town of sandboxed rooms for AI agents. Each door says exactly what its room can touch, and a capability broker checks every request. In development.">
-<meta property="og:image" content="https://sandboxville.com/og.png">
-<meta property="og:image:type" content="image/png">
+<meta property="og:title" content="SandboxVille: your AI gets a room, and the door stays locked.">
+<meta property="og:description" content="A free 3D town for the AI tools you already use. Every room has a locked door that says exactly what it can touch. Early access opens through our Discord.">
+<meta property="og:image" content="https://sandboxville.com/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="SandboxVille wordmark beside a small night town of houses with glowing amber doors.">
+<meta property="og:image:alt" content="A real screenshot of the SandboxVille Lobby: a Connect Your AI kiosk next to a small robot, with hallway signs for The Workshop and The Map Room.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SandboxVille: a town for your AI. Every door is locked.">
-<meta name="twitter:description" content="A town of sandboxed rooms for AI agents. Each door says exactly what its room can touch, and a capability broker checks every request. In development.">
-<meta name="twitter:image" content="https://sandboxville.com/og.png">
-<meta name="twitter:image:alt" content="SandboxVille wordmark beside a small night town of houses with glowing amber doors.">
+<meta name="twitter:title" content="SandboxVille: your AI gets a room, and the door stays locked.">
+<meta name="twitter:description" content="A free 3D town for the AI tools you already use. Every room has a locked door that says exactly what it can touch. Early access opens through our Discord.">
+<meta name="twitter:image" content="https://sandboxville.com/og.jpg">
+<meta name="twitter:image:alt" content="A real screenshot of the SandboxVille Lobby: a Connect Your AI kiosk next to a small robot, with hallway signs for The Workshop and The Map Room.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
@@ -55,7 +55,7 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 .page{max-width:100%;overflow-x:hidden;}
-img,svg{display:block;}
+img,svg{display:block;max-width:100%;}
 a{color:inherit;}
 h1,h2,h3{margin:0;font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:600;}
 p{margin:0;}
@@ -72,7 +72,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
 .eyebrow{
   font-family:'JetBrains Mono',monospace;
   font-size:.72rem;
-  letter-spacing:.16em;
+  letter-spacing:.14em;
   text-transform:uppercase;
   color:var(--amber);
   display:inline-block;
@@ -97,11 +97,13 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
 .btn-primary:hover{background:var(--amber-strong);border-color:var(--amber-strong);}
 .btn-ghost{background:transparent;color:var(--paper);border-color:var(--line);}
 .btn-ghost:hover{border-color:var(--amber);color:var(--amber-soft);}
+.btn-secondary{background:transparent;color:var(--paper);border-color:var(--amber);}
+.btn-secondary:hover{background:rgba(255,179,71,.12);}
 
 /* NAV */
 .nav{
   position:sticky;top:0;z-index:40;
-  background:rgba(10,14,26,.86);
+  background:rgba(10,14,26,.9);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
@@ -120,204 +122,114 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
 .nav-links li{white-space:nowrap;}
 .nav-links a{text-decoration:none;color:var(--paper-dim);}
 .nav-links a:hover{color:var(--amber-soft);}
-@media(min-width:760px){.nav-links{order:0;width:auto;gap:1.8rem;font-size:.78rem;}}
+@media(min-width:760px){.nav-links{order:0;width:auto;gap:1.6rem;font-size:.76rem;}}
 .nav-cta{padding:.6rem 1.15rem;font-size:.72rem;}
 @media(max-width:420px){.nav-cta{padding:.55rem .85rem;font-size:.64rem;}}
 
-/* HERO */
-.hero{
-  position:relative;
-  min-height:clamp(560px,88svh,900px);
-  min-height:clamp(560px,88vh,900px);
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  overflow:hidden;
-  border-bottom:1px solid var(--line);
+/* SCREENSHOT + CAPTION (used everywhere a real shot appears) */
+.shot{border:1px solid var(--line);background:var(--ink-950);}
+.shot img{width:100%;height:auto;}
+.shot-cap{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;line-height:1.55;
+  color:var(--paper-mute);padding:.7rem .9rem;border-top:1px solid var(--line);
 }
-.hero-stage{position:absolute;inset:0;z-index:0;background:radial-gradient(120% 90% at 50% 16%,#141b32 0%,var(--ink-900) 62%);}
-#town-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
-.hero-fallback{position:absolute;inset:0;display:none;}
-body.no-webgl .hero-fallback{display:block;}
-body.no-webgl #town-canvas{display:none;}
-.fb-ground{position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(180deg,transparent,#0d1224 60%);}
-.fb-building{position:absolute;bottom:14%;background:#121834;border-top:2px solid #1b2340;}
-.fb-building::before{
-  content:"";position:absolute;inset:10% 12%;
-  background-image:radial-gradient(circle,var(--amber-soft) 0 2px,transparent 2.4px);
-  background-size:16px 20px;
-  opacity:.85;
-}
-.fb-b1{left:6%;width:12%;height:34%;}
-.fb-b2{left:20%;width:9%;height:22%;}
-.fb-b3{left:34%;width:14%;height:44%;}
-.fb-b4{left:52%;width:10%;height:28%;}
-.fb-b5{left:66%;width:13%;height:38%;}
-.fb-b6{left:83%;width:11%;height:24%;}
+.shot-cap b{color:var(--amber-soft);font-weight:600;}
 
-.hero-vignette{
-  position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(10,14,26,.15) 0%,rgba(10,14,26,.35) 44%,rgba(10,14,26,.97) 90%);
-}
-.hero-content{position:relative;z-index:2;padding-top:7vh;padding-bottom:2.4rem;}
-.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.4rem;}
-.badge{
-  font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.06em;
-  padding:.32rem .7rem;border:1px solid var(--line);color:var(--paper-dim);
-  background:rgba(10,14,26,.5);
-}
+/* HERO */
+.hero{border-bottom:1px solid var(--line);padding-top:3rem;padding-bottom:3.4rem;}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:2.2rem;align-items:center;}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:2.6rem;}}
 .hero-title{
-  font-size:clamp(2.35rem,7.2vw,4.4rem);
-  line-height:1.04;
+  font-size:clamp(2.15rem,5.6vw,3.5rem);
+  line-height:1.08;
   letter-spacing:-.01em;
-  max-width:14ch;
   color:var(--paper);
 }
 .hero-title em{color:var(--amber);font-style:normal;}
 .hero-sub{
-  margin-top:1.3rem;
-  font-size:clamp(1rem,1.9vw,1.15rem);
-  line-height:1.6;
+  margin-top:1.2rem;
+  font-size:clamp(1rem,1.7vw,1.12rem);
+  line-height:1.62;
   color:var(--paper-dim);
-  max-width:46ch;
+  max-width:48ch;
 }
-.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem;align-items:center;}
-.hero-note{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--paper-mute);text-decoration:none;border-bottom:1px dashed var(--line);padding-bottom:2px;}
-.hero-note:hover{color:var(--amber-soft);border-color:var(--amber);}
-
-/* GAUGE STRIP */
-.gauge-row{
-  position:relative;z-index:2;
-  margin-top:2.2rem;
-  display:grid;grid-template-columns:repeat(2,1fr);
-  gap:1px;background:var(--line);border:1px solid var(--line);
-}
-@media(min-width:640px){.gauge-row{grid-template-columns:repeat(4,1fr);}}
-.gauge{background:rgba(10,14,26,.72);padding:.85rem 1rem;}
-.gauge-label{display:block;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--paper-mute);}
-.gauge-value{display:block;margin-top:.3rem;font-family:'JetBrains Mono',monospace;font-size:1.02rem;font-weight:700;color:var(--paper);}
-.gauge-value.accent{color:var(--amber);}
+.hero-sub + .hero-sub{margin-top:.9rem;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.9rem;align-items:center;}
+.hero-shot-wrap{position:relative;}
+@media(min-width:960px){.hero-shot-wrap{margin-top:2.4rem;}}
+.hero-shot-wrap .shot{box-shadow:0 30px 60px -30px rgba(0,0,0,.85);}
 
 /* SECTION shared */
-section{padding:5rem 0;border-bottom:1px solid var(--line);}
-.section-head{max-width:56ch;margin-bottom:2.6rem;}
-.section-head.wide{max-width:70ch;}
-h2.section-title{font-size:clamp(1.9rem,4.6vw,3rem);line-height:1.08;}
-.section-body{margin-top:1rem;font-size:1.02rem;line-height:1.6;color:var(--paper-dim);max-width:52ch;}
+section{padding:4.6rem 0;border-bottom:1px solid var(--line);}
+.section-head{max-width:56ch;margin-bottom:2.4rem;}
+.section-head.wide{max-width:72ch;}
+h2.section-title{font-size:clamp(1.8rem,4.2vw,2.7rem);line-height:1.1;}
+.section-body{margin-top:1rem;font-size:1.02rem;line-height:1.6;color:var(--paper-dim);max-width:54ch;}
+.section-body + .section-body{margin-top:.9rem;}
+.section-body a{color:var(--amber-soft);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;}
+.section-body a:hover{text-decoration-color:var(--amber);}
 
 /* HOW IT WORKS */
-.steps{
-  display:grid;grid-template-columns:1fr;gap:1px;
-  background:var(--line);border:1px solid var(--line);
-}
+.steps{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
 @media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr);}}
 .step{background:var(--ink-900);padding:1.6rem 1.5rem 1.8rem;}
-.step svg{margin-bottom:.9rem;}
-.step-title{font-size:.82rem;letter-spacing:.1em;color:var(--amber-soft);margin-bottom:.6rem;}
+.step-num{font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--amber);display:block;margin-bottom:.7rem;}
+.step-title{font-size:.8rem;letter-spacing:.09em;color:var(--amber-soft);margin-bottom:.6rem;text-transform:uppercase;}
 .step p{color:var(--paper-dim);font-size:.97rem;line-height:1.55;}
 
-/* ROOMS */
+/* ROOMS (asymmetric: one featured room with a shot, then a plain card grid) */
 .room-featured{
-  position:relative;overflow:hidden;
-  background:var(--ink-800);
-  clip-path:polygon(0 0,calc(100% - 34px) 0,100% 34px,100% 100%,0 100%);
-  padding:2.1rem 1.8rem 1.9rem;
-  margin-bottom:1.1rem;
-  box-shadow:0 24px 54px -30px rgba(0,0,0,.9);
+  display:grid;grid-template-columns:1fr;gap:1.6rem;
+  border:1px solid var(--line);background:var(--ink-800);
+  padding:1.6rem;margin-bottom:1.3rem;
 }
-.room-featured::after{
-  content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
-  background:radial-gradient(circle,rgba(255,179,71,.32),transparent 68%);
-  pointer-events:none;
-}
-.room-featured::before{content:"";position:absolute;left:0;top:0;height:3px;width:72px;background:var(--amber);}
-.room-featured h3{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.8rem;position:relative;}
-.room-featured p{font-size:1rem;line-height:1.6;color:var(--paper-dim);max-width:62ch;position:relative;}
-.room-grid{display:grid;grid-template-columns:1fr;gap:1.1rem;}
+@media(min-width:860px){.room-featured{grid-template-columns:1.1fr .9fr;align-items:stretch;padding:0;}}
+.room-featured-copy{padding:1.8rem 1.8rem 1.6rem;}
+@media(min-width:860px){.room-featured-copy{padding:2.4rem 2.2rem;}}
+.room-featured .shot{border:none;border-radius:0;height:100%;display:flex;flex-direction:column;}
+.room-featured .shot img{flex:1;object-fit:cover;}
+.room-featured h3{font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:.7rem;}
+.room-featured p{font-size:1rem;line-height:1.6;color:var(--paper-dim);}
+.room-grid{display:grid;grid-template-columns:1fr;gap:1rem;}
 @media(min-width:640px){.room-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:1020px){.room-grid{grid-template-columns:repeat(4,1fr);}}
-.card{
-  background:var(--ink-800);
-  clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%);
-  padding:1.7rem 1.5rem 1.5rem;
-  position:relative;
-  box-shadow:0 20px 44px -30px rgba(0,0,0,.9);
-}
-.card::before{content:"";position:absolute;left:0;top:0;height:3px;width:56px;background:var(--amber);}
-.card-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;color:var(--paper-mute);margin-bottom:.5rem;}
-.card h3{font-size:1.22rem;margin-bottom:.7rem;}
-.card p{font-size:.92rem;line-height:1.55;color:var(--paper-dim);}
+@media(min-width:1020px){.room-grid{grid-template-columns:repeat(3,1fr);}}
+.card{background:var(--ink-900);padding:1.6rem 1.5rem 1.5rem;border:1px solid var(--line);border-top:3px solid var(--amber);}
+.card-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;color:var(--paper-mute);margin-bottom:.5rem;text-transform:uppercase;}
+.card h3{font-size:1.18rem;margin-bottom:.65rem;}
+.card p{font-size:.93rem;line-height:1.55;color:var(--paper-dim);}
 .can-touch{
   margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--line);
   font-family:'JetBrains Mono',monospace;font-size:.7rem;line-height:1.5;
   color:var(--amber-soft);letter-spacing:.02em;
 }
 
-/* SECURITY */
-.security-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:2.4rem;align-items:start;}
-@media(min-width:900px){.security-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}}
-.security-grid > *{min-width:0;}
-.lock-grid{
-  margin-top:1.8rem;
-  display:grid;grid-template-columns:repeat(9,1fr);gap:4px;
-  max-width:480px;
+/* SAFE BY DESIGN */
+.safe-row{display:grid;grid-template-columns:1fr;gap:1.6rem;align-items:center;margin-top:2.2rem;}
+@media(min-width:860px){.safe-row{grid-template-columns:1fr 1fr;gap:2.4rem;}}
+.safe-row.rev .shot{order:2;}
+@media(min-width:860px){.safe-row.rev .safe-copy{order:1;}.safe-row.rev .shot{order:2;}}
+.safe-copy .section-body{max-width:44ch;}
+.quote-line{
+  margin-top:1.3rem;padding:.9rem 1rem;
+  border-left:2px solid var(--amber);background:var(--ink-800);
+  font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.6;color:var(--paper-dim);
 }
-@media(max-width:480px){.lock-grid{grid-template-columns:repeat(6,1fr);max-width:340px;}}
-.lock-cell{
-  aspect-ratio:1;background:var(--ink-800);border:1px solid var(--line);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
-}
-.lock-cell svg{width:15px;height:17px;color:var(--amber);}
-.lock-num{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--paper-mute);}
-.security-foot{margin-top:1.4rem;font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--paper-mute);letter-spacing:.03em;}
-.panel{position:relative;border:1px solid var(--line);background:var(--ink-950);padding:1.2rem 1.1rem;}
-.corner-tick{position:absolute;width:14px;height:14px;pointer-events:none;}
-.corner-tick::before,.corner-tick::after{content:"";position:absolute;background:var(--amber);}
-.corner-tick::before{width:100%;height:1px;top:0;left:0;}
-.corner-tick::after{width:1px;height:100%;top:0;left:0;}
-.corner-tick.tl{top:-1px;left:-1px;}
-.corner-tick.tr{top:-1px;right:-1px;transform:scaleX(-1);}
-.corner-tick.bl{bottom:-1px;left:-1px;transform:scaleY(-1);}
-.corner-tick.br{bottom:-1px;right:-1px;transform:scale(-1,-1);}
-.panel-label{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;color:var(--paper-mute);margin-bottom:.8rem;text-transform:uppercase;}
-.term{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.8rem;
-  line-height:2;
-  overflow-x:auto;
-}
-.term-line{display:flex;justify-content:space-between;gap:1rem;white-space:nowrap;border-bottom:1px solid var(--ink-700);padding:.25rem 0;}
-.term-line:last-child{border-bottom:none;}
-.term-room{color:var(--paper-dim);}
-.term-op{color:var(--paper-mute);flex:1;padding:0 .8rem;overflow:hidden;text-overflow:ellipsis;}
-.status-bad{color:var(--amber-strong);font-weight:700;}
 
-/* BUILD */
-.build-wrap{display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;}
-@media(min-width:900px){.build-wrap{grid-template-columns:1.1fr .9fr;}}
-.build-panel .mono{font-size:.72rem;letter-spacing:.08em;color:var(--paper-mute);}
-.plan{margin-top:1rem;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:46px;gap:4px;}
-.plan-cell{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 2px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.06em;}
-.plan-cell.on{background:var(--amber);color:var(--ink-950);font-weight:700;}
-.plan-cell.soon{border:1px dashed var(--paper-mute);color:var(--paper-mute);}
-.plan-key{display:flex;flex-wrap:wrap;gap:.5rem 1.3rem;margin-top:.9rem;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.08em;color:var(--paper-mute);}
-.plan-key span{display:inline-flex;align-items:center;gap:.45rem;}
-.key{display:inline-block;width:12px;height:12px;}
-.key.on{background:var(--amber);}
-.key.soon{border:1px dashed var(--paper-mute);}
-.build-copy .section-body + .section-body{margin-top:.9rem;}
-.code{font-family:'JetBrains Mono',monospace;font-size:.9em;color:var(--amber-soft);}
+/* AI LIST */
+.ai-copy{max-width:62ch;}
 
-/* STATUS / CTA */
-.status-section{text-align:left;}
-.status-card{
-  background:linear-gradient(160deg,var(--ink-800),var(--ink-900));
+/* GUIDE / CTA CARD */
+.cta-card{
+  background:var(--ink-800);
   border:1px solid var(--line);
-  padding:2.4rem 1.6rem;
+  padding:2.2rem 1.6rem;
+  display:flex;flex-direction:column;gap:1.4rem;
 }
-@media(min-width:760px){.status-card{padding:3rem;}}
-.status-card h2{max-width:20ch;}
-.status-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.8rem;}
+@media(min-width:760px){.cta-card{flex-direction:row;align-items:center;justify-content:space-between;padding:2.4rem 2.6rem;gap:2rem;}}
+.cta-copy{max-width:46ch;}
+.cta-copy h2{font-size:clamp(1.5rem,3vw,2rem);}
+.cta-copy p{margin-top:.8rem;color:var(--paper-dim);font-size:.98rem;line-height:1.6;}
+.cta-actions{flex-shrink:0;}
 
 /* FOOTER */
 footer{padding:3rem 0 4rem;}
@@ -327,85 +239,14 @@ footer{padding:3rem 0 4rem;}
 .footer-links{display:flex;flex-wrap:wrap;gap:1.2rem 1.4rem;font-family:'JetBrains Mono',monospace;font-size:.76rem;}
 .footer-links a{text-decoration:none;color:var(--paper-dim);}
 .footer-links a:hover{color:var(--amber-soft);}
-
-.lock-suite{margin-top:1.8rem;font-size:.66rem;letter-spacing:.08em;color:var(--paper-mute);}
-.lock-suite + .lock-grid{margin-top:.6rem;}
-.lock-grid.g24{grid-template-columns:repeat(8,1fr);max-width:426px;}
-@media(max-width:480px){.lock-grid.g24{grid-template-columns:repeat(6,1fr);max-width:340px;}}
-.panel-note{margin-top:.9rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;line-height:1.5;color:var(--paper-mute);}
-.soon-block{margin-top:2.6rem;}
-.soon-row{display:grid;grid-template-columns:minmax(0,1fr);gap:1.1rem;align-items:center;}
-@media(min-width:640px){.soon-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}}
-@media(min-width:1020px){.soon-row{grid-template-columns:minmax(0,1fr) minmax(0,3fr);}}
-.card.soon{background:transparent;border:1px dashed var(--line);clip-path:none;box-shadow:none;}
-.card.soon::before{background:var(--paper-mute);}
-.card.soon h3{color:var(--paper-dim);}
-.card.soon .can-touch{color:var(--paper-mute);}
-.soon-note{font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--paper-mute);max-width:52ch;}
 .footer-legal{margin-top:2.2rem;padding-top:1.4rem;border-top:1px solid var(--line-soft);display:grid;gap:.5rem;}
 .footer-legal p{font-size:.78rem;line-height:1.55;color:var(--paper-mute);max-width:92ch;}
-@media(max-width:560px){
-  .term-line{flex-wrap:wrap;white-space:normal;row-gap:0;}
-  .term-op{order:3;flex-basis:100%;padding:0 0 .2rem;white-space:normal;line-height:1.5;}
-}
-
-/* PROOF STRIP */
-.proof-strip{
-  position:relative;z-index:5;
-  background:var(--ink-950);
-  border-bottom:1px solid var(--line);
-  font-family:'JetBrains Mono',monospace;
-  font-size:.72rem;
-  letter-spacing:.03em;
-}
-.proof-strip .wrap{
-  display:flex;flex-wrap:wrap;gap:.4rem 1rem;align-items:center;
-  padding-top:.6rem;padding-bottom:.6rem;
-}
-.proof-strip a{color:var(--paper-dim);text-decoration:none;border-bottom:1px dashed var(--line);}
-.proof-strip a:hover{color:var(--amber-soft);border-color:var(--amber);}
-.proof-strip .sep{color:var(--paper-mute);}
-/* daily visitors bar (GoatCounter, cookieless). Hidden until real counts load. */
-.visitors-bar{position:relative;z-index:6;background:var(--ink-950);border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.03em;color:var(--paper-mute);}
-.visitors-bar .wrap{display:flex;justify-content:center;align-items:center;gap:.5rem;padding-top:.4rem;padding-bottom:.4rem;}
-.visitors-bar strong{color:var(--amber);font-weight:700;}
-.visitors-bar .vb-dot{width:.5rem;height:.5rem;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:vbPulse 2s infinite;}
-.visitors-bar .sep{color:var(--line);}
-@keyframes vbPulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.55);}70%{box-shadow:0 0 0 .45rem rgba(61,220,132,0);}100%{box-shadow:0 0 0 0 rgba(61,220,132,0);}}
-@media (prefers-reduced-motion:reduce){.visitors-bar .vb-dot{animation:none;}}
-
-
-/* HERO WHO + HONEST LINE */
-.hero-who{
-  margin-top:1.1rem;
-  font-size:.92rem;line-height:1.6;color:var(--paper-dim);max-width:42ch;
-}
-.honest-line{
-  margin-top:1rem;
-  font-family:'JetBrains Mono',monospace;font-size:.76rem;letter-spacing:.03em;
-  color:var(--amber-soft);
-  border-left:2px solid var(--amber);
-  padding-left:.7rem;
-}
-
-/* THREE-CTA ROW */
-.btn-secondary{background:transparent;color:var(--paper);border-color:var(--amber);}
-.btn-secondary:hover{background:rgba(255,179,71,.12);}
-
-/* FOLLOW CAPTURE */
-.capture-card{
-  background:var(--ink-800);border:1px dashed var(--line);
-  padding:1.6rem 1.5rem;
-  display:flex;flex-wrap:wrap;gap:1rem 1.6rem;align-items:center;justify-content:space-between;
-}
-.capture-copy{max-width:42ch;}
-.capture-copy p{color:var(--paper-dim);font-size:.92rem;line-height:1.5;margin-top:.5rem;}
 
 /* FAQ */
 .faq-list{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
 .faq-item{background:var(--ink-900);padding:1.3rem 1.5rem;}
 .faq-q{font-family:'JetBrains Mono',monospace;font-size:.86rem;color:var(--amber-soft);letter-spacing:.01em;margin-bottom:.5rem;}
-.faq-a{font-size:.92rem;line-height:1.6;color:var(--paper-dim);}
+.faq-a{font-size:.94rem;line-height:1.6;color:var(--paper-dim);}
 
 /* FOLLOW CHANNELS */
 .follow-grid{display:grid;grid-template-columns:1fr;gap:.9rem;}
@@ -418,6 +259,15 @@ footer{padding:3rem 0 4rem;}
 .follow-link .fl-plat{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;color:var(--paper-mute);text-transform:uppercase;}
 .follow-link .fl-handle{color:var(--paper);font-size:1.02rem;font-family:'Fraunces',serif;}
 
+/* daily visitors bar (GoatCounter, cookieless). Hidden until real counts load. */
+.visitors-bar{position:relative;z-index:6;background:var(--ink-950);border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.03em;color:var(--paper-mute);}
+.visitors-bar .wrap{display:flex;justify-content:center;align-items:center;gap:.5rem;padding-top:.4rem;padding-bottom:.4rem;}
+.visitors-bar strong{color:var(--amber);font-weight:700;}
+.visitors-bar .vb-dot{width:.5rem;height:.5rem;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:vbPulse 2s infinite;}
+.visitors-bar .sep{color:var(--line);}
+@keyframes vbPulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.55);}70%{box-shadow:0 0 0 .45rem rgba(61,220,132,0);}100%{box-shadow:0 0 0 0 rgba(61,220,132,0);}}
+@media (prefers-reduced-motion:reduce){.visitors-bar .vb-dot{animation:none;}}
+
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
 }
@@ -429,7 +279,6 @@ footer{padding:3rem 0 4rem;}
   <div class="wrap"><span class="vb-dot" aria-hidden="true"></span><span><strong id="vb-today">0</strong> visitors today</span><span class="sep">&middot;</span><span><strong id="vb-week">0</strong> this week</span></div>
 </div>
 
-
 <div class="page">
 
   <nav class="nav">
@@ -438,66 +287,29 @@ footer{padding:3rem 0 4rem;}
       <ul class="nav-links">
         <li><a href="#how">How it works</a></li>
         <li><a href="#rooms">Rooms</a></li>
-        <li><a href="#security">Security</a></li>
-        <li><a href="#build">3D town</a></li>
+        <li><a href="#safe">Safe by design</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a class="btn btn-primary nav-cta" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join the Discord</a>
+      <a class="btn btn-primary nav-cta" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join early access</a>
     </div>
   </nav>
 
-  <div class="proof-strip">
-    <div class="wrap">
-      <a href="#security">51 / 51 blocked, in our own tests</a>
-      <span class="sep">&middot;</span>
-      <a href="https://youtube.com/shorts/oNhiu3C7nrk" target="_blank" rel="noopener noreferrer">Watch it live: The Desk's graded paper trades, no buy button &rarr;</a>
-    </div>
-  </div>
-
   <header class="hero" id="top">
-    <div class="hero-stage" aria-hidden="true">
-      <canvas id="town-canvas" aria-hidden="true"></canvas>
-      <div class="hero-fallback" aria-hidden="true">
-        <div class="fb-ground"></div>
-        <div class="fb-building fb-b1"></div>
-        <div class="fb-building fb-b2"></div>
-        <div class="fb-building fb-b3"></div>
-        <div class="fb-building fb-b4"></div>
-        <div class="fb-building fb-b5"></div>
-        <div class="fb-building fb-b6"></div>
-      </div>
-    </div>
-    <div class="hero-vignette" aria-hidden="true"></div>
-    <div class="wrap hero-content">
-      <div class="badges">
-        <span class="badge mono">IN DEVELOPMENT</span>
-        <span class="badge mono">FREE</span>
-      </div>
-      <h1 class="hero-title">Before your AI touches anything,<br>read the <em>door</em>.</h1>
-      <p class="hero-sub">A free town of locked rooms for your AI. Every door says what the room can touch. A guard checks every request. Every try is written down.</p>
-      <p class="hero-who mono">You use AI to build things. You're about to let it touch your files. You want to see what it can reach before it reaches.</p>
-      <p class="honest-line">Free. Nothing to download yet. Follow the build.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">1&middot; Join the Discord</a>
-        <a class="btn btn-secondary" href="https://sandboxville.gumroad.com/l/ai-agent-sandbox" target="_blank" rel="noopener noreferrer">2&middot; Get the $9 guide</a>
-        <a class="btn btn-ghost" href="#follow-channels">3&middot; Follow the channels</a>
-      </div>
-      <div class="gauge-row">
-        <div class="gauge">
-          <span class="gauge-label mono">Reach the internet</span>
-          <span class="gauge-value">0 rooms</span>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Early access</span>
+        <h1 class="hero-title">Your AI gets a room.<br>The door stays <em>locked</em>.</h1>
+        <p class="hero-sub">SandboxVille is a free 3D town that runs right on your own computer. The AI tools you already use, like Claude, Cursor, or LM Studio, can walk in as their own robot, wearing its own name tag.</p>
+        <p class="hero-sub">Each room only does one job. A sign on its door says exactly what that job can touch, so you always know what your AI can reach before it reaches it.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join early access</a>
+          <a class="btn btn-secondary" href="https://youtube.com/shorts/oNhiu3C7nrk" target="_blank" rel="noopener noreferrer">Watch it</a>
         </div>
-        <div class="gauge">
-          <span class="gauge-label mono">Blocked in our tests</span>
-          <span class="gauge-value accent">51 / 51</span>
-        </div>
-        <div class="gauge">
-          <span class="gauge-label mono">Working rooms</span>
-          <span class="gauge-value">05</span>
-        </div>
-        <div class="gauge">
-          <span class="gauge-label mono">Status</span>
-          <span class="gauge-value">In development</span>
+      </div>
+      <div class="hero-shot-wrap">
+        <div class="shot">
+          <img src="img/lobby.webp" alt="A real screenshot of the SandboxVille Lobby: a Connect Your AI kiosk with three steps, a small teal robot, and hallway signs for The Workshop and The Map Room." width="1920" height="1080" loading="eager">
+          <p class="shot-cap"><b>The Lobby.</b> Our own screenshot, not concept art. This is the first thing you see.</p>
         </div>
       </div>
     </div>
@@ -506,25 +318,25 @@ footer{padding:3rem 0 4rem;}
   <section id="how">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">01 &middot; How it works</span>
-        <h2 class="section-title">Doors declare it.<br>The broker keeps it that way.</h2>
-        <p class="section-body">Every room in SandboxVille is a separate, locked sandbox. Nothing it can touch is a secret and nothing it can't touch is negotiable.</p>
+        <span class="eyebrow">How it works</span>
+        <h2 class="section-title">Three steps. Then it walks in.</h2>
+        <p class="section-body">You don't learn a new tool. You point the AI you already use at SandboxVille, and it shows up as a robot on the floor.</p>
       </div>
       <div class="steps">
         <div class="step">
-          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true" focusable="false"><rect x="7" y="3" width="16" height="24" rx="1" stroke="var(--amber)" stroke-width="1.6"/><circle cx="18" cy="15" r="1.1" fill="var(--amber)"/></svg>
-          <h3 class="step-title mono">01 &middot; DOOR</h3>
-          <p>Every room posts what it can touch, in plain language, right on its door.</p>
+          <span class="step-num mono">1</span>
+          <h3 class="step-title mono">Pick your AI</h3>
+          <p>Pick the AI you already use. Claude, Cursor, VS Code, Codex, Gemini, and LM Studio all work.</p>
         </div>
         <div class="step">
-          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true" focusable="false"><path d="M15 3 L25 7 V15 C25 21 20 25.5 15 27.5 C10 25.5 5 21 5 15 V7 Z" stroke="var(--amber)" stroke-width="1.6"/></svg>
-          <h3 class="step-title mono">02 &middot; BROKER</h3>
-          <p>A capability broker grants only what the door declares. Nothing more gets through.</p>
+          <span class="step-num mono">2</span>
+          <h3 class="step-title mono">Paste three lines</h3>
+          <p>The Lobby kiosk shows you three lines to paste into your tool's settings. No code to write.</p>
         </div>
         <div class="step">
-          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true" focusable="false"><line x1="6" y1="8" x2="24" y2="8" stroke="var(--amber)" stroke-width="1.6"/><line x1="6" y1="15" x2="24" y2="15" stroke="var(--amber)" stroke-width="1.6"/><line x1="6" y1="22" x2="17" y2="22" stroke="var(--amber)" stroke-width="1.6"/></svg>
-          <h3 class="step-title mono">03 &middot; LOG</h3>
-          <p>Every attempt is recorded: room, action, and whether it was allowed or refused.</p>
+          <span class="step-num mono">3</span>
+          <h3 class="step-title mono">Watch it walk in</h3>
+          <p>Restart your AI. It walks into the Lobby as its own robot, wearing its own name tag.</p>
         </div>
       </div>
     </div>
@@ -533,162 +345,101 @@ footer{padding:3rem 0 4rem;}
   <section id="rooms">
     <div class="wrap">
       <div class="section-head wide">
-        <span class="eyebrow">02 &middot; Rooms so far</span>
-        <h2 class="section-title">It is early.<br>These rooms already work.</h2>
-        <p class="section-body">They run today on our own test machine, each in its own sandbox. Public release comes after an outside security review.</p>
+        <span class="eyebrow">Rooms</span>
+        <h2 class="section-title">Pick a job. Walk through that door.</h2>
+        <p class="section-body">Every room in SandboxVille does one job. Before your AI can do anything inside, it walks through a door that has already said what it's allowed to touch.</p>
       </div>
 
       <article class="room-featured">
-        <div class="card-eyebrow mono">ROOM 01 &middot; THE FLAGSHIP</div>
-        <h3>The Heritage Jar</h3>
-        <p>A terrarium where a real FlyWire feeding circuit decides when the fly eats. Its walking is a simple rule, for now. New species evolve while the jar is open, and the jar keeps their family tree.</p>
-        <div class="can-touch">CAN TOUCH: its own jar data. Nothing outside it.</div>
+        <div class="shot">
+          <img src="img/workshop.webp" alt="A real screenshot of The Workshop hallway in SandboxVille, with a small robot, a rover built inside the room, and signs down the hall for the Quarantine Wing and The Map Room." width="1920" height="1080" loading="lazy">
+          <p class="shot-cap"><b>The Workshop.</b> The Quarantine Wing and The Map Room are the doors down that hall.</p>
+        </div>
+        <div class="room-featured-copy">
+          <div class="card-eyebrow mono">Featured room</div>
+          <h3>The Workshop</h3>
+          <p>This is where an AI builds things. In ours, it pieced together the little rover you can see through the doorway.</p>
+          <div class="can-touch">CAN TOUCH: its own build space. Nothing outside the room.</div>
+        </div>
       </article>
 
       <div class="room-grid">
         <article class="card">
-          <div class="card-eyebrow mono">ROOM 02</div>
-          <h3>The Desk</h3>
-          <p>Your watchlist and paper trades on the wall, forecasts graded in the open.</p>
-          <div class="can-touch">CAN TOUCH: your paper book, read only. Never trades.</div>
+          <div class="card-eyebrow mono">Room</div>
+          <h3>The Lobby</h3>
+          <p>Every AI starts here. It's also where you connect a new one, three lines at a time.</p>
+          <div class="can-touch">CAN TOUCH: nothing outside itself. It's just the front door.</div>
         </article>
         <article class="card">
-          <div class="card-eyebrow mono">ROOM 03</div>
+          <div class="card-eyebrow mono">Room</div>
+          <h3>The Map Room</h3>
+          <p>A map of the whole town, so any AI, or you, can see where every room sits.</p>
+          <div class="can-touch">CAN TOUCH: the map. Nothing on your computer.</div>
+        </article>
+        <article class="card">
+          <div class="card-eyebrow mono">Room</div>
           <h3>The Library</h3>
-          <p>Read-only access to a folder you pick, shelved and searchable.</p>
-          <div class="can-touch">CAN TOUCH: the one folder you chose. Nothing else.</div>
+          <p>Pick one folder, and your AI can read every file inside to answer your questions about it.</p>
+          <div class="can-touch">CAN TOUCH: the one folder you pick. Read-only, always.</div>
         </article>
         <article class="card">
-          <div class="card-eyebrow mono">ROOM 04</div>
-          <h3>Security Test Room</h3>
-          <p>A room built to be broken into. It goes after the network, storage, and the broker itself. Every attempt is watched, logged, and refused, in plain sight.</p>
-          <div class="can-touch">CAN TOUCH: its own small storage box. Nothing else. That is the point.</div>
+          <div class="card-eyebrow mono">Room</div>
+          <h3>The Desk</h3>
+          <p>It keeps a watchlist and makes paper trades, graded out in the open where anyone can check them.</p>
+          <div class="can-touch">CAN TOUCH: a pretend trading account. No real money, ever.</div>
         </article>
         <article class="card">
-          <div class="card-eyebrow mono">ROOM 05</div>
-          <h3>File Test Room</h3>
-          <p>A second test room that goes after file access: path tricks, device names, a real junction escape, write attempts. Every one is refused and logged.</p>
-          <div class="can-touch">CAN TOUCH: one test folder, read only (.md and .txt), and its own small storage.</div>
+          <div class="card-eyebrow mono">Room</div>
+          <h3>The Security Office</h3>
+          <p>Every room's actions land on this wall the second they happen, in plain words.</p>
+          <div class="can-touch">CAN TOUCH: the log. It only reads. It never acts.</div>
         </article>
       </div>
+    </div>
+  </section>
 
-      <div class="soon-block">
-        <span class="eyebrow">Coming soon</span>
-        <div class="soon-row">
-          <article class="card soon">
-            <div class="card-eyebrow mono">NOT BUILT YET</div>
-            <h3>Cogito's Study</h3>
-            <p>A planned room where you talk with Cogito, a character built on a human brain-wiring model.</p>
-            <div class="can-touch">STATUS: an empty shell on the floor plan. No code runs here yet.</div>
-          </article>
-          <p class="soon-note">Also on the floor plan, not built yet: the Map Room, the Mailroom, and the Workshop.</p>
+  <section id="safe">
+    <div class="wrap">
+      <div class="section-head wide">
+        <span class="eyebrow">Safe by design</span>
+        <h2 class="section-title">Read the door before it opens.</h2>
+        <p class="section-body">Nothing leaves your computer unless a room's door says so. SandboxVille runs on your own machine, and every room stays inside the lines its door draws.</p>
+      </div>
+
+      <div class="safe-row">
+        <div class="shot">
+          <img src="img/door-sign.webp" alt="A real screenshot of the door sign for The Desk in SandboxVille, reading Reads One Folder You Pick, with a panel behind it listing exactly what the room can and cannot do." width="1920" height="1080" loading="lazy">
+          <p class="shot-cap"><b>A real door sign,</b> from The Desk. It lists what the room can do, and what it can't, before you ever step inside.</p>
+        </div>
+        <div class="safe-copy">
+          <p class="section-body">Every room has a sign like this one on its door. Nothing is a secret and nothing is negotiable: what the sign says is what the room can touch, and that's the whole list.</p>
+          <p class="section-body">A guard checks every single request a room makes against its own sign. If a room ever reaches for something its door didn't mention, the guard says no, and writes it down. The format for that write-up is public, so you can check our work yourself on <a href="https://github.com/SandboxVille/read-the-door" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+        </div>
+      </div>
+
+      <div class="safe-row rev">
+        <div class="safe-copy">
+          <p class="section-body">Every one of those write-ups lands on the Security Office wall, live, while it happens. Nothing gets cleaned up before you see it.</p>
+          <div class="quote-line">One line on the wall right now: <b>tool not on this room's door label: delete_everything &rarr; REFUSED.</b> That's the guard doing its job.</div>
+          <p class="section-body" style="margin-top:1.1rem;">We even built a room whose only job is testing that rule against itself. It's called the Quarantine Wing, and its own door sign still says it stays in its glass box.</p>
+        </div>
+        <div class="shot">
+          <img src="img/security.webp" alt="A real screenshot of the Security Office audit wall in SandboxVille, showing a live list of allowed and refused room actions, with a small blue robot standing in front of it." width="1920" height="1080" loading="lazy">
+          <p class="shot-cap"><b>The Security Office wall.</b> Real allowed and refused actions, as they happen.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="security">
+  <section id="works-with">
     <div class="wrap">
-      <div class="security-grid">
-        <div>
-          <span class="eyebrow">03 &middot; Security</span>
-          <h2 class="section-title">We attacked our own rooms.<br>Every attempt was blocked.</h2>
-          <p class="section-body">In our own test suites, 51 of 51 break-in attempts were blocked: 27 against the network, storage, and the broker, and 24 against file access. Each suite also checks that the one thing its room is allowed to do still works, so the locks are real and not just broken. Every room runs in its own sandbox, and the tests check that one room cannot pose as another or reach its data.</p>
-          <p class="lock-suite mono">SUITE 1 &middot; NETWORK, STORAGE, BROKER &middot; 27 / 27</p>
-          <div class="lock-grid" role="img" aria-label="27 attacks on the network, storage, and the broker in our own test suite, all blocked">
-            <div class="lock-cell" title="fetch"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">01</span></div>
-            <div class="lock-cell" title="xhr"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">02</span></div>
-            <div class="lock-cell" title="websocket"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">03</span></div>
-            <div class="lock-cell" title="eventsource"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">04</span></div>
-            <div class="lock-cell" title="sendbeacon"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">05</span></div>
-            <div class="lock-cell" title="img-load"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">06</span></div>
-            <div class="lock-cell" title="script-load"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">07</span></div>
-            <div class="lock-cell" title="css-load"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">08</span></div>
-            <div class="lock-cell" title="font-load"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">09</span></div>
-            <div class="lock-cell" title="top-location"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">10</span></div>
-            <div class="lock-cell" title="parent-navigate"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">11</span></div>
-            <div class="lock-cell" title="window-open"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">12</span></div>
-            <div class="lock-cell" title="parent-dom"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">13</span></div>
-            <div class="lock-cell" title="top-dom"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">14</span></div>
-            <div class="lock-cell" title="cookie"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">15</span></div>
-            <div class="lock-cell" title="localStorage"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">16</span></div>
-            <div class="lock-cell" title="sessionStorage"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">17</span></div>
-            <div class="lock-cell" title="indexedDB"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">18</span></div>
-            <div class="lock-cell" title="undeclared-fs-read"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">19</span></div>
-            <div class="lock-cell" title="undeclared-network"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">20</span></div>
-            <div class="lock-cell" title="other-room-storage"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">21</span></div>
-            <div class="lock-cell" title="room-id-spoof"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">22</span></div>
-            <div class="lock-cell" title="storage-traversal"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">23</span></div>
-            <div class="lock-cell" title="storage-over-quota"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">24</span></div>
-            <div class="lock-cell" title="proto-pollution"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">25</span></div>
-            <div class="lock-cell" title="asset-undeclared"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">26</span></div>
-            <div class="lock-cell" title="flood-rate-limit"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">27</span></div>
-          </div>
-          <p class="lock-suite mono">SUITE 2 &middot; FILE ACCESS &middot; 24 / 24</p>
-          <div class="lock-grid g24" role="img" aria-label="24 file-access attacks in our own test suite, all blocked">
-            <div class="lock-cell" title="traversal-dotdot-slash"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">01</span></div>
-            <div class="lock-cell" title="traversal-dotdot-backslash"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">02</span></div>
-            <div class="lock-cell" title="traversal-nested"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">03</span></div>
-            <div class="lock-cell" title="traversal-encoded-dot"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">04</span></div>
-            <div class="lock-cell" title="absolute-posix"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">05</span></div>
-            <div class="lock-cell" title="absolute-drive"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">06</span></div>
-            <div class="lock-cell" title="absolute-drive-noslash"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">07</span></div>
-            <div class="lock-cell" title="unc-path"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">08</span></div>
-            <div class="lock-cell" title="unc-path-forward"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">09</span></div>
-            <div class="lock-cell" title="ads-colon"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">10</span></div>
-            <div class="lock-cell" title="ads-colon-2"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">11</span></div>
-            <div class="lock-cell" title="device-name-bare"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">12</span></div>
-            <div class="lock-cell" title="device-name-ext"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">13</span></div>
-            <div class="lock-cell" title="device-name-in-dir"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">14</span></div>
-            <div class="lock-cell" title="undeclared-extension-json"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">15</span></div>
-            <div class="lock-cell" title="undeclared-extension-exe"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">16</span></div>
-            <div class="lock-cell" title="huge-file"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">17</span></div>
-            <div class="lock-cell" title="junction-escape"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">18</span></div>
-            <div class="lock-cell" title="null-byte"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">19</span></div>
-            <div class="lock-cell" title="very-long-path"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">20</span></div>
-            <div class="lock-cell" title="trailing-dot"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">21</span></div>
-            <div class="lock-cell" title="write-attempt"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">22</span></div>
-            <div class="lock-cell" title="listing-hygiene"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">23</span></div>
-            <div class="lock-cell" title="fs-room-id-spoof-via-storage-op"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M6,10 A6,7 0 0 1 18,10" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="10" width="18" height="15" fill="currentColor"/></svg><span class="lock-num mono">24</span></div>
-          </div>
-          <p class="security-foot">51 / 51 BLOCKED IN OUR OWN TESTS &middot; EVERY ATTEMPT LOGGED &middot; OUTSIDE REVIEW BEFORE LAUNCH</p>
-        </div>
-        <div class="panel">
-          <div class="corner-tick tl"></div><div class="corner-tick tr"></div><div class="corner-tick bl"></div><div class="corner-tick br"></div>
-          <p class="panel-label">From our test log &middot; Sept 2026</p>
-          <div class="term" role="group" aria-label="Refused requests from our test audit log">
-            <div class="term-line"><span class="term-room">heritage-jar</span><span class="term-op">:: call a tool it never declared</span><span class="status-bad">REFUSED</span></div>
-            <div class="term-line"><span class="term-room">evil-test-room</span><span class="term-op">:: fetch from the network</span><span class="status-bad">REFUSED</span></div>
-            <div class="term-line"><span class="term-room">evil-test-room</span><span class="term-op">:: pose as heritage-jar</span><span class="status-bad">REFUSED</span></div>
-            <div class="term-line"><span class="term-room">evil-fs-room</span><span class="term-op">:: read ../ outside its folder</span><span class="status-bad">REFUSED</span></div>
-            <div class="term-line"><span class="term-room">evil-fs-room</span><span class="term-op">:: escape through a junction</span><span class="status-bad">REFUSED</span></div>
-            <div class="term-line"><span class="term-room">evil-fs-room</span><span class="term-op">:: write a file</span><span class="status-bad">REFUSED</span></div>
-          </div>
-          <p class="panel-note">Real refusals from the broker's audit log in our own test run, reworded into plain English.</p>
-        </div>
+      <div class="section-head">
+        <span class="eyebrow">Works with your AI</span>
+        <h2 class="section-title">Bring the AI you already trust.</h2>
       </div>
-    </div>
-  </section>
-
-  <section id="build">
-    <div class="wrap">
-      <div class="build-wrap">
-        <div class="build-copy">
-          <span class="eyebrow">04 &middot; Walk the town</span>
-          <h2 class="section-title">Walk the town in 3D.<br>Door by door.</h2>
-          <p class="section-body">SandboxVille is a 3D building you walk through in first person, or view from above as a floor plan. Walk up to a door, read what the room can touch, and step in.</p>
-          <p class="section-body">Every room is a plain package: a <span class="code">room.json</span> that declares its door, checked by a validator that refuses a bad or sneaky room before it ever runs. An in-app build mode for adding your own rooms is on the roadmap. It is not in the app yet.</p>
-        </div>
-        <div class="panel build-panel">
-          <div class="corner-tick tl"></div><div class="corner-tick tr"></div><div class="corner-tick bl"></div><div class="corner-tick br"></div>
-          <span class="mono">FLOOR PLAN &middot; TODAY</span>
-          <div class="plan" role="img" aria-label="Floor plan of ten rooms. Open: Lobby, Security Office, Quarantine Wing, Heritage Jar, The Desk, The Library. Coming soon: Cogito, Map Room, Mailroom, Workshop.">
-            <div class="plan-cell"></div><div class="plan-cell soon">COGITO</div><div class="plan-cell soon">MAP</div><div class="plan-cell"></div>
-            <div class="plan-cell on">LOBBY</div><div class="plan-cell on">SECURITY</div><div class="plan-cell on">QUARANTINE</div><div class="plan-cell on">JAR</div>
-            <div class="plan-cell on">DESK</div><div class="plan-cell on">LIBRARY</div><div class="plan-cell soon">MAIL</div><div class="plan-cell soon">WORKSHOP</div>
-          </div>
-          <div class="plan-key" aria-hidden="true"><span><i class="key on"></i>OPEN</span><span><i class="key soon"></i>COMING SOON</span></div>
-        </div>
+      <div class="ai-copy">
+        <p class="section-body">You bring the AI. SandboxVille brings the town it walks into. Right now that means Claude, ChatGPT-style desktop apps, Cursor, VS Code, Codex, Gemini, and LM Studio.</p>
+        <p class="section-body">It works with a keyboard and mouse, most gamepads, or a touch screen. Pick whatever you already have.</p>
       </div>
     </div>
   </section>
@@ -696,56 +447,49 @@ footer{padding:3rem 0 4rem;}
   <section id="faq">
     <div class="wrap">
       <div class="section-head wide">
-        <span class="eyebrow">05 &middot; Questions people actually ask</span>
-        <h2 class="section-title">Short answers.<br>No spin.</h2>
+        <span class="eyebrow">Questions</span>
+        <h2 class="section-title">Straight answers.</h2>
       </div>
       <div class="faq-list">
         <div class="faq-item">
-          <p class="faq-q mono">Is SandboxVille part of Anthropic or the Model Context Protocol project?</p>
-          <p class="faq-a">No. SandboxVille is an independent project. We are not affiliated with, endorsed by, or a part of Anthropic or the Model Context Protocol project.</p>
+          <p class="faq-q mono">Is it safe?</p>
+          <p class="faq-a">Yes. Every room can only touch what its door says. We even keep a room, the Quarantine Wing, whose whole job is testing that rule against itself, and its door still says it stays in its glass box.</p>
         </div>
         <div class="faq-item">
-          <p class="faq-q mono">Is "51 / 51 blocked" an independent audit?</p>
-          <p class="faq-a">No. That is our own test suite, run and logged by us, and we say "in our own tests" every time for exactly that reason. An outside security review happens before public launch.</p>
+          <p class="faq-q mono">Which AI tools work with it?</p>
+          <p class="faq-a">Claude, ChatGPT-style desktop apps, Cursor, VS Code, Codex, Gemini, and LM Studio. If you already use one of these, it can walk in.</p>
         </div>
         <div class="faq-item">
-          <p class="faq-q mono">Can I download SandboxVille right now?</p>
-          <p class="faq-a">Not yet. Nothing here runs on your machine today. Join the Discord to follow the build, room by room, and we'll say so the moment anything ships.</p>
+          <p class="faq-q mono">What does it cost?</p>
+          <p class="faq-a">The town itself is free. There's also a $9 guide that teaches the door-sign method on its own, if you want to use it on your own projects.</p>
         </div>
         <div class="faq-item">
-          <p class="faq-q mono">Does the jar really run a fruit fly's brain?</p>
-          <p class="faq-a">Partly, and we're exact about which part. A real FlyWire feeding circuit decides when the fly eats. Its walking is a simple rule, for now.</p>
+          <p class="faq-q mono">Does it send my data anywhere?</p>
+          <p class="faq-a">No. SandboxVille runs on your own computer. A room only touches what its door lists, and that list never includes the internet unless the door says so.</p>
         </div>
         <div class="faq-item">
-          <p class="faq-q mono">Does The Desk trade with real money?</p>
-          <p class="faq-a">No. It's paper trades only, graded in the open, and there is no buy button in the room. Nothing here is financial advice.</p>
+          <p class="faq-q mono">Do I need a gamepad?</p>
+          <p class="faq-a">No. Keyboard and mouse work fine. A gamepad or a touch screen works too, if you'd rather use one of those.</p>
         </div>
         <div class="faq-item">
-          <p class="faq-q mono">What do I get for the $9 guide?</p>
-          <p class="faq-a">The door-label method: how we write down exactly what an AI setup can touch, in plain English, so you can do the same for your own.</p>
+          <p class="faq-q mono">How do I get in?</p>
+          <p class="faq-a">Early access opens through our Discord first. Join, and we'll tell you the moment it's your turn.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="status-section">
+  <section id="guide">
     <div class="wrap">
-      <div class="status-card">
-        <span class="eyebrow">06 &middot; Status</span>
-        <h2 class="section-title">It is early, on purpose.</h2>
-        <p class="section-body">Public launch comes after an outside security review. Join the Discord to follow the build, room by room.</p>
-        <div class="status-actions">
-          <a class="btn btn-primary" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join the Discord</a>
-          <a class="btn btn-secondary" href="https://sandboxville.gumroad.com/l/ai-agent-sandbox" target="_blank" rel="noopener noreferrer">Get the $9 guide</a>
+      <div class="cta-card">
+        <div class="cta-copy">
+          <span class="eyebrow">The $9 guide</span>
+          <h2>Want the method, not just the town?</h2>
+          <p>The guide walks through the door-sign method by itself: how we write down exactly what an AI setup can touch, in plain English, so you can lock down your own projects the same way.</p>
         </div>
-      </div>
-
-      <div class="capture-card" style="margin-top:1.4rem;">
-        <div class="capture-copy">
-          <span class="eyebrow">Not ready to join yet?</span>
-          <p>Follow for updates instead. No account needed here, no spam, just the build.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="https://sandboxville.gumroad.com/l/ai-agent-sandbox" target="_blank" rel="noopener noreferrer">Get the guide, $9</a>
         </div>
-        <a class="btn btn-ghost" href="https://sandboxville.gumroad.com/" target="_blank" rel="noopener noreferrer">Follow on Gumroad (free)</a>
       </div>
     </div>
   </section>
@@ -753,9 +497,9 @@ footer{padding:3rem 0 4rem;}
   <section id="follow-channels" style="border-bottom:none;">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">07 &middot; Follow the channels</span>
-        <h2 class="section-title">Real accounts.<br>One human taps every post.</h2>
-        <p class="section-body">These are live today. New agent channels get added here as they launch.</p>
+        <span class="eyebrow">Follow the build</span>
+        <h2 class="section-title">Real accounts. One human taps every post.</h2>
+        <p class="section-body">These are live today. New channels get added here as they launch.</p>
       </div>
       <div class="follow-grid">
         <a class="follow-link" href="https://www.tiktok.com/@theking_david" target="_blank" rel="noopener noreferrer">
@@ -782,240 +526,25 @@ footer{padding:3rem 0 4rem;}
     <div class="wrap footer-row">
       <div>
         <a href="#top" class="wordmark">SandboxVille<span>.</span></a>
-        <p class="footer-tag">A free town of sandboxed rooms for your AI. Every door says what it can touch.</p>
+        <p class="footer-tag">A free town of locked rooms for the AI you already use. Every door says what it can touch.</p>
       </div>
       <div class="footer-links">
         <a href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Discord</a>
         <a href="https://sandboxville.gumroad.com/l/ai-agent-sandbox" target="_blank" rel="noopener noreferrer">The $9 guide</a>
+        <a href="https://github.com/SandboxVille/read-the-door" target="_blank" rel="noopener noreferrer">Code &amp; logs</a>
         <a href="#how">How it works</a>
         <a href="#rooms">Rooms</a>
-        <a href="#security">Security</a>
-        <a href="#build">3D town</a>
+        <a href="#safe">Safe by design</a>
         <a href="#faq">FAQ</a>
         <a href="#follow-channels">Channels</a>
       </div>
     </div>
     <div class="wrap"><div class="footer-legal">
       <p>SandboxVille is an independent project.</p>
-      <p>This site sets no cookies. Visits are counted with GoatCounter, which uses no cookies and stores no personal data; those counts are the visitors bar at the top. Fonts load from Google Fonts and the 3D library from cdnjs, which see your IP address like any web request. Contact: the Discord, for now.</p>
+      <p>This site sets no cookies. Visits are counted with GoatCounter, which uses no cookies and stores no personal data; those counts are the visitors bar at the top. Fonts load from Google Fonts, which sees your IP address like any web request. Contact: the Discord, for now.</p>
     </div></div>
   </footer>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-(function(){
-  var canvas = document.getElementById('town-canvas');
-  if(!canvas) return;
-  var reduceMotion = false;
-  try{ reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
-
-  var supportsWebGL = false;
-  try{
-    var t = document.createElement('canvas');
-    supportsWebGL = !!(window.WebGLRenderingContext && (t.getContext('webgl') || t.getContext('experimental-webgl')));
-  }catch(e){ supportsWebGL = false; }
-
-  if(!supportsWebGL || typeof THREE === 'undefined'){
-    document.body.classList.add('no-webgl');
-    return;
-  }
-
-  try{
-    initTown();
-  }catch(e){
-    document.body.classList.add('no-webgl');
-    canvas.style.display = 'none';
-  }
-
-  function makeLabelSprite(text){
-    var c = document.createElement('canvas');
-    c.width = 340; c.height = 88;
-    var ctx = c.getContext('2d');
-    var padX = 18, padY = 14;
-    ctx.font = '700 32px "JetBrains Mono", monospace';
-    var w = ctx.measureText(text.toUpperCase()).width;
-    var boxW = Math.min(c.width, w + padX*2);
-    var boxX = (c.width - boxW) / 2;
-    var boxY = (c.height - 52) / 2;
-    ctx.fillStyle = 'rgba(5,7,13,0.82)';
-    ctx.strokeStyle = 'rgba(255,179,71,0.55)';
-    ctx.lineWidth = 2;
-    roundRect(ctx, boxX, boxY, boxW, 52, 6);
-    ctx.fill();
-    ctx.stroke();
-    ctx.font = '700 32px "JetBrains Mono", monospace';
-    ctx.fillStyle = '#ffd9a0';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(text.toUpperCase(), c.width/2, boxY + 26);
-    var tex = new THREE.CanvasTexture(c);
-    tex.minFilter = THREE.LinearFilter;
-    var mat = new THREE.SpriteMaterial({ map: tex, transparent:true, depthWrite:false, depthTest:false });
-    var sprite = new THREE.Sprite(mat);
-    var ratio = c.height / c.width;
-    sprite.scale.set(3.8, 3.8*ratio, 1);
-    sprite.renderOrder = 10;
-    return sprite;
-  }
-
-  function roundRect(ctx,x,y,w,h,r){
-    ctx.beginPath();
-    ctx.moveTo(x+r,y);
-    ctx.arcTo(x+w,y,x+w,y+h,r);
-    ctx.arcTo(x+w,y+h,x,y+h,r);
-    ctx.arcTo(x,y+h,x,y,r);
-    ctx.arcTo(x,y,x+w,y,r);
-    ctx.closePath();
-  }
-
-  function makeGlow(){
-    var c = document.createElement('canvas');
-    c.width = 256; c.height = 256;
-    var ctx = c.getContext('2d');
-    var g = ctx.createRadialGradient(128,128,0,128,128,128);
-    g.addColorStop(0, 'rgba(255,179,71,0.55)');
-    g.addColorStop(1, 'rgba(255,179,71,0)');
-    ctx.fillStyle = g;
-    ctx.fillRect(0,0,256,256);
-    var tex = new THREE.CanvasTexture(c);
-    var mat = new THREE.SpriteMaterial({ map: tex, transparent:true, depthWrite:false, blending: THREE.AdditiveBlending });
-    var sprite = new THREE.Sprite(mat);
-    sprite.scale.set(16, 16, 1);
-    sprite.position.y = 0.02;
-    return sprite;
-  }
-
-  function buildHouse(cfg){
-    var group = new THREE.Group();
-    var bodyMat = new THREE.MeshStandardMaterial({ color:0x141a30, roughness:0.92, metalness:0.04 });
-    var body = new THREE.Mesh(new THREE.BoxGeometry(cfg.w, cfg.h, cfg.d), bodyMat);
-    body.position.y = cfg.h/2;
-    group.add(body);
-
-    if(cfg.roof === 'peak'){
-      var roof = new THREE.Mesh(
-        new THREE.ConeGeometry(Math.max(cfg.w,cfg.d)*0.76, 0.95, 4),
-        new THREE.MeshStandardMaterial({ color:0x0b0f1f, roughness:1 })
-      );
-      roof.rotation.y = Math.PI/4;
-      roof.position.y = cfg.h + 0.47;
-      group.add(roof);
-    } else {
-      var parapet = new THREE.Mesh(
-        new THREE.BoxGeometry(cfg.w*1.04, 0.16, cfg.d*1.04),
-        new THREE.MeshStandardMaterial({ color:0x0d1120, roughness:1 })
-      );
-      parapet.position.y = cfg.h + 0.08;
-      group.add(parapet);
-    }
-
-    var doorColor = cfg.soon ? 0x39405f : 0xffb347;
-    var doorMat = new THREE.MeshStandardMaterial({ color:doorColor, emissive:doorColor, emissiveIntensity:cfg.soon ? 0.35 : 1.1, roughness:0.5, side:THREE.DoubleSide });
-    var door = new THREE.Mesh(new THREE.PlaneGeometry(0.44, 0.78), doorMat);
-    door.position.set(0, 0.41, cfg.d/2 + 0.01);
-    group.add(door);
-
-    var winColor = cfg.soon ? 0x2c3350 : 0xffcf82;
-    var winMat = new THREE.MeshStandardMaterial({ color:winColor, emissive:winColor, emissiveIntensity:cfg.soon ? 0.3 : 0.85, side:THREE.DoubleSide });
-    var wins = [
-      [-cfg.w*0.28, cfg.h*0.64, cfg.d/2+0.01, 0],
-      [cfg.w*0.28, cfg.h*0.64, cfg.d/2+0.01, 0],
-      [cfg.w/2+0.01, cfg.h*0.5, cfg.d*0.18, Math.PI/2],
-      [-cfg.w/2-0.01, cfg.h*0.38, -cfg.d*0.12, Math.PI/2]
-    ];
-    wins.forEach(function(p){
-      var w = new THREE.Mesh(new THREE.PlaneGeometry(0.22,0.28), winMat);
-      w.position.set(p[0], p[1], p[2]);
-      w.rotation.y = p[3];
-      group.add(w);
-    });
-
-    var label = makeLabelSprite(cfg.label);
-    label.position.set(0, cfg.h + cfg.labelLift, 0);
-    group.add(label);
-
-    group.position.set(cfg.x, 0, cfg.z);
-    return group;
-  }
-
-  function initTown(){
-    var scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x0a0e1a, 0.032);
-
-    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
-
-    var renderer = new THREE.WebGLRenderer({ canvas:canvas, antialias:true, alpha:true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
-
-    var ground = new THREE.Mesh(
-      new THREE.CircleGeometry(17, 40),
-      new THREE.MeshStandardMaterial({ color:0x0c1122, roughness:1, metalness:0 })
-    );
-    ground.rotation.x = -Math.PI/2;
-    scene.add(ground);
-    scene.add(makeGlow());
-
-    scene.add(new THREE.HemisphereLight(0x2a3a66, 0x05060c, 0.7));
-    var moon = new THREE.DirectionalLight(0x8fa5ff, 0.4);
-    moon.position.set(-9, 15, -7);
-    scene.add(moon);
-    var warmFill = new THREE.PointLight(0xffb347, 1.1, 14, 2);
-    warmFill.position.set(0, 2.4, 0);
-    scene.add(warmFill);
-
-    var beacon = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.1, 0.14, 2.3, 8),
-      new THREE.MeshStandardMaterial({ color:0xffb347, emissive:0xffb347, emissiveIntensity:1.3 })
-    );
-    beacon.position.y = 1.15;
-    scene.add(beacon);
-    var beaconLabel = makeLabelSprite('LOBBY');
-    beaconLabel.position.set(0, 2.55, 0);
-    scene.add(beaconLabel);
-
-    var town = [
-      { x:-6.0, z:-1.5, w:2.0, d:1.6, h:2.5, roof:'peak', label:'JAR',      labelLift:1.35 },
-      { x:5.8,  z:-2.7, w:1.8, d:1.8, h:2.0, roof:'flat', label:'DESK',     labelLift:1.85 },
-      { x:-4.4, z:4.3,  w:1.6, d:1.6, h:2.9, roof:'peak', label:'LIBRARY',  labelLift:1.15 },
-      { x:4.3,  z:4.8,  w:1.9, d:1.5, h:2.2, roof:'flat', label:'SECURITY',labelLift:1.6 },
-      { x:0.5,  z:-6.8, w:1.7, d:1.7, h:2.7, roof:'peak', label:'COGITO \u00b7 SOON', labelLift:1.4, soon:true }
-    ];
-    town.forEach(function(cfg){ scene.add(buildHouse(cfg)); });
-
-    function resize(){
-      var w = canvas.clientWidth || canvas.parentElement.clientWidth || 800;
-      var h = canvas.clientHeight || canvas.parentElement.clientHeight || 600;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h, false);
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    var angle = 0.36;
-    var radius = 13.5;
-
-    function renderFrame(){
-      camera.position.x = Math.sin(angle) * radius;
-      camera.position.z = Math.cos(angle) * radius;
-      camera.position.y = 4.9 + Math.sin(angle * 0.6) * 0.35;
-      camera.lookAt(0, 1.0, 0);
-      renderer.render(scene, camera);
-    }
-
-    if(reduceMotion){
-      renderFrame();
-    } else {
-      (function loop(){
-        angle += 0.00095;
-        renderFrame();
-        requestAnimationFrame(loop);
-      })();
-    }
-  }
-})();
-</script>
 
 <script data-goatcounter="https://sandboxville.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <script>
