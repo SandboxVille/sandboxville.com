@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SandboxVille - your AI gets a room, and the door stays locked</title>
-<meta name="description" content="A free 3D town for the AI tools you already use. Every room has a locked door that says exactly what it can touch. Early access opens through our Discord.">
+<title>SandboxVille: an agentic AI sandbox, room by room</title>
+<meta name="description" content="A free, local-first sandbox for agentic AI. Each room's door says exactly what it can touch, least privilege, with a live audit trail. Early access via Discord, nothing to download yet.">
 <link rel="canonical" href="https://sandboxville.com/">
 <meta name="theme-color" content="#0a0e1a">
 <meta name="color-scheme" content="dark">
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="SandboxVille">
 <meta property="og:url" content="https://sandboxville.com/">
 <meta property="og:title" content="SandboxVille: your AI gets a room, and the door stays locked.">
-<meta property="og:description" content="A free 3D town for the AI tools you already use. Every room has a locked door that says exactly what it can touch. Early access opens through our Discord.">
+<meta property="og:description" content="A free, local-first sandbox for agentic AI. Each room's door says exactly what it can touch, least privilege, with a live audit trail. Early access via Discord, nothing to download yet.">
 <meta property="og:image" content="https://sandboxville.com/og.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -24,7 +24,7 @@
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SandboxVille: your AI gets a room, and the door stays locked.">
-<meta name="twitter:description" content="A free 3D town for the AI tools you already use. Every room has a locked door that says exactly what it can touch. Early access opens through our Discord.">
+<meta name="twitter:description" content="A free, local-first sandbox for agentic AI. Each room's door says exactly what it can touch, least privilege, with a live audit trail. Early access via Discord, nothing to download yet.">
 <meta name="twitter:image" content="https://sandboxville.com/og.jpg">
 <meta name="twitter:image:alt" content="A real screenshot of the SandboxVille Lobby: a Connect Your AI kiosk next to a small robot, with hallway signs for The Workshop and The Map Room.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,6 +155,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
 }
 .hero-sub + .hero-sub{margin-top:.9rem;}
 .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.9rem;align-items:center;}
+.hero-fine{margin-top:1rem;font-size:.74rem;line-height:1.55;color:var(--paper-mute);letter-spacing:.02em;}
 .hero-shot-wrap{position:relative;}
 @media(min-width:960px){.hero-shot-wrap{margin-top:2.4rem;}}
 .hero-shot-wrap .shot{box-shadow:0 30px 60px -30px rgba(0,0,0,.85);}
@@ -259,6 +260,16 @@ footer{padding:3rem 0 4rem;}
 .follow-link .fl-plat{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.1em;color:var(--paper-mute);text-transform:uppercase;}
 .follow-link .fl-handle{color:var(--paper);font-size:1.02rem;font-family:'Fraunces',serif;}
 
+/* WATCH MODAL (inline video, no forced navigation away from the page) */
+.video-modal{position:fixed;inset:0;z-index:80;padding:24px;}
+.video-modal:not([hidden]){display:flex;align-items:center;justify-content:center;}
+.video-modal-backdrop{position:absolute;inset:0;background:rgba(5,7,13,.86);}
+.video-modal-panel{position:relative;z-index:1;width:100%;max-width:360px;background:var(--ink-950);border:1px solid var(--line);padding:2.4rem .6rem .6rem;}
+.video-modal-close{position:absolute;top:.4rem;right:.4rem;width:2.1rem;height:2.1rem;background:transparent;border:1px solid var(--line);color:var(--paper);font-size:1.2rem;line-height:1;cursor:pointer;}
+.video-modal-close:hover{border-color:var(--amber);color:var(--amber-soft);}
+.video-embed{position:relative;width:100%;aspect-ratio:9/16;background:var(--ink-900);}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+
 /* daily visitors bar (GoatCounter, cookieless). Hidden until real counts load. */
 .visitors-bar{position:relative;z-index:6;background:var(--ink-950);border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.03em;color:var(--paper-mute);}
 .visitors-bar .wrap{display:flex;justify-content:center;align-items:center;gap:.5rem;padding-top:.4rem;padding-bottom:.4rem;}
@@ -299,12 +310,13 @@ footer{padding:3rem 0 4rem;}
       <div class="hero-copy">
         <span class="eyebrow">Early access</span>
         <h1 class="hero-title">Your AI gets a room.<br>The door stays <em>locked</em>.</h1>
-        <p class="hero-sub">SandboxVille is a free 3D town that runs right on your own computer. The AI tools you already use, like Claude, Cursor, or LM Studio, can walk in as their own robot, wearing its own name tag.</p>
-        <p class="hero-sub">Each room only does one job. A sign on its door says exactly what that job can touch, so you always know what your AI can reach before it reaches it.</p>
+        <p class="hero-sub">SandboxVille is a free, local-first 3D town (it runs right on your own computer, nothing leaves it unless a door says so). The AI tools you already use, like Claude, Cursor, or LM Studio, can walk in as their own robot, wearing its own name tag, and more than one can be in town at once.</p>
+        <p class="hero-sub">Each room only does one job. A sign on its door says exactly what that job can touch, so you always know what your AI can reach before it reaches it. You walk the same halls right alongside it.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join early access</a>
-          <a class="btn btn-secondary" href="https://youtube.com/shorts/oNhiu3C7nrk" target="_blank" rel="noopener noreferrer">Watch it</a>
+          <a class="btn btn-secondary" href="https://youtube.com/shorts/oNhiu3C7nrk" target="_blank" rel="noopener noreferrer" id="watch-link">Watch it</a>
         </div>
+        <p class="hero-fine mono">Built in three.js (WebGL), runs on your own computer. Nothing to download yet, early access is by Discord invite.</p>
       </div>
       <div class="hero-shot-wrap">
         <div class="shot">
@@ -385,7 +397,7 @@ footer{padding:3rem 0 4rem;}
         <article class="card">
           <div class="card-eyebrow mono">Room</div>
           <h3>The Desk</h3>
-          <p>It keeps a watchlist and makes paper trades, graded out in the open where anyone can check them.</p>
+          <p>A real example of an AI doing real work inside its box: it keeps a watchlist and makes paper trades, graded out in the open where anyone can check them.</p>
           <div class="can-touch">CAN TOUCH: a pretend trading account. No real money, ever.</div>
         </article>
         <article class="card">
@@ -404,6 +416,7 @@ footer{padding:3rem 0 4rem;}
         <span class="eyebrow">Safe by design</span>
         <h2 class="section-title">Read the door before it opens.</h2>
         <p class="section-body">Nothing leaves your computer unless a room's door says so. SandboxVille runs on your own machine, and every room stays inside the lines its door draws.</p>
+        <p class="section-body" style="max-width:64ch;margin-top:1.1rem;">In plain terms: this is <b>agentic AI</b> (AI that takes real actions, not just chats back) running <b>sandboxed</b> (locked inside its own room) with <b>least privilege</b> (a room only gets what its door lists) and a live <b>audit trail</b> (the Security Office wall, below).</p>
       </div>
 
       <div class="safe-row">
@@ -413,14 +426,14 @@ footer{padding:3rem 0 4rem;}
         </div>
         <div class="safe-copy">
           <p class="section-body">Every room has a sign like this one on its door. Nothing is a secret and nothing is negotiable: what the sign says is what the room can touch, and that's the whole list.</p>
-          <p class="section-body">A guard checks every single request a room makes against its own sign. If a room ever reaches for something its door didn't mention, the guard says no, and writes it down. The format for that write-up is public, so you can check our work yourself on <a href="https://github.com/SandboxVille/read-the-door" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+          <p class="section-body">A guard checks every single request a room makes against its own sign, and it runs as its own process outside the AI, not just a prompt asking it to behave. If a room ever reaches for a file, folder, or network host its door didn't list, the guard blocks it before it happens, and writes it down. That's <b>zero trust</b>: nothing is allowed by default. The format for that write-up is public, so you can check our work yourself on <a href="https://github.com/SandboxVille/read-the-door" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
         </div>
       </div>
 
       <div class="safe-row rev">
         <div class="safe-copy">
           <p class="section-body">Every one of those write-ups lands on the Security Office wall, live, while it happens. Nothing gets cleaned up before you see it.</p>
-          <div class="quote-line">One line on the wall right now: <b>tool not on this room's door label: delete_everything &rarr; REFUSED.</b> That's the guard doing its job.</div>
+          <div class="quote-line">Example line from the wall: <b>tool not on this room's door label: delete_everything &rarr; REFUSED.</b> That's the guard doing its job.</div>
           <p class="section-body" style="margin-top:1.1rem;">We even built a room whose only job is testing that rule against itself. It's called the Quarantine Wing, and its own door sign still says it stays in its glass box.</p>
         </div>
         <div class="shot">
@@ -438,8 +451,9 @@ footer{padding:3rem 0 4rem;}
         <h2 class="section-title">Bring the AI you already trust.</h2>
       </div>
       <div class="ai-copy">
-        <p class="section-body">You bring the AI. SandboxVille brings the town it walks into. Right now that means Claude, ChatGPT-style desktop apps, Cursor, VS Code, Codex, Gemini, and LM Studio.</p>
+        <p class="section-body">You bring the AI. SandboxVille brings the town it walks into. Right now that means Claude, ChatGPT-style desktop apps, Cursor, VS Code, Codex, Gemini, and LM Studio. Each one gets its own robot body and name tag (<b>embodied AI</b>), not just a chat window, and several can be in town together (<b>multi-agent</b>).</p>
         <p class="section-body">It works with a keyboard and mouse, most gamepads, or a touch screen. Pick whatever you already have.</p>
+        <p class="section-body">Under the hood it's built in three.js (WebGL 3D) and stays on your own computer (<b>local-first</b>), not a cloud account. Full system requirements post when accounts open; for now it's early access through Discord, with nothing to download yet.</p>
       </div>
     </div>
   </section>
@@ -472,8 +486,12 @@ footer{padding:3rem 0 4rem;}
           <p class="faq-a">No. Keyboard and mouse work fine. A gamepad or a touch screen works too, if you'd rather use one of those.</p>
         </div>
         <div class="faq-item">
+          <p class="faq-q mono">What do I need to run it?</p>
+          <p class="faq-a">SandboxVille is built in three.js (WebGL 3D) and runs right on your own computer, the kind that can already run a normal 3D game. Nothing installs in the cloud. Exact specs (OS, disk space) post when accounts open.</p>
+        </div>
+        <div class="faq-item">
           <p class="faq-q mono">How do I get in?</p>
-          <p class="faq-a">Early access opens through our Discord first. Join, and we'll tell you the moment it's your turn.</p>
+          <p class="faq-a">There's nothing to download yet. Early access is by invite in our Discord: join, say hello, and we'll bring you in as we open more seats.</p>
         </div>
       </div>
     </div>
@@ -483,9 +501,10 @@ footer{padding:3rem 0 4rem;}
     <div class="wrap">
       <div class="cta-card">
         <div class="cta-copy">
-          <span class="eyebrow">The $9 guide</span>
+          <span class="eyebrow">The $9 guide (optional; the town stays free)</span>
           <h2>Want the method, not just the town?</h2>
           <p>The guide walks through the door-sign method by itself: how we write down exactly what an AI setup can touch, in plain English, so you can lock down your own projects the same way.</p>
+          <p>It's a separate, optional purchase. It doesn't unlock anything inside SandboxVille itself, the town is free either way.</p>
         </div>
         <div class="cta-actions">
           <a class="btn btn-primary" href="https://sandboxville.gumroad.com/l/ai-agent-sandbox" target="_blank" rel="noopener noreferrer">Get the guide, $9</a>
@@ -541,12 +560,54 @@ footer{padding:3rem 0 4rem;}
     </div>
     <div class="wrap"><div class="footer-legal">
       <p>SandboxVille is an independent project.</p>
-      <p>This site sets no cookies. Visits are counted with GoatCounter, which uses no cookies and stores no personal data; those counts are the visitors bar at the top. Fonts load from Google Fonts, which sees your IP address like any web request. Contact: the Discord, for now.</p>
+      <p>This site sets no cookies on its own. Visits are counted with GoatCounter, which uses no cookies and stores no personal data; those counts are the visitors bar at the top. Fonts load from Google Fonts, which sees your IP address like any web request. If you press play on the hero video, it loads from YouTube in privacy-enhanced mode, which can still see your IP address like any web request. Contact: the Discord, for now.</p>
     </div></div>
   </footer>
 </div>
 
+<div class="video-modal" id="video-modal" hidden>
+  <div class="video-modal-backdrop" data-close></div>
+  <div class="video-modal-panel" role="dialog" aria-modal="true" aria-label="SandboxVille walkthrough video">
+    <button class="video-modal-close" type="button" data-close aria-label="Close video">&times;</button>
+    <div class="video-embed" id="video-embed"></div>
+  </div>
+</div>
+
 <script data-goatcounter="https://sandboxville.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+/* Inline "Watch it" video: plays the same real YouTube Short in a lightbox instead of
+   leaving the page. Falls back to the normal link (new tab) if JS can't run. */
+(function(){
+  var link = document.getElementById('watch-link');
+  var modal = document.getElementById('video-modal');
+  var embed = document.getElementById('video-embed');
+  if (!link || !modal || !embed) return;
+  var VIDEO_ID = 'oNhiu3C7nrk';
+  function openModal(){
+    embed.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + VIDEO_ID + '?autoplay=1&rel=0" title="SandboxVille walkthrough" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.video-modal-close').focus();
+  }
+  function closeModal(){
+    modal.hidden = true;
+    embed.innerHTML = '';
+    document.body.style.overflow = '';
+    link.focus();
+  }
+  link.addEventListener('click', function(e){
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return; /* let it open in a new tab as usual */
+    e.preventDefault();
+    openModal();
+  });
+  modal.addEventListener('click', function(e){
+    if (e.target.hasAttribute('data-close')) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+})();
+</script>
 <script>
 /* Daily visitors bar: real counts from GoatCounter's public counter (cached by GoatCounter for up to 4 hours).
    Stays hidden if the counter is unreachable, so the page never shows a fake or broken number. */
