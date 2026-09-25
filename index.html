@@ -365,6 +365,15 @@ footer{padding:3rem 0 4rem;}
 .proof-strip a{color:var(--paper-dim);text-decoration:none;border-bottom:1px dashed var(--line);}
 .proof-strip a:hover{color:var(--amber-soft);border-color:var(--amber);}
 .proof-strip .sep{color:var(--paper-mute);}
+/* daily visitors bar (GoatCounter, cookieless). Hidden until real counts load. */
+.visitors-bar{position:relative;z-index:6;background:var(--ink-950);border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.03em;color:var(--paper-mute);}
+.visitors-bar .wrap{display:flex;justify-content:center;align-items:center;gap:.5rem;padding-top:.4rem;padding-bottom:.4rem;}
+.visitors-bar strong{color:var(--amber);font-weight:700;}
+.visitors-bar .vb-dot{width:.5rem;height:.5rem;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:vbPulse 2s infinite;}
+.visitors-bar .sep{color:var(--line);}
+@keyframes vbPulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.55);}70%{box-shadow:0 0 0 .45rem rgba(61,220,132,0);}100%{box-shadow:0 0 0 0 rgba(61,220,132,0);}}
+@media (prefers-reduced-motion:reduce){.visitors-bar .vb-dot{animation:none;}}
+
 
 /* HERO WHO + HONEST LINE */
 .hero-who{
@@ -416,6 +425,10 @@ footer{padding:3rem 0 4rem;}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380..700&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
 </head>
 <body>
+<div class="visitors-bar" id="visitors-bar" hidden aria-live="polite">
+  <div class="wrap"><span class="vb-dot" aria-hidden="true"></span><span><strong id="vb-today">0</strong> visitors today</span><span class="sep">&middot;</span><span><strong id="vb-week">0</strong> this week</span></div>
+</div>
+
 
 <div class="page">
 
@@ -784,7 +797,7 @@ footer{padding:3rem 0 4rem;}
     </div>
     <div class="wrap"><div class="footer-legal">
       <p>SandboxVille is an independent project.</p>
-      <p>This site sets no cookies and runs no analytics. Fonts load from Google Fonts and the 3D library from cdnjs, which see your IP address like any web request. Contact: the Discord, for now.</p>
+      <p>This site sets no cookies. Visits are counted with GoatCounter, which uses no cookies and stores no personal data; those counts are the visitors bar at the top. Fonts load from Google Fonts and the 3D library from cdnjs, which see your IP address like any web request. Contact: the Discord, for now.</p>
     </div></div>
   </footer>
 </div>
@@ -1001,6 +1014,23 @@ footer{padding:3rem 0 4rem;}
       })();
     }
   }
+})();
+</script>
+
+<script data-goatcounter="https://sandboxville.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script>
+/* Daily visitors bar: real counts from GoatCounter's public counter (cached by GoatCounter for up to 4 hours).
+   Stays hidden if the counter is unreachable, so the page never shows a fake or broken number. */
+(function(){
+  var GC = 'https://sandboxville.goatcounter.com/counter/TOTAL.json';
+  var today = new Date().toISOString().slice(0, 10);
+  function get(q){ return fetch(GC + q, {cache: 'no-store'}).then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); }); }
+  function n(j){ return (j && (j.count_unique || j.count)) || '0'; }
+  Promise.all([get('?start=' + today), get('?start=week')]).then(function(a){
+    document.getElementById('vb-today').textContent = n(a[0]);
+    document.getElementById('vb-week').textContent = n(a[1]);
+    document.getElementById('visitors-bar').hidden = false;
+  }).catch(function(){ /* counter not live yet: keep the bar hidden */ });
 })();
 </script>
 </body>
