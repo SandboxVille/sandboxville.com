@@ -212,8 +212,10 @@
       var panel = e.target.closest('.panel');
       if (!panel) return;
       var want = clamp(panel.offsetLeft - 40, 0, panOverflow);
-      var top = pan.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo(0, top + want);
+      requestAnimationFrame(function(){
+        var top = pan.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo(0, top + want);
+      });
     });
   }
 
@@ -224,4 +226,21 @@
   window.addEventListener('load', setup);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(setup);
   setup();
+})();
+/* keyboard: tabbing into a hidden beat of the pinned peak scrolls to where that beat is showing */
+(function(){
+  var peak = document.querySelector('[data-peak]');
+  if (!peak) return;
+  peak.addEventListener('focusin', function(e){
+    if (!document.documentElement.classList.contains('js-peak')) return;
+    var beat = e.target.closest('.beat');
+    if (!beat || beat.classList.contains('on')) return;
+    var idx = parseInt(beat.getAttribute('data-beat'), 10) || 0;
+    var at = [0.1, 0.5, 0.86][idx] || 0;
+    /* after the browser's own scroll-into-view, which would otherwise win */
+    requestAnimationFrame(function(){
+      var top = peak.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo(0, top + at * (peak.offsetHeight - window.innerHeight));
+    });
+  });
 })();
