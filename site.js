@@ -1,17 +1,19 @@
 /* site.js: moved out of index.html so the Content-Security-Policy can forbid inline scripts. */
-/* Inline "Watch it" video: plays the same real YouTube Short in a lightbox instead of
-   leaving the page. Falls back to the normal link (new tab) if JS can't run. */
+/* Inline "Watch it" video: plays a real, self-hosted 15s clip of SandboxVille in a lightbox
+   instead of leaving the page. No YouTube, no outside request. Falls back to the plain
+   video file link (opens/plays in a new tab) if JS can't run. */
 (function(){
   var link = document.getElementById('watch-link');
   var heroPlay = document.getElementById('watch-link-hero');
   var modal = document.getElementById('video-modal');
   var embed = document.getElementById('video-embed');
   if (!modal || !embed || (!link && !heroPlay)) return;
-  var VIDEO_ID = ''; // set to a real SandboxVille clip before re-adding a watch button
+  var VIDEO_SRC = 'media/sandboxville-15s.mp4';
+  var VIDEO_POSTER = 'media/sandboxville-15s-poster.jpg';
   var lastTrigger = null;
   function openModal(trigger){
     lastTrigger = trigger || link || heroPlay;
-    embed.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + VIDEO_ID + '?autoplay=1&rel=0" title="SandboxVille walkthrough" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    embed.innerHTML = '<video src="' + VIDEO_SRC + '" poster="' + VIDEO_POSTER + '" controls autoplay muted playsinline title="SandboxVille walkthrough"></video>';
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
     modal.querySelector('.video-modal-close').focus();

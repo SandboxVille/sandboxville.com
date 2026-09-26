@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://sandboxville.goatcounter.com https://gc.zgo.at; connect-src 'self' https://sandboxville.goatcounter.com; frame-src https://www.youtube-nocookie.com; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://sandboxville.goatcounter.com https://gc.zgo.at; connect-src 'self' https://sandboxville.goatcounter.com; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>SandboxVille: an agentic AI sandbox, room by room</title>
 <meta name="description" content="A free, local-first sandbox for agentic AI. Each room's door says exactly what it can touch, least privilege, with a live audit trail. Get an early-access invite in our Discord.">
@@ -281,11 +281,11 @@ footer{padding:3rem 0 4rem;}
 .video-modal{position:fixed;inset:0;z-index:80;padding:24px;}
 .video-modal:not([hidden]){display:flex;align-items:center;justify-content:center;}
 .video-modal-backdrop{position:absolute;inset:0;background:rgba(5,7,13,.86);}
-.video-modal-panel{position:relative;z-index:1;width:100%;max-width:360px;background:var(--ink-950);border:1px solid var(--line);padding:2.4rem .6rem .6rem;}
+.video-modal-panel{position:relative;z-index:1;width:100%;max-width:720px;background:var(--ink-950);border:1px solid var(--line);padding:2.4rem .6rem .6rem;}
 .video-modal-close{position:absolute;top:.4rem;right:.4rem;width:2.1rem;height:2.1rem;background:transparent;border:1px solid var(--line);color:var(--paper);font-size:1.2rem;line-height:1;cursor:pointer;}
 .video-modal-close:hover{border-color:var(--amber);color:var(--amber-soft);}
-.video-embed{position:relative;width:100%;aspect-ratio:9/16;background:var(--ink-900);}
-.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.video-embed{position:relative;width:100%;aspect-ratio:16/9;background:#000;}
+.video-embed video{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;}
 
 /* daily visitors bar (GoatCounter, cookieless). Hidden until real counts load. */
 .visitors-bar{position:relative;z-index:6;background:var(--ink-950);border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.03em;color:var(--paper-mute);}
@@ -318,7 +318,7 @@ footer{padding:3rem 0 4rem;}
       <a href="#top" class="wordmark">SandboxVille<span>.</span></a>
       <ul class="nav-links">
         <li><a href="#how">How it works</a></li>
-        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="rooms/">Rooms</a></li>
         <li><a href="#safe">Safe by design</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -331,18 +331,22 @@ footer{padding:3rem 0 4rem;}
       <div class="hero-copy">
         <span class="eyebrow">Early access</span>
         <h1 class="hero-title">Your AI gets a room.<br>The door stays <em>locked</em>.</h1>
-        <p class="hero-sub">SandboxVille is a free, local-first 3D town (it runs right on your own computer, nothing leaves it unless a door says so). The AI tools you already use, like Claude, Cursor, or LM Studio, can walk in as their own robot, wearing its own name tag, and more than one can be in town at once.</p>
-        <p class="hero-sub">Each room only does one job. A sign on its door says exactly what that job can touch, so you always know what your AI can reach before it reaches it. You walk the same halls right alongside it.</p>
+        <p class="hero-sub">SandboxVille is a free 3D town that runs right on your own computer. Point Claude, Cursor, or LM Studio at it, and it walks in as its own robot with its own name tag. Nothing leaves your computer unless a door says so.</p>
+        <p class="hero-sub">You add rooms for the jobs you want done. Each room's door says exactly what it can touch before your AI ever walks through it, and the Security Office wall shows every action live, so you always know what happened.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join early access</a>
-          <a class="btn btn-secondary" href="#rooms">See the rooms</a>
+          <a class="btn btn-secondary" href="rooms/">See the rooms</a>
+          <a class="btn btn-ghost" href="media/sandboxville-15s.mp4" target="_blank" rel="noopener" id="watch-link">Watch it move (15s)</a>
         </div>
-        <p class="hero-fine mono">Built in three.js (WebGL), runs on your own computer. Invites go out through our Discord, and the town itself runs local on your machine.</p>
+        <p class="hero-fine mono">Built in three.js (WebGL), runs on your own computer. Try a room live in your browser today from the rooms page, no download needed. Invites to the full town go out through our Discord.</p>
       </div>
       <div class="hero-shot-wrap">
         <div class="shot">
           <div class="shot-media">
             <img src="img/lobby.webp" alt="A real screenshot of the SandboxVille Lobby: a Connect Your AI kiosk with three steps, a small teal robot, and hallway signs for The Workshop and The Map Room." width="1920" height="1080" loading="eager">
+            <button type="button" class="shot-play" id="watch-link-hero" aria-label="Play a 15-second clip of SandboxVille">
+              <span class="shot-play-icon" aria-hidden="true">&#9658;</span>
+            </button>
           </div>
           <p class="shot-cap"><b>The Lobby.</b> Our own screenshot, not concept art, low-poly on purpose so it runs on almost anything. This is the first thing you see.</p>
         </div>
@@ -374,6 +378,7 @@ footer{padding:3rem 0 4rem;}
           <p>Restart your AI. It walks into the Lobby as its own robot, wearing its own name tag.</p>
         </div>
       </div>
+      <p class="section-body" style="margin-top:1.6rem;">From the Lobby, you add rooms, one for each job. Every room's door says exactly what it can touch before your AI ever tries.</p>
     </div>
   </section>
 
@@ -430,6 +435,7 @@ footer{padding:3rem 0 4rem;}
           <div class="can-touch">CAN TOUCH: the log. It only reads. It never acts.</div>
         </article>
       </div>
+      <p class="section-body" style="margin-top:1.6rem;"><a href="rooms/">See every room, with downloads and sha256 checksums &rarr;</a></p>
     </div>
   </section>
 
@@ -569,7 +575,7 @@ footer{padding:3rem 0 4rem;}
         <a href="https://sandboxville.gumroad.com/l/ai-agent-sandbox" target="_blank" rel="noopener noreferrer">The $9 guide</a>
         <a href="https://github.com/SandboxVille/read-the-door" target="_blank" rel="noopener noreferrer">Code &amp; logs</a>
         <a href="#how">How it works</a>
-        <a href="#rooms">Rooms</a>
+        <a href="rooms/">Rooms</a>
         <a href="#safe">Safe by design</a>
         <a href="#faq">FAQ</a>
         <a href="#follow-channels">Channels</a>
@@ -577,7 +583,7 @@ footer{padding:3rem 0 4rem;}
     </div>
     <div class="wrap"><div class="footer-legal">
       <p>SandboxVille is an independent project.</p>
-      <p>This site sets no cookies on its own. Visits are counted with GoatCounter, which uses no cookies and stores no personal data; those counts are the visitors bar at the top. Fonts load from Google Fonts, which sees your IP address like any web request. If you press play on the hero video, it loads from YouTube in privacy-enhanced mode, which can still see your IP address like any web request. Contact: our Discord.</p>
+      <p>This site sets no cookies on its own. Visits are counted with GoatCounter, which uses no cookies and stores no personal data; those counts are the visitors bar at the top. Fonts load from Google Fonts, which sees your IP address like any web request. The hero video plays from this site, not from YouTube or any other outside service. Contact: our Discord.</p>
     </div></div>
   </footer>
 </div>

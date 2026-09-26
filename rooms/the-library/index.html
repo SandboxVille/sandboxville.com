@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://sandboxville.goatcounter.com https://gc.zgo.at; connect-src 'self' https://sandboxville.goatcounter.com; frame-src https://www.youtube-nocookie.com; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>The Library: a SandboxVille room</title>
+<meta name="description" content="Turns one folder of your notes into searchable shelves your AI can read. Read-only, no network. Download, sha256 verified.">
+<link rel="canonical" href="https://sandboxville.com/rooms/the-library/">
+<meta name="theme-color" content="#0a0e1a">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SandboxVille">
+<meta property="og:url" content="https://sandboxville.com/rooms/the-library/">
+<meta property="og:title" content="The Library: a SandboxVille room">
+<meta property="og:description" content="Turns one folder of your notes into searchable shelves your AI can read. Read-only, no network.">
+<meta property="og:image" content="https://sandboxville.com/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380..700&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../rooms.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="nav">
+    <div class="wrap nav-row">
+      <a href="../../index.html#top" class="wordmark">SandboxVille<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#how">How it works</a></li>
+        <li><a href="../index.html">Rooms</a></li>
+        <li><a href="../../index.html#safe">Safe by design</a></li>
+        <li><a href="../../index.html#faq">FAQ</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join early access</a>
+    </div>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">&larr; All rooms</a>
+      <div class="detail-title-row">
+        <h1 class="detail-title">The Library</h1>
+        <span class="badge badge-full"><span class="badge-dot"></span>Works fully today</span>
+      </div>
+      <p class="detail-sub">Your notes folder, shown as shelves and grouped by subfolder, with search. You pick ONE folder on your computer; The Library only ever looks inside that folder. Everything it reads back is marked as untrusted data, never as an instruction.</p>
+      <div class="detail-touch">
+        <div class="can-touch" style="max-width:60ch;">CAN TOUCH: the one folder you pick. Read-only, always.</div>
+      </div>
+    </div>
+  </header>
+
+  <section style="border-top:none;">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="shot">
+          <div class="shot-text">
+            <span class="st-label">No screenshot for this room yet</span>
+            <span class="st-line">fs: read, ONE folder you pick</span>
+            <span class="st-line">files: .md and .txt only</span>
+            <span class="st-line">network: none</span>
+            <span class="st-line">tools: list_shelves, search_notes, read_note</span>
+          </div>
+          <p class="shot-cap">We'd rather show you nothing than a fake one. This is the room's real door label, straight from <span class="mono">room.json</span>, not a mockup.</p>
+        </div>
+        <div class="sign-block">
+          <div class="sb-title">Door label, from room.json</div>
+          <ul>
+            <li>Tools for your AI: <b>list_shelves</b>, <b>search_notes</b>, <b>read_note</b>. All three only read, never write.</li>
+            <li>Can READ files in the ONE folder you pick: read-only, cannot change or delete anything. Only <span class="mono">.md</span> and <span class="mono">.txt</span> files.</li>
+            <li>Cannot reach the internet.</li>
+            <li>Cannot run any program on your computer.</li>
+            <li>Does not use any saved passwords or keys.</li>
+            <li>Can keep a small amount (2 MB) of its own private notes, separate from your folder.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head wide">
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title">Three steps, then read its sign.</h2>
+      </div>
+      <div class="install-steps">
+        <div class="install-step">
+          <span class="install-num mono">1</span>
+          <h4>Download and unzip</h4>
+          <p>Get <span class="mono">the-library.zip</span> below. Unzip it, you'll get a <span class="mono">the-library/</span> folder with <span class="mono">room.json</span> and a <span class="mono">view/</span> folder inside.</p>
+        </div>
+        <div class="install-step">
+          <span class="install-num mono">2</span>
+          <h4>Drop it in rooms/</h4>
+          <p>Copy the whole <span class="mono">the-library/</span> folder into the <span class="mono">rooms/</span> folder of your SandboxVille code, so the path reads <span class="mono">rooms/the-library/room.json</span>.</p>
+        </div>
+        <div class="install-step">
+          <span class="install-num mono">3</span>
+          <h4>Print the sign, then run it</h4>
+          <p>Run the two commands on the right. The first prints its door sign in plain text. The second starts it so you can open it in your browser.</p>
+        </div>
+      </div>
+      <div class="code-block">node tools/door-label.mjs rooms/the-library
+<span class="cm"># reads the sign back to you before anything runs</span>
+node harness/server.mjs --room ./rooms/the-library --port 8150
+<span class="cm"># open http://127.0.0.1:8150 in your browser</span></div>
+      <p class="requires-line"><b>You'll need first:</b> Node.js 22+, a copy of the SandboxVille code, and a folder of your own notes (<span class="mono">.md</span> or <span class="mono">.txt</span> files) you're willing to let this room search. It never writes to that folder.</p>
+
+      <div class="download-card">
+        <div class="dl-info mono">
+          <div><b>the-library.zip</b> &middot; 4.5 KB (4,610 bytes)</div>
+          <div class="dl-hash">sha256: a54eedae5216f2d6f01f786da22385243d15aa347af8ffccc6c406783742658d</div>
+        </div>
+        <a class="btn btn-primary" href="../dl/the-library.zip" download>Download the-library.zip</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>
+        <a href="../../index.html#top" class="wordmark">SandboxVille<span>.</span></a>
+        <p class="footer-tag">A free town of locked rooms for the AI you already use. Every door says what it can touch.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://github.com/SandboxVille/read-the-door" target="_blank" rel="noopener noreferrer">Code &amp; logs</a>
+        <a href="../index.html">All rooms</a>
+        <a href="../../index.html#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

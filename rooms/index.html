@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://sandboxville.goatcounter.com https://gc.zgo.at; connect-src 'self' https://sandboxville.goatcounter.com; frame-src https://www.youtube-nocookie.com; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Rooms: browse and download SandboxVille rooms</title>
+<meta name="description" content="Six SandboxVille rooms you can download today. Every card shows the door sign first, what it can touch, before you read anything else. sha256 and size on every download.">
+<link rel="canonical" href="https://sandboxville.com/rooms/">
+<meta name="theme-color" content="#0a0e1a">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SandboxVille">
+<meta property="og:url" content="https://sandboxville.com/rooms/">
+<meta property="og:title" content="SandboxVille Rooms: the door sign first, every time.">
+<meta property="og:description" content="Six SandboxVille rooms you can download today. Every card shows the door sign first, what it can touch, before you read anything else.">
+<meta property="og:image" content="https://sandboxville.com/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SandboxVille Rooms: the door sign first, every time.">
+<meta name="twitter:description" content="Six SandboxVille rooms you can download today. Every card shows the door sign first, what it can touch, before you read anything else.">
+<meta name="twitter:image" content="https://sandboxville.com/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380..700&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="rooms.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="nav">
+    <div class="wrap nav-row">
+      <a href="../index.html#top" class="wordmark">SandboxVille<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html#how">How it works</a></li>
+        <li><a href="index.html" aria-current="page">Rooms</a></li>
+        <li><a href="../index.html#safe">Safe by design</a></li>
+        <li><a href="../index.html#faq">FAQ</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join early access</a>
+    </div>
+  </nav>
+
+  <header class="rooms-hero">
+    <div class="wrap">
+      <span class="eyebrow">Rooms</span>
+      <h1 class="rooms-title">Read the door. <em>Then</em> download the room.</h1>
+      <p class="rooms-sub">Six SandboxVille rooms, ready to download right now. Every card shows what a room can touch before it shows anything else, no digging into a permissions tab to find out. Unzip, drop it in your <span class="mono">rooms</span> folder, and read its sign for yourself.</p>
+      <div class="rooms-stats mono">
+        <span><b>6</b> rooms today</span>
+        <span class="dot">&middot;</span>
+        <span><b>3</b> run end to end in the town</span>
+        <span class="dot">&middot;</span>
+        <span><b>3</b> download and print their door sign</span>
+        <span class="dot">&middot;</span>
+        <span><b>0</b> of 6 reach the network</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="wrap toolbar-row">
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">&#128269;</span>
+        <input type="text" id="room-search" class="search-input" placeholder="Search rooms (e.g. files, log, tank)" aria-label="Search rooms">
+      </div>
+      <div class="filter-groups">
+        <div class="filter-group">
+          <span class="filter-group-label mono">Can touch</span>
+          <div class="chip-row" role="group" aria-label="Filter by what a room can touch">
+            <button type="button" class="chip" data-touch-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-touch-filter="files" aria-pressed="false">Reads files</button>
+            <button type="button" class="chip" data-touch-filter="network" aria-pressed="false">Reaches network</button>
+            <button type="button" class="chip" data-touch-filter="nothing" aria-pressed="false">Touches nothing</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-group-label mono">Status</span>
+          <div class="chip-row" role="group" aria-label="Filter by status">
+            <button type="button" class="chip" data-status-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-status-filter="full" aria-pressed="false">Works fully today</button>
+            <button type="button" class="chip" data-status-filter="sign" aria-pressed="false">Door sign only</button>
+          </div>
+        </div>
+      </div>
+      <p class="results-line mono" id="results-line">Showing <strong>6</strong> of <strong>6</strong> rooms</p>
+    </div>
+  </div>
+
+  <section id="room-list" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="room-grid" id="room-grid">
+
+        <!-- THE DESK -->
+        <article class="room-card" data-touch="files" data-status="full" data-search="the desk paper trading watchlist forecast grade files">
+          <div class="card-top">
+            <span class="badge badge-full"><span class="badge-dot"></span>Works fully today</span>
+            <span class="card-touch-tag mono">Reads files</span>
+          </div>
+          <div class="card-preview">
+            <span class="preview-tag">Real screenshot</span>
+            <img src="../img/door-sign.webp" alt="A real screenshot of The Desk's door sign, reading Reads One Folder You Pick, read-only." width="1920" height="1080" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>The Desk</h3>
+            <div class="can-touch">CAN TOUCH: the one folder you pick, read-only. Its paper trades stay inside the room. No real money, ever.</div>
+            <p class="desc">Reads your paper-trade log and grades forecast calls against what actually happened. Never places a trade.</p>
+            <p class="card-meta">the-desk.zip &middot; 5.4 KB<br>sha256: 7d5383d1046f5d7ec902d0c20d57d1e843d1249e72fe6c4b6a4874da65626d62</p>
+            <div class="card-actions">
+              <a class="btn btn-ghost btn-sm" href="the-desk/index.html">View room</a>
+              <a class="btn btn-primary btn-sm" href="dl/the-desk.zip" download>Download .zip</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- THE LIBRARY -->
+        <article class="room-card" data-touch="files" data-status="full" data-search="the library notes folder search read shelves">
+          <div class="card-top">
+            <span class="badge badge-full"><span class="badge-dot"></span>Works fully today</span>
+            <span class="card-touch-tag mono">Reads files</span>
+          </div>
+          <div class="card-preview">
+            <span class="preview-tag">Door sign</span>
+            <div class="sign-panel">
+              <span class="sp-label">FROM room.json</span>
+              <span class="sp-line">fs: read, ONE folder, .md/.txt only</span>
+              <span class="sp-line">network: none</span>
+              <span class="sp-line">tools: list_shelves, search_notes, read_note</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>The Library</h3>
+            <div class="can-touch">CAN TOUCH: the one folder you pick. Read-only, always.</div>
+            <p class="desc">Turns one folder of your notes into searchable shelves. Pick a folder, and your AI can read every file inside to answer questions about it.</p>
+            <p class="card-meta">the-library.zip &middot; 4.5 KB<br>sha256: a54eedae5216f2d6f01f786da22385243d15aa347af8ffccc6c406783742658d</p>
+            <div class="card-actions">
+              <a class="btn btn-ghost btn-sm" href="the-library/index.html">View room</a>
+              <a class="btn btn-primary btn-sm" href="dl/the-library.zip" download>Download .zip</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- TERRARIUM -->
+        <article class="room-card" data-touch="nothing" data-status="full" data-search="terrarium tank animals neurons census touch scent live preview">
+          <div class="card-top">
+            <span class="badge badge-full"><span class="badge-dot"></span>Works fully today</span>
+            <span class="card-touch-tag mono">Touches nothing</span>
+          </div>
+          <div class="card-preview">
+            <span class="preview-tag live">Try it live</span>
+            <div class="sign-panel">
+              <span class="sp-label">RUNS IN YOUR BROWSER, RIGHT NOW</span>
+              <span class="sp-line">30 animals, spiking-neuron brains</span>
+              <span class="sp-line">no install, no files, no network</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Terrarium</h3>
+            <div class="can-touch">CAN TOUCH: nothing on your computer. No files, no internet, no programs, no secrets.</div>
+            <p class="desc">A tank of small simulated animals your AI can census, touch, and drop scent for. No script tells them where to go.</p>
+            <p class="card-meta">terrarium.zip &middot; 31.7 KB<br>sha256: a7e779ad20dfbba49188fc141a36651bc5bfcbc22b7574dea62a838cdbfc88c4</p>
+            <div class="card-actions">
+              <a class="btn btn-ghost btn-sm" href="terrarium/index.html">View room</a>
+              <a class="btn btn-primary btn-sm" href="dl/terrarium.zip" download>Download .zip</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- LOBBY -->
+        <article class="room-card" data-touch="nothing" data-status="sign" data-search="lobby front door stop button zero permissions">
+          <div class="card-top">
+            <span class="badge badge-sign"><span class="badge-dot"></span>Door sign only</span>
+            <span class="card-touch-tag mono">Touches nothing</span>
+          </div>
+          <div class="card-preview">
+            <span class="preview-tag">Real screenshot</span>
+            <img src="../img/lobby.webp" alt="A real screenshot of the SandboxVille Lobby, with a Connect Your AI kiosk and a small robot." width="1920" height="1080" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Lobby</h3>
+            <div class="can-touch">CAN TOUCH: nothing outside itself. It's just the front door.</div>
+            <p class="desc">Where every AI arrives and checks in. Shows a kiosk with connection steps and a STOP button that freezes the whole building.</p>
+            <p class="card-meta">lobby.zip &middot; 1.6 KB<br>sha256: d22c55cae7f08c62d8a07fb67c9b86ff146b77554a7a53ff08d19e8d8032bee8</p>
+            <div class="card-actions">
+              <a class="btn btn-ghost btn-sm" href="lobby/index.html">View room</a>
+              <a class="btn btn-primary btn-sm" href="dl/lobby.zip" download>Download .zip</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- SECURITY OFFICE -->
+        <article class="room-card" data-touch="nothing" data-status="sign" data-search="security office audit log wall refused actions">
+          <div class="card-top">
+            <span class="badge badge-sign"><span class="badge-dot"></span>Door sign only</span>
+            <span class="card-touch-tag mono">Touches nothing</span>
+          </div>
+          <div class="card-preview">
+            <span class="preview-tag">Real screenshot</span>
+            <img src="../img/security.webp" alt="A real screenshot of the Security Office audit wall, with a live list of allowed and refused actions." width="1920" height="1080" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Security Office</h3>
+            <div class="can-touch">CAN TOUCH: the log. It only reads. It never acts.</div>
+            <p class="desc">A wall screen showing every room's actions the second they happen, refusals in red. Grants your AI zero tools.</p>
+            <p class="card-meta">security-office.zip &middot; 1.7 KB<br>sha256: 10c3c982fbd23f16a1048c2097b93586e11ae4b44ce3e32eacc76c1f9df03ab8</p>
+            <div class="card-actions">
+              <a class="btn btn-ghost btn-sm" href="security-office/index.html">View room</a>
+              <a class="btn btn-primary btn-sm" href="dl/security-office.zip" download>Download .zip</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- QUARANTINE WING -->
+        <article class="room-card" data-touch="nothing" data-status="sign" data-search="quarantine wing glass cell new room watch">
+          <div class="card-top">
+            <span class="badge badge-sign"><span class="badge-dot"></span>Door sign only</span>
+            <span class="card-touch-tag mono">Touches nothing</span>
+          </div>
+          <div class="card-preview">
+            <span class="preview-tag">Door sign</span>
+            <div class="sign-panel">
+              <span class="sp-label">FROM room.json</span>
+              <span class="sp-line">fs: none</span>
+              <span class="sp-line">network: none</span>
+              <span class="sp-line">tools for your AI: zero</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Quarantine Wing</h3>
+            <div class="can-touch">CAN TOUCH: nothing. An empty glass cell until you release a room from it.</div>
+            <p class="desc">Watch a new room behind glass, with zero permissions, before you ever let it near your files or the internet.</p>
+            <p class="card-meta">quarantine-wing.zip &middot; 1.7 KB<br>sha256: 4c19154a985af7bffca68dff0da53b7cb79e5215118fbf63071f94bade7df680</p>
+            <div class="card-actions">
+              <a class="btn btn-ghost btn-sm" href="quarantine-wing/index.html">View room</a>
+              <a class="btn btn-primary btn-sm" href="dl/quarantine-wing.zip" download>Download .zip</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+      <p class="no-results mono" id="no-results">No room matches that search and those filters. Try clearing a filter above.</p>
+    </div>
+  </section>
+
+  <section id="honesty" style="border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head wide">
+        <span class="eyebrow">What the badges mean</span>
+        <h2 class="section-title">Two honest states. No hidden third one.</h2>
+      </div>
+      <div class="room-grid" style="margin-top:1.6rem;">
+        <article class="room-card" style="border-top-color:var(--safe-green);">
+          <div class="card-body" style="padding-top:1.2rem;">
+            <span class="badge badge-full"><span class="badge-dot"></span>Works fully today</span>
+            <p class="desc" style="margin-top:.8rem;">Download it, drop it in your <span class="mono">rooms</span> folder, and it mounts and runs inside SandboxVille right now. The Desk, The Library, and Terrarium are here.</p>
+          </div>
+        </article>
+        <article class="room-card" style="border-top-color:var(--sign-blue);">
+          <div class="card-body" style="padding-top:1.2rem;">
+            <span class="badge badge-sign"><span class="badge-dot"></span>Door sign only</span>
+            <p class="desc" style="margin-top:.8rem;">Download it and read exactly what it can touch, printed straight from its own manifest. Wiring it into a live building is the next step for these three. Nothing is hidden either way.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>
+        <a href="../index.html#top" class="wordmark">SandboxVille<span>.</span></a>
+        <p class="footer-tag">A free town of locked rooms for the AI you already use. Every door says what it can touch.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://github.com/SandboxVille/read-the-door" target="_blank" rel="noopener noreferrer">Code &amp; logs</a>
+        <a href="../index.html#how">How it works</a>
+        <a href="index.html" aria-current="page">Rooms</a>
+        <a href="../index.html#safe">Safe by design</a>
+        <a href="../index.html#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="rooms.js" defer></script>
+</body>
+</html>

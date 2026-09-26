@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://sandboxville.goatcounter.com https://gc.zgo.at; connect-src 'self' https://sandboxville.goatcounter.com; frame-src https://www.youtube-nocookie.com; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Security Office: a SandboxVille room</title>
+<meta name="description" content="A live wall screen of every room's audit log, refusals in red. Zero permissions, zero tools for your AI. Download, sha256 verified.">
+<link rel="canonical" href="https://sandboxville.com/rooms/security-office/">
+<meta name="theme-color" content="#0a0e1a">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SandboxVille">
+<meta property="og:url" content="https://sandboxville.com/rooms/security-office/">
+<meta property="og:title" content="Security Office: a SandboxVille room">
+<meta property="og:description" content="A live wall screen of every room's audit log, refusals in red. Zero permissions, zero tools for your AI.">
+<meta property="og:image" content="https://sandboxville.com/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380..700&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../rooms.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="nav">
+    <div class="wrap nav-row">
+      <a href="../../index.html#top" class="wordmark">SandboxVille<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#how">How it works</a></li>
+        <li><a href="../index.html">Rooms</a></li>
+        <li><a href="../../index.html#safe">Safe by design</a></li>
+        <li><a href="../../index.html#faq">FAQ</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join early access</a>
+    </div>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">&larr; All rooms</a>
+      <div class="detail-title-row">
+        <h1 class="detail-title">Security Office</h1>
+        <span class="badge badge-sign"><span class="badge-dot"></span>Door sign only</span>
+      </div>
+      <p class="detail-sub">A live wall screen showing every action every room and every AI takes in the building, one line per decision, refusals in red. It reads the real audit log so a human can watch what is happening. It gives your AI zero tools; this room reads the log for you.</p>
+      <div class="detail-touch">
+        <div class="can-touch" style="max-width:60ch;">CAN TOUCH: the log. It only reads. It never acts.</div>
+      </div>
+    </div>
+  </header>
+
+  <section style="border-top:none;">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="shot">
+          <img src="../../img/security.webp" alt="A real screenshot of the Security Office audit wall in SandboxVille, showing a live list of allowed and refused room actions, with a small blue robot standing in front of it." width="1920" height="1080" loading="eager">
+          <p class="shot-cap"><b>The Security Office wall.</b> Real allowed and refused actions, as they happen.</p>
+        </div>
+        <div class="sign-block">
+          <div class="sb-title">Door label, from room.json</div>
+          <ul>
+            <li>Reads the building's own audit log and shows it on a wall screen, for you to watch.</li>
+            <li>Cannot read any files on your computer.</li>
+            <li>Cannot reach the internet.</li>
+            <li>Cannot run any program on your computer.</li>
+            <li>Does not use any saved passwords or keys.</li>
+            <li>Gives your AI zero tools.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head wide">
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title">Three steps, then read its sign.</h2>
+      </div>
+      <div class="install-steps">
+        <div class="install-step">
+          <span class="install-num mono">1</span>
+          <h4>Download and unzip</h4>
+          <p>Get <span class="mono">security-office.zip</span> below. Unzip it, you'll get a <span class="mono">security-office/</span> folder with one file inside, <span class="mono">room.json</span>.</p>
+        </div>
+        <div class="install-step">
+          <span class="install-num mono">2</span>
+          <h4>Drop it in rooms/</h4>
+          <p>Copy the <span class="mono">security-office/</span> folder into the <span class="mono">rooms/</span> folder of your SandboxVille code, so the path reads <span class="mono">rooms/security-office/room.json</span>.</p>
+        </div>
+        <div class="install-step">
+          <span class="install-num mono">3</span>
+          <h4>Print the sign</h4>
+          <p>Run the command on the right. It prints the door sign, plain text, so you can see exactly what this room is and is not allowed to touch.</p>
+        </div>
+      </div>
+      <div class="code-block">node tools/door-label.mjs rooms/security-office
+<span class="cm"># this room asks for no files and no network, so once you've read</span>
+<span class="cm"># the sign there is nothing else to turn on</span></div>
+      <p class="requires-line"><b>You'll need first:</b> Node.js 22+ and a copy of the SandboxVille code (the folder that has <span class="mono">rooms/</span>, <span class="mono">tools/</span>, and <span class="mono">harness/</span> in it).</p>
+
+      <div class="download-card">
+        <div class="dl-info mono">
+          <div><b>security-office.zip</b> &middot; 1.7 KB (1,753 bytes)</div>
+          <div class="dl-hash">sha256: 10c3c982fbd23f16a1048c2097b93586e11ae4b44ce3e32eacc76c1f9df03ab8</div>
+        </div>
+        <a class="btn btn-primary" href="../dl/security-office.zip" download>Download security-office.zip</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>
+        <a href="../../index.html#top" class="wordmark">SandboxVille<span>.</span></a>
+        <p class="footer-tag">A free town of locked rooms for the AI you already use. Every door says what it can touch.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://github.com/SandboxVille/read-the-door" target="_blank" rel="noopener noreferrer">Code &amp; logs</a>
+        <a href="../index.html">All rooms</a>
+        <a href="../../index.html#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

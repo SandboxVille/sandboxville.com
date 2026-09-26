@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://sandboxville.goatcounter.com https://gc.zgo.at; connect-src 'self' https://sandboxville.goatcounter.com; frame-src https://www.youtube-nocookie.com; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Lobby: a SandboxVille room</title>
+<meta name="description" content="The front door of every SandboxVille building. Zero permissions, zero tools for your AI. Download, sha256 verified.">
+<link rel="canonical" href="https://sandboxville.com/rooms/lobby/">
+<meta name="theme-color" content="#0a0e1a">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SandboxVille">
+<meta property="og:url" content="https://sandboxville.com/rooms/lobby/">
+<meta property="og:title" content="Lobby: a SandboxVille room">
+<meta property="og:description" content="The front door of every SandboxVille building. Zero permissions, zero tools for your AI.">
+<meta property="og:image" content="https://sandboxville.com/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380..700&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../rooms.css">
+</head>
+<body>
+<div class="page">
+
+  <nav class="nav">
+    <div class="wrap nav-row">
+      <a href="../../index.html#top" class="wordmark">SandboxVille<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="../../index.html#how">How it works</a></li>
+        <li><a href="../index.html">Rooms</a></li>
+        <li><a href="../../index.html#safe">Safe by design</a></li>
+        <li><a href="../../index.html#faq">FAQ</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join early access</a>
+    </div>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">&larr; All rooms</a>
+      <div class="detail-title-row">
+        <h1 class="detail-title">Lobby</h1>
+        <span class="badge badge-sign"><span class="badge-dot"></span>Door sign only</span>
+      </div>
+      <p class="detail-sub">This is the room every SandboxVille building starts in. It shows a kiosk with instructions for connecting your AI, and a big STOP button that freezes the whole building at once. It gives your AI nothing to work with; it's just where it arrives and checks in.</p>
+      <div class="detail-touch">
+        <div class="can-touch" style="max-width:60ch;">CAN TOUCH: nothing outside itself. It's just the front door.</div>
+      </div>
+    </div>
+  </header>
+
+  <section style="border-top:none;">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="shot">
+          <img src="../../img/lobby.webp" alt="A real screenshot of the SandboxVille Lobby: a Connect Your AI kiosk with three steps, a small teal robot, and hallway signs for The Workshop and The Map Room." width="1920" height="1080" loading="eager">
+          <p class="shot-cap"><b>The Lobby.</b> Our own screenshot, not concept art. The downloadable copy of this room is the sign and the kiosk logic; the walk-through view above is the live building.</p>
+        </div>
+        <div class="sign-block">
+          <div class="sb-title">Door label, from room.json</div>
+          <ul>
+            <li>Can show its own kiosk screen and a STOP button.</li>
+            <li>Cannot read any files on your computer.</li>
+            <li>Cannot reach the internet.</li>
+            <li>Cannot run any program on your computer.</li>
+            <li>Does not use any saved passwords or keys.</li>
+            <li>Gives your AI zero tools.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head wide">
+        <span class="eyebrow">Install</span>
+        <h2 class="section-title">Three steps, then read its sign.</h2>
+      </div>
+      <div class="install-steps">
+        <div class="install-step">
+          <span class="install-num mono">1</span>
+          <h4>Download and unzip</h4>
+          <p>Get <span class="mono">lobby.zip</span> below. Unzip it, you'll get a <span class="mono">lobby/</span> folder with one file inside, <span class="mono">room.json</span>.</p>
+        </div>
+        <div class="install-step">
+          <span class="install-num mono">2</span>
+          <h4>Drop it in rooms/</h4>
+          <p>Copy the <span class="mono">lobby/</span> folder into the <span class="mono">rooms/</span> folder of your SandboxVille code, so the path reads <span class="mono">rooms/lobby/room.json</span>.</p>
+        </div>
+        <div class="install-step">
+          <span class="install-num mono">3</span>
+          <h4>Print the sign</h4>
+          <p>Run the command on the right. It prints the door sign, plain text, so you can see exactly what this room is and is not allowed to touch.</p>
+        </div>
+      </div>
+      <div class="code-block">node tools/door-label.mjs rooms/lobby
+<span class="cm"># this room asks for no files and no network, so once you've read</span>
+<span class="cm"># the sign there is nothing else to turn on</span></div>
+      <p class="requires-line"><b>You'll need first:</b> Node.js 22+ and a copy of the SandboxVille code (the folder that has <span class="mono">rooms/</span>, <span class="mono">tools/</span>, and <span class="mono">harness/</span> in it).</p>
+
+      <div class="download-card">
+        <div class="dl-info mono">
+          <div><b>lobby.zip</b> &middot; 1.6 KB (1,674 bytes)</div>
+          <div class="dl-hash">sha256: d22c55cae7f08c62d8a07fb67c9b86ff146b77554a7a53ff08d19e8d8032bee8</div>
+        </div>
+        <a class="btn btn-primary" href="../dl/lobby.zip" download>Download lobby.zip</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>
+        <a href="../../index.html#top" class="wordmark">SandboxVille<span>.</span></a>
+        <p class="footer-tag">A free town of locked rooms for the AI you already use. Every door says what it can touch.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://github.com/SandboxVille/read-the-door" target="_blank" rel="noopener noreferrer">Code &amp; logs</a>
+        <a href="../index.html">All rooms</a>
+        <a href="../../index.html#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
