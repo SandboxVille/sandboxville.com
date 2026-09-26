@@ -6,8 +6,8 @@
   var heroPlay = document.getElementById('watch-link-hero');
   var modal = document.getElementById('video-modal');
   var embed = document.getElementById('video-embed');
-  if (!modal || !embed) return;
-  var VIDEO_ID = 'oNhiu3C7nrk';
+  if (!modal || !embed || (!link && !heroPlay)) return;
+  var VIDEO_ID = ''; // set to a real SandboxVille clip before re-adding a watch button
   var lastTrigger = null;
   function openModal(trigger){
     lastTrigger = trigger || link || heroPlay;
