@@ -3,74 +3,130 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SandboxVille - from YouTube</title>
-<meta name="description" content="Follow the SandboxVille build: join the Discord, get the $9 guide, or see the full site.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>SandboxVille: from YouTube, the town I'm building</title>
+<meta name="description" content="From the vlog: SandboxVille is a free 3D town where the AI you already use gets its own locked room. Watch 15 real seconds of it, then join the Discord to follow along.">
 <link rel="canonical" href="https://sandboxville.com/yt/">
-<meta name="theme-color" content="#0a0e1a">
+<meta name="theme-color" content="#0c0d10">
 <meta name="color-scheme" content="dark">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SandboxVille">
 <meta property="og:url" content="https://sandboxville.com/yt/">
-<meta property="og:title" content="SandboxVille: from YouTube">
-<meta property="og:description" content="Follow the SandboxVille build: join the Discord, get the $9 guide, or see the full site.">
+<meta property="og:title" content="SandboxVille: this is the town I'm building.">
+<meta property="og:description" content="From the vlog: SandboxVille is a free 3D town where the AI you already use gets its own locked room. Watch 15 real seconds of it, then join the Discord to follow along.">
 <meta property="og:image" content="https://sandboxville.com/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A real screenshot of the SandboxVille Lobby: a Connect Your AI kiosk next to a small robot, with hallway signs for The Workshop and The Map Room.">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SandboxVille: this is the town I'm building.">
+<meta name="twitter:description" content="From the vlog: SandboxVille is a free 3D town where the AI you already use gets its own locked room. Watch 15 real seconds of it, then join the Discord to follow along.">
+<meta name="twitter:image" content="https://sandboxville.com/og.jpg">
+<meta name="twitter:image:alt" content="A real screenshot of the SandboxVille Lobby: a Connect Your AI kiosk next to a small robot, with hallway signs for The Workshop and The Map Room.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<style>
-:root{
-  --ink-950:#05070d; --ink-900:#0a0e1a; --ink-800:#111629; --line:#2b3358;
-  --paper:#eef0f6; --paper-dim:#c4c9e0; --paper-mute:#8991b7;
-  --amber:#ffb347; --amber-strong:#ffa41f; --amber-soft:#ffd9a0;
-}
-*{box-sizing:border-box;}
-html,body{height:100%;}
-body{
-  margin:0;background:var(--ink-900);color:var(--paper);
-  font-family:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  display:flex;flex-direction:column;min-height:100svh;min-height:100vh;
-  overflow-x:hidden;-webkit-font-smoothing:antialiased;
-}
-a{color:inherit;}
-a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px;}
-.wrap{max-width:440px;margin:0 auto;padding:28px 20px;width:100%;flex:1;display:flex;flex-direction:column;justify-content:center;gap:.85rem;}
-.context{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:.5rem;}
-.wordmark{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:1.7rem;margin:0 0 .5rem;letter-spacing:-.01em;}
-.wordmark span{color:var(--amber);}
-.sub{color:var(--paper-dim);font-size:.94rem;line-height:1.55;margin:0 0 .5rem;max-width:36ch;}
-.btn{
-  display:flex;align-items:center;justify-content:center;gap:.5rem;
-  padding:1.05rem 1.3rem;font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;
-  letter-spacing:.02em;text-decoration:none;border:1px solid transparent;
-  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%);
-}
-.btn-primary{background:var(--amber);color:var(--ink-950);border-color:var(--amber);}
-.btn-primary:hover{background:var(--amber-strong);}
-.btn-ghost{background:transparent;color:var(--paper);border-color:var(--line);}
-.btn-ghost:hover{border-color:var(--amber);color:var(--amber-soft);}
-.honest{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--paper-mute);letter-spacing:.02em;margin-top:.2rem;}
-.foot{text-align:center;font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--paper-mute);padding:0 20px 22px;}
-.foot a{color:var(--paper-mute);text-decoration:underline;}
-@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important;}}
-</style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380..700&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="preload" as="image" href="/media/watch-poster.jpg">
+<link rel="stylesheet" href="/landing.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@400;500;700;800&display=swap">
 </head>
 <body>
-<div class="wrap">
-  <div>
-    <span class="context">From YouTube</span>
-    <h1 class="wordmark">SandboxVille<span>.</span></h1>
-    <p class="sub">The AI segment from the episode, expanded. This is the town I'm actually building.</p>
-  </div>
-  <a class="btn btn-primary" href="https://discord.gg/dyjX57UChq" target="_blank" rel="noopener noreferrer">Join the Discord</a>
-  <a class="btn btn-ghost" href="https://sandboxville.gumroad.com/l/ai-agent-sandbox" target="_blank" rel="noopener noreferrer">Get the $9 guide</a>
-  <a class="btn btn-ghost" href="https://youtube.com/shorts/oNhiu3C7nrk" target="_blank" rel="noopener noreferrer">See The Desk room's latest paper test</a>
-  <a class="btn btn-ghost" href="https://sandboxville.com/" target="_blank" rel="noopener noreferrer">See the full site</a>
-  <p class="honest">Free. Nothing to download yet. Follow the build.</p>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="page">
+
+  <nav class="nav" aria-label="Main">
+    <div class="wrap nav-row">
+      <a href="/" class="wordmark">SandboxVille<span>.</span></a>
+      <a class="nav-link" href="/">See the whole town &rarr;</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="lp-hero" data-hero>
+      <div class="wrap lp-hero-inner">
+        <div class="lp-head">
+          <p class="eyebrow rise d1">From YouTube &middot; @kingdavid6780</p>
+          <h1 class="lp-title"><span class="line rise d2">This is the town</span> <span class="line rise d3"><em>I'm building</em>.</span></h1>
+        </div>
+        <div class="lp-copy">
+          <p class="lp-sub rise d4">SandboxVille is a free 3D town that runs on your own computer. The AI you already use walks in as its own robot, and every door says what it can touch. <b>Follow along in our Discord</b>, where early-access invites go out first.</p>
+          <div class="lp-actions rise d5">
+            <a class="btn btn-primary" href="https://discord.gg/dyjX57UChq" target="_blank" rel="noopener noreferrer">Join the Discord</a>
+            <a class="btn btn-ghost" href="/media/sandboxville-15s.mp4" target="_blank" rel="noopener" id="watch-link"><span class="play-dot" aria-hidden="true">&#9658;</span>Watch it (15s)</a>
+          </div>
+          <p class="lp-fine rise d6"><b>Free to join.</b> The clip and every picture here come straight from the town.</p>
+        </div>
+        <div class="lp-stage rise d3">
+          <div class="lp-shot" data-depth="far">
+            <button type="button" class="lp-shot-frame lp-watch" id="watch-link-hero" aria-label="Play a 15-second clip of SandboxVille">
+              <img src="/media/watch-poster.jpg" width="1280" height="720" alt="" fetchpriority="high">
+              <span class="shot-tag"><b>Real clip</b><span class="st-where"> &middot; 15s</span></span>
+              <span class="watch-label">
+                <span class="watch-play" aria-hidden="true">&#9658;</span>
+                <span class="watch-text"><strong>Watch it move.</strong><span>15 seconds: the Lobby, The Desk's door, the Security Office wall.</span></span>
+              </span>
+            </button>
+          </div>
+          <div class="plane plane-frame lp-plane top" data-depth="mid">
+            <img src="/img/crop-kiosk.webp" width="444" height="256" alt="A real crop of the Connect Your AI kiosk in the SandboxVille Lobby, listing three steps: pick the AI you already use, paste three lines into its settings, restart it.">
+            <span class="plane-tag"><b>Lobby kiosk</b> &middot; 3 steps</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="lp-next" aria-labelledby="next-h">
+      <div class="wrap lp-next-grid">
+        <div>
+          <h2 class="h2" id="next-h" data-in>Three steps to get in.</h2>
+          <p class="lede" data-in style="--d:60ms">Early access opens in our Discord first. Want a feel for it tonight? Try a room right in your browser.</p>
+          <div class="lp-actions" data-in style="--d:120ms">
+            <a class="btn btn-primary" href="https://discord.gg/dyjX57UChq" target="_blank" rel="noopener noreferrer">Join the Discord</a>
+            <a class="btn btn-secondary" href="/rooms/terrarium/">Try a room in your browser</a>
+          </div>
+        </div>
+        <ol class="steps">
+          <li class="step" data-in><span class="step-num" aria-hidden="true">1</span><div><h3>Join the Discord</h3><p>Join, then say hello when you land. It's free.</p></div></li>
+          <li class="step" data-in style="--d:70ms"><span class="step-num" aria-hidden="true">2</span><div><h3>Get your invite</h3><p>We send early-access invites in the Discord as seats open.</p></div></li>
+          <li class="step" data-in style="--d:140ms"><span class="step-num" aria-hidden="true">3</span><div><h3>Walk in</h3><p>The town runs on your own computer. Your AI shows up as its own robot, with its own name tag.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>
+        <a href="/" class="wordmark">SandboxVille<span>.</span></a>
+        <p class="footer-tag">A free town of locked rooms for the AI you already use. Every door says what it can touch.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://discord.gg/dyjX57UChq" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="/">The whole town</a>
+        <a href="/rooms/">Rooms</a>
+        <a href="https://sandboxville.gumroad.com/l/ai-agent-sandbox" target="_blank" rel="noopener noreferrer">The $9 guide</a>
+      </div>
+    </div>
+    <div class="wrap"><div class="footer-legal">
+      <p>SandboxVille is an independent project.</p>
+    </div></div>
+  </footer>
 </div>
-<p class="foot">51 / 51 blocked in our own tests &middot; <a href="https://sandboxville.com/">sandboxville.com</a></p>
+
+<div class="video-modal" id="video-modal" hidden>
+  <div class="video-modal-backdrop" data-close></div>
+  <div class="video-modal-panel" role="dialog" aria-modal="true" aria-label="SandboxVille walkthrough video">
+    <button class="video-modal-close" type="button" data-close aria-label="Close video">&times;</button>
+    <div class="video-embed" id="video-embed"></div>
+  </div>
+</div>
+
+<script src="/site.js" defer></script>
 </body>
 </html>

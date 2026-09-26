@@ -8,8 +8,9 @@
   var modal = document.getElementById('video-modal');
   var embed = document.getElementById('video-embed');
   if (!modal || !embed || (!link && !heroPlay)) return;
-  var VIDEO_SRC = 'media/sandboxville-15s.mp4';
-  var VIDEO_POSTER = 'media/sandboxville-15s-poster.jpg';
+  /* absolute, so the landing pages (/tt/, /yt/, ...) play the same file */
+  var VIDEO_SRC = '/media/sandboxville-15s.mp4';
+  var VIDEO_POSTER = '/media/sandboxville-15s-poster.jpg';
   var lastTrigger = null;
   function openModal(trigger){
     lastTrigger = trigger || link || heroPlay;
@@ -47,6 +48,7 @@
   var bar = document.getElementById('visitors-bar');
   var numbers = document.getElementById('vb-numbers');
   var fallback = document.getElementById('vb-fallback');
+  if (!bar || !numbers || !fallback) return; /* landing pages have no bar: no fetch, no error */
   var numbersShown = false;
   function get(q){ return fetch(GC + q, {cache: 'no-store'}).then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); }); }
   function n(j){ return (j && (j.count_unique || j.count)) || '0'; }
