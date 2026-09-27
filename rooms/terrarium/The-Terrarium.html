@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>The Terrarium</title>
-<meta name="description" content="Eleven species, thirty animals, every one driven by simulated spiking neurons. Runs offline in your browser. Made by Jarbis for The Vault.">
+<meta name="description" content="Eleven species, thirty animals, every one driven by simulated spiking neurons. Runs offline in your browser. Made for SandboxVille.">
 <style>
   :root{
     --bg:#060b0a; --glass:rgba(20,36,31,.52); --glass-hi:rgba(34,58,50,.55);
@@ -189,16 +189,15 @@
   </div>
 
   <footer>
-    Made by Jarbis for The Vault. Free to share, non-commercial (the fly circuit is CC BY-NC 4.0; the worm wiring data is not Creative Commons, non-commercial research use only).<br>
+    Made for SandboxVille. Free to share, non-commercial (the fly circuit is CC BY-NC 4.0; the worm wiring data is not Creative Commons, non-commercial research use only).<br>
     <span>Fly circuit: FlyWire v783 connectome (Dorkenwald et al. 2024, Schlegel et al. 2024), model after Shiu et al., Nature 2024. CC BY-NC 4.0, non-commercial. C. elegans wiring: Cook et al., Nature 2019; graded neuron model after Kunert et al. 2014; touch sign rule after Wicks &amp; Rankin. The Cook 2019 connectome data is NOT Creative Commons: non-commercial research and education use only; permission from the authors is pending before any wider release.</span><br>
-    <span class="join">Join The Vault on Discord: <a href="https://discord.gg/kEn7uTZYYk" target="_blank" rel="noopener">discord.gg/kEn7uTZYYk</a></span>
+    <span class="join">Join SandboxVille early access on Discord: <a href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener">discord.gg/Dy3HPqawWh</a></span>
   </footer>
 </div>
 
 <script>
 /* ============================================================================
-   THE TERRARIUM - a sanctuary of spiking animals inside the Vault.   2026-09-21
-   the builder: "put the fly in the world and use it as the foundation to build 10 new animals"
+   THE TERRARIUM - a sanctuary of spiking animals.
 
    Every animal here is a small circuit of leaky integrate-and-fire neurons, the same
    neuron equation and parameter family the 2024 whole-fly-brain model runs (Shiu et al.,
@@ -209,16 +208,15 @@
 
    2026-09-23, THE TWO REAL BRAINS ARE THE EXCEPTION, and say so everywhere they appear:
    the FlyWire fruit fly runs the real, validated sugar-to-feeding circuit EXACTLY as it was
-   validated (proof: builds/terrarium-tests/fly-proof.mjs), but that circuit has no walking
+   validated (a separate proof test checks it), but that circuit has no walking
    neurons, so the fruit fly WALKS ON A SIMPLE RULE AND EATS ON ITS REAL BRAIN (MN9 spikes).
    The C. elegans worm runs the real Cook 2019 wiring as a GRADED model (worm_cook2019_graded.json,
    2026-09-23): real wiring, touch reflex validated (Wicks & Rankin sign rule); chemotaxis and
    crawling rhythm not validated. It reverses and speeds up on its brain, eats on a simple rule
-   (proof: builds/terrarium-tests/worm-proof.mjs). The old spiking worm file FAILED and is unused.
+   (a separate proof test checks it). An older spiking worm model failed its test and is unused.
 
-   STANDALONE BUILD (2026-09-23): inlined into one offline HTML file for The Vault's
-   Discord. Changes from the Vault engine: no network (local save only), an optional sky
-   override, and a per-animal spike recorder for the follow view. Behaviour is unchanged.
+   STANDALONE BUILD: one offline HTML file. No network (local save only), an optional sky
+   override, and a per-animal spike recorder for the follow view.
    ============================================================================ */
 const TERRARIUM = (() => {
   const W = 900, H = 600, DT = 0.5;              // ms per neuron step
@@ -560,8 +558,7 @@ const TERRARIUM = (() => {
   function wings(c, an, spread, col = "rgba(255,255,255,0.35)") { c.save(); c.translate(an.x, an.y); c.rotate(an.a); c.fillStyle = col; c.beginPath(); c.ellipse(-3, -5, 8, 3, -spread, 0, 7); c.fill(); c.beginPath(); c.ellipse(-3, 5, 8, 3, spread, 0, 7); c.fill(); c.restore(); }
 
   /* ============================================================================
-     WHAT EACH ONE IS DOING, IN ONE SHORT PHRASE.   2026-09-22
-     the builder, standing at the 3D terrarium: "i have no idea what theyre doing or thinking".
+     WHAT EACH ONE IS DOING, IN ONE SHORT PHRASE.
 
      Every phrase below is READ OFF THE CIRCUIT - a neuron's last spike time, a memory flag,
      a motor rule already set, a real distance on the real map. Nothing here decides anything
@@ -707,8 +704,8 @@ const TERRARIUM = (() => {
         carries its own update_rule runs it EXACTLY (Brain.advance, dt 0.1 ms). A connectome
         genome is a DELTA against the reference file, so a child costs a few hundred numbers,
         not the whole brain. If a brain file is missing, that species is simply absent.
-     4. THE GENE LINE lives inside Colonies/Terrarium.json under "lineage" (the bridge has
-        no append route for a .jsonl): the last 2000 births in full, per-species totals
+     4. THE GENE LINE lives in the saved state under "lineage":
+        the last 2000 births in full, per-species totals
         forever. TERRARIUM.evolutionReport() reads it out in plain English.
      Energy is kept in "tanks": 1.0 is a full animal. Every rate below is per sim ms and is
      scaled by EVO.lifeScale, so a test can fast-forward generations without changing the
@@ -1445,7 +1442,7 @@ const TERRARIUM = (() => {
       credit: "C. elegans wiring: Cook et al., Nature 2019; graded neuron model after Kunert et al. 2014; touch sign rule after Wicks & Rankin. " +
         "Data licence: the Cook 2019 connectome is NOT Creative Commons; used here for non-commercial research and education only, permission from the authors pending before any wider release." }
   ];
-  /* the credit + licence lines, for every page that shows these animals (Vault panel log, census, report, download) */
+  /* the credit + licence lines, for every page that shows these animals (panel log, census, report, download) */
   const CREDITS = CONNECTOMES.map(d => d.credit);
   const soilSpot = () => { let x, y, k = 0; do { x = rnd(40, W - 40); y = rnd(40, H - 40); } while (inPond(x, y) && ++k < 50); return [x, y]; };
   /* standalone: the real brains are embedded at build time; nothing is fetched */
@@ -1693,7 +1690,7 @@ const TERRARIUM = (() => {
 
   /* ---------------- the clock ---------------- */
   /* THE ENGINE OWNS ITS OWN CLOCK (2026-09-21, 3D pass). Two importers - the panel in the page
-     and the 3D outside in vault-gl.js - must drive ONE population, so the module ticks itself
+     and the 3D world view - must drive ONE population, so the module ticks itself
      on start() and the exported tick() is a no-op while that runs. One clock, one truth. */
   let last = performance.now(), running = false, speed = 1, autoTicking = false, saveTimer = 0;
   function tick() { if (autoTicking) return; _tick(); }
@@ -1819,7 +1816,7 @@ const TERRARIUM = (() => {
   }
 
   /* ---------------- local save (standalone) ---------------- */
-  const SAVE_KEY = "vault-terrarium-v1";
+  const SAVE_KEY = "sbv-terrarium-v1", OLD_SAVE_KEY = "vault-terrarium-v1";
   function localSave() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(snapshot())); return true; } catch (e) { return false; } }
 
   /* ---------------- public ---------------- */
@@ -1829,7 +1826,7 @@ const TERRARIUM = (() => {
       if (!running) {
         populate(); running = true; last = performance.now();
         /* standalone: restore from this browser only; no network of any kind (the page layer also saves on hide) */
-        try { const raw = localStorage.getItem(SAVE_KEY); if (raw && restore(JSON.parse(raw))) console.log("[terrarium] restored from this device"); } catch (e) {}
+        try { const raw = localStorage.getItem(SAVE_KEY) || localStorage.getItem(OLD_SAVE_KEY); if (raw && restore(JSON.parse(raw))) console.log("[terrarium] restored from this device"); } catch (e) {}
         autoTicking = true; setInterval(_tick, 16);
         saveTimer = setInterval(localSave, 30000);
         loadBrains();                   /* the two real connectomes, from ./brains/ (absent if the file is) */
@@ -1954,12 +1951,12 @@ const TERRARIUM = (() => {
   /* ---------- sky: live clock, day, night ---------- */
   var SKY = [{ label: "live clock", hour: null }, { label: "day", hour: 12 }, { label: "night", hour: 23 }];
   var skyIx = 0;
-  try { var sv = parseInt(localStorage.getItem("vault-terrarium-sky") || "0", 10); if (sv >= 0 && sv < SKY.length) skyIx = sv; } catch (e) {}
+  try { var sv = parseInt((localStorage.getItem("sbv-terrarium-sky") || localStorage.getItem("vault-terrarium-sky")) || "0", 10); if (sv >= 0 && sv < SKY.length) skyIx = sv; } catch (e) {}
   function applySky() {
     T.S.skyHour = SKY[skyIx].hour;
     $("#bSky").textContent = "Sky: " + (skyIx ? SKY[skyIx].label : "live");
     $("#skyPill").innerHTML = "sky: <b>" + esc(SKY[skyIx].label) + "</b>";
-    try { localStorage.setItem("vault-terrarium-sky", String(skyIx)); } catch (e) {}
+    try { localStorage.setItem("sbv-terrarium-sky", String(skyIx)); } catch (e) {}
   }
   $("#bSky").addEventListener("click", function () { skyIx = (skyIx + 1) % SKY.length; applySky(); });
   applySky();
