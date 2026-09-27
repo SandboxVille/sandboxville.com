@@ -233,3 +233,6 @@ footer{padding:3rem 0 3.4rem;border-top:1px solid var(--line-soft);background:va
   *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
   .lp-shot-frame{transform:none;}
 }
+.lp-alt{margin-top:.6rem;}
+.lp-alt a{color:var(--amber-soft);text-decoration:underline;text-underline-offset:3px;}
+.lp-alt a:hover{color:var(--amber);}
