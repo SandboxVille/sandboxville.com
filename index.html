@@ -277,7 +277,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
 .door-l .door-edge{right:0;background:linear-gradient(to left,rgba(125,211,252,.55),rgba(125,211,252,0));}
 .door-r .door-edge{left:0;background:linear-gradient(to right,rgba(125,211,252,.55),rgba(125,211,252,0));}
 .read-bar{position:absolute;left:36.2%;top:21.3%;width:27.8%;height:4.2%;background:rgba(255,190,69,.42);mix-blend-mode:screen;transform-origin:left center;transform:scaleX(0);border-radius:2px;}
-.refused-box{position:absolute;left:46.4%;top:35.8%;width:35.6%;height:6%;border:2px solid #ff5a61;border-radius:4px;box-shadow:0 0 0 5px rgba(255,90,97,.16);transform:rotate(-1.1deg);opacity:0;}
+.refused-box{position:absolute;left:48.9%;top:50.2%;width:19.6%;height:5.6%;border:2px solid #ff5a61;border-radius:4px;box-shadow:0 0 0 5px rgba(255,90,97,.16);opacity:0;}
 .peak-stage figcaption{margin-top:.9rem;font-family:var(--mono);font-size:.72rem;line-height:1.55;color:var(--paper-mute);}
 .peak-stage figcaption b{color:var(--amber-soft);}
 /* pinned version (desktop, motion allowed) */
@@ -454,7 +454,7 @@ footer{padding:3rem 0 3.4rem;border-top:1px solid var(--line-soft);background:va
     <div class="wrap hero-inner">
       <div class="hero-copy">
         <h1 class="hero-title"><span class="line rise d1">Your AI gets a room.</span> <span class="line rise d2">The door stays <em>locked</em>.</span></h1>
-        <p class="hero-sub rise d3">SandboxVille is a free 3D town that runs on your own computer. Point Claude, Cursor, or LM Studio at it, and it walks in as its own robot with its own name tag.</p>
+        <p class="hero-sub rise d3">SandboxVille is a free 3D town that runs on your own computer. You add rooms that each do one job, and every door says what its room can touch. Coming next: your own AI walks in as its own robot.</p>
         <div class="hero-actions rise d4">
           <a class="btn btn-primary" href="https://discord.gg/Dy3HPqawWh" target="_blank" rel="noopener noreferrer">Join early access</a>
           <a class="btn btn-secondary" href="rooms/terrarium/">Try a room in your browser</a>
@@ -471,17 +471,17 @@ footer{padding:3rem 0 3.4rem;border-top:1px solid var(--line-soft);background:va
         <div class="kiosk-img">
           <img src="img/crop-kiosk.webp" width="444" height="256" alt="A real crop of the Connect Your AI kiosk in the SandboxVille Lobby, listing three steps: pick the AI you already use, paste three lines into its settings, restart it." loading="lazy">
         </div>
-        <figcaption><b>The Lobby kiosk.</b> It shows these same three steps, right inside the town.</figcaption>
+        <figcaption><b>The Lobby kiosk.</b> It already shows how the AI door will work. That door is coming next; it is not switched on yet.</figcaption>
       </figure>
       <div>
-        <h2 class="h2" data-in>Three steps. Then it walks in.</h2>
-        <p class="lede" data-in style="--d:60ms">You don't learn a new tool. You point the AI you already use at SandboxVille, and it shows up as a robot on the floor.</p>
+        <h2 class="h2" data-in>Three steps. Then watch the wall.</h2>
+        <p class="lede" data-in style="--d:60ms">Start with the Lobby, add the rooms you want, and see every move on one wall. No code to write.</p>
         <ol class="steps">
-          <li class="step" data-in style="--d:0ms"><span class="step-num" aria-hidden="true">1</span><div><h3>Pick your AI</h3><p>Pick the AI you already use. Claude, Cursor, VS Code, Codex, Gemini, and LM Studio all work.</p></div></li>
-          <li class="step" data-in style="--d:70ms"><span class="step-num" aria-hidden="true">2</span><div><h3>Paste three lines</h3><p>The Lobby kiosk shows you three lines to paste into your tool's settings. No code to write.</p></div></li>
-          <li class="step" data-in style="--d:140ms"><span class="step-num" aria-hidden="true">3</span><div><h3>Watch it walk in</h3><p>Restart your AI. It walks into the Lobby as its own robot, wearing its own name tag.</p></div></li>
+          <li class="step" data-in style="--d:0ms"><span class="step-num" aria-hidden="true">1</span><div><h3>Get the Lobby</h3><p>Download the Lobby, the base game, and double-click Start SandboxVille. Your browser opens right into your own facility.</p></div></li>
+          <li class="step" data-in style="--d:70ms"><span class="step-num" aria-hidden="true">2</span><div><h3>Add a room</h3><p>Drop a room's zip in the add-rooms-here folder. Walk to an EMPTY LOT, read its door sign, and press PLACE.</p></div></li>
+          <li class="step" data-in style="--d:140ms"><span class="step-num" aria-hidden="true">3</span><div><h3>Watch the wall</h3><p>Open the room and press its button. Every move lands on the Security Office wall, allowed or refused.</p></div></li>
         </ol>
-        <p class="body how-after" data-in>From the Lobby, you add rooms for the jobs you want done. Each room's door says exactly what it can touch before your AI ever walks through it, and the Security Office wall shows every action live, so you always know what happened.</p>
+        <p class="body how-after" data-in>Coming next: the AI door. The AI you already use (Claude, Cursor, LM Studio and others) will walk in as its own robot and only use the room it stands in, under that room's door sign. It is not switched on in this version yet.</p>
       </div>
     </div>
   </section>
@@ -504,7 +504,7 @@ footer{padding:3rem 0 3.4rem;border-top:1px solid var(--line-soft);background:va
           <article class="panel panel-room">
             <div class="sign"><h3 class="sign-name">The Lobby</h3><span class="sign-rule" aria-hidden="true"></span><div class="sign-sub">Can touch: nothing outside itself</div></div>
             <div class="door-face" aria-hidden="true"></div>
-            <div class="pr-copy"><p>Every AI starts here. It's also where you connect a new one, three lines at a time. It's just the front door.</p></div>
+            <div class="pr-copy"><p>Where you start. You add rooms from here, and the AI door opens here next. It's just the front door.</p></div>
           </article>
           <article class="panel panel-room">
             <div class="sign"><h3 class="sign-name">The Map Room</h3><span class="sign-rule" aria-hidden="true"></span><div class="sign-sub">Can touch: the map, nothing on your computer</div></div>
@@ -555,13 +555,13 @@ footer{padding:3rem 0 3.4rem;border-top:1px solid var(--line-soft);background:va
             <div class="beat" data-beat="2">
               <span class="beat-kicker">3. The wall</span>
               <p>Every one of those write-ups lands on the Security Office wall, live, while it happens. Nothing gets cleaned up before you see it.</p>
-              <span class="wall-line">Example line from the wall: <b>tool not on this room's door label: delete_everything &rarr; REFUSED.</b> That's the guard doing its job.</span>
+              <span class="wall-line">Example line from the wall: <b>the-desk fs.list &rarr; REFUSED: no folder granted yet.</b> The Desk tried to read before you lent it a folder. That's the guard doing its job.</span>
             </div>
           </div>
         </div>
         <figure class="peak-stage">
           <div class="peak-frame">
-            <img class="peak-inside" src="img/security.webp" srcset="img/security-960.webp 960w, img/security.webp 1920w" sizes="(min-width:960px) 60vw, 100vw" width="1920" height="1080" alt="A real screenshot of the Security Office audit wall in SandboxVille, showing a live list of allowed and refused room actions, with a small blue robot standing in front of it." loading="lazy">
+            <img class="peak-inside" src="img/security.webp" srcset="img/security-960.webp 960w, img/security.webp 1920w" sizes="(min-width:960px) 60vw, 100vw" width="1920" height="1080" alt="A real screenshot of the Security Office audit wall in SandboxVille: the Desk tried to read before a folder was lent, and the wall shows it REFUSED in red among the allowed lines, with a small blue robot beside it." loading="lazy">
             <div class="door door-l" aria-hidden="true"><img src="img/door-sign.webp" srcset="img/door-sign-960.webp 960w, img/door-sign.webp 1920w" sizes="(min-width:960px) 60vw, 100vw" width="1920" height="1080" alt="" loading="lazy"><span class="door-edge"></span></div>
             <div class="door door-r" aria-hidden="true"><img src="img/door-sign.webp" srcset="img/door-sign-960.webp 960w, img/door-sign.webp 1920w" sizes="(min-width:960px) 60vw, 100vw" width="1920" height="1080" alt="" loading="lazy"><span class="door-edge"></span></div>
             <span class="read-bar" aria-hidden="true"></span>
@@ -627,7 +627,7 @@ footer{padding:3rem 0 3.4rem;border-top:1px solid var(--line-soft);background:va
         </div>
         <div class="faq-item">
           <p class="faq-q">Which AI tools work with it?</p>
-          <p class="faq-a">Claude, ChatGPT-style desktop apps, Cursor, VS Code, Codex, Gemini, and LM Studio. If you already use one of these, it can walk in.</p>
+          <p class="faq-a">The AI door is coming next and is not switched on yet. It is being built for Claude, ChatGPT-style desktop apps, Cursor, VS Code, Codex, Gemini, and LM Studio. Today you add rooms, open them yourself, and watch every move on the wall.</p>
         </div>
         <div class="faq-item">
           <p class="faq-q">What does it cost?</p>
