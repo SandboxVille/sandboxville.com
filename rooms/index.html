@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://sandboxville.goatcounter.com https://gc.zgo.at; connect-src 'self' https://sandboxville.goatcounter.com; frame-src https://www.youtube-nocookie.com; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Rooms: browse and download SandboxVille rooms</title>
-<meta name="description" content="Six SandboxVille rooms you can download today. Every card shows the door sign first, what it can touch, before you read anything else. sha256 and size on every download.">
+<title>Rooms: get the Lobby, then add rooms | SandboxVille</title>
+<meta name="description" content="Get the SandboxVille Lobby, then add rooms one at a time, like DLC for a game. Real screenshots of every room, and each room's door sign word for word: what it can touch.">
 <link rel="canonical" href="https://sandboxville.com/rooms/">
 <meta name="theme-color" content="#0c0d10">
 <meta name="color-scheme" content="dark">
@@ -16,16 +16,16 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SandboxVille">
 <meta property="og:url" content="https://sandboxville.com/rooms/">
-<meta property="og:title" content="SandboxVille Rooms: the door sign first, every time.">
-<meta property="og:description" content="Six SandboxVille rooms you can download today. Every card shows the door sign first, what it can touch, before you read anything else.">
+<meta property="og:title" content="SandboxVille Rooms: get the Lobby, then add rooms.">
+<meta property="og:description" content="The Lobby is the base game. Rooms are add-ons you drop in one at a time. Real screenshots, and every door sign word for word.">
 <meta property="og:image" content="https://sandboxville.com/og.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SandboxVille Rooms: the door sign first, every time.">
-<meta name="twitter:description" content="Six SandboxVille rooms you can download today. Every card shows the door sign first, what it can touch, before you read anything else.">
+<meta name="twitter:title" content="SandboxVille Rooms: get the Lobby, then add rooms.">
+<meta name="twitter:description" content="The Lobby is the base game. Rooms are add-ons you drop in one at a time. Real screenshots, and every door sign word for word.">
 <meta name="twitter:image" content="https://sandboxville.com/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,223 +51,330 @@
   <header class="rooms-hero">
     <div class="wrap">
       <span class="eyebrow">Rooms</span>
-      <h1 class="rooms-title">Read the door. <em>Then</em> download the room.</h1>
-      <p class="rooms-sub">Six SandboxVille rooms, ready to download right now. Every card shows what a room can touch before it shows anything else, no digging into a permissions tab to find out. Unzip, drop it in your <span class="mono">rooms</span> folder, and read its sign for yourself.</p>
+      <h1 class="rooms-title">Get the Lobby. <em>Then</em> add rooms, one at a time.</h1>
+      <p class="rooms-sub">SandboxVille comes in two parts. The Lobby is the base game: your own facility, with a Lobby and a Security Office. Rooms are add-ons, like DLC for a game. Each room does one job, and each one is its own small download. Every picture below is a real screenshot from the game.</p>
       <div class="rooms-stats mono">
-        <span><b>6</b> rooms today</span>
+        <span><b>1</b> base game</span>
         <span class="dot">&middot;</span>
-        <span><b>3</b> run end to end in the town</span>
+        <span><b>3</b> rooms to add today</span>
         <span class="dot">&middot;</span>
-        <span><b>3</b> download and print their door sign</span>
+        <span><b>0</b> of them reach the internet</span>
         <span class="dot">&middot;</span>
-        <span><b>0</b> of 6 reach the network</span>
+        <span>a <b>sha256</b> fingerprint on every download</span>
       </div>
+      <ol class="two-steps">
+        <li><span class="install-num">1</span><div><b>Get the Lobby.</b> It is the base game. Unzip it and double-click <span class="mono">Start SandboxVille</span>. <a href="#get-the-lobby">Downloads</a></div></li>
+        <li><span class="install-num">2</span><div><b>Pick rooms to add.</b> Download a room, drop the zip in your <span class="mono">add-rooms-here</span> folder, then place it on an EMPTY LOT. <a href="#add-rooms">Rooms</a></div></li>
+      </ol>
     </div>
   </header>
 
-  <div class="toolbar">
-    <div class="wrap toolbar-row">
-      <div class="search-wrap">
-        <span class="search-icon" aria-hidden="true">&#128269;</span>
-        <input type="text" id="room-search" class="search-input" placeholder="Search rooms (e.g. files, log, tank)" aria-label="Search rooms">
-      </div>
-      <div class="filter-groups">
-        <div class="filter-group">
-          <span class="filter-group-label mono">Can touch</span>
-          <div class="chip-row" role="group" aria-label="Filter by what a room can touch">
-            <button type="button" class="chip" data-touch-filter="all" aria-pressed="true">All</button>
-            <button type="button" class="chip" data-touch-filter="files" aria-pressed="false">Reads files</button>
-            <button type="button" class="chip" data-touch-filter="network" aria-pressed="false">Reaches network</button>
-            <button type="button" class="chip" data-touch-filter="nothing" aria-pressed="false">Touches nothing</button>
-          </div>
-        </div>
-        <div class="filter-group">
-          <span class="filter-group-label mono">Status</span>
-          <div class="chip-row" role="group" aria-label="Filter by status">
-            <button type="button" class="chip" data-status-filter="all" aria-pressed="true">All</button>
-            <button type="button" class="chip" data-status-filter="full" aria-pressed="false">Works fully today</button>
-            <button type="button" class="chip" data-status-filter="sign" aria-pressed="false">Door sign only</button>
-          </div>
-        </div>
-      </div>
-      <p class="results-line mono" id="results-line">Showing <strong>6</strong> of <strong>6</strong> rooms</p>
-    </div>
-  </div>
-
-  <section id="room-list" style="border-bottom:none;">
+  <section id="get-the-lobby" class="step-section">
     <div class="wrap">
-      <div class="room-grid" id="room-grid">
+      <div class="section-head wide">
+        <span class="eyebrow">Step 1</span>
+        <h2 class="section-title">Get the Lobby: the base game.</h2>
+        <p class="section-body">One zip for your computer. Inside is everything that runs SandboxVille, plus the Lobby and the Security Office. Unzip it anywhere and double-click <span class="mono">Start SandboxVille</span>. Your browser opens by itself, already paired, and you spawn in your Lobby. SandboxVille needs Node.js, a free program. If you do not have it, the start file tells you where to get it.</p>
+      </div>
+      <div class="lobby-dl">
+        <div class="lobby-btns">
+            <a class="btn btn-primary" href="../files/0.1.0/lobby/SandboxVille-Lobby-0.1.0-windows.zip" download>Lobby for Windows</a>
+            <a class="btn btn-ghost" href="../files/0.1.0/lobby/SandboxVille-Lobby-0.1.0-mac.zip" download>Lobby for Mac</a>
+            <a class="btn btn-ghost" href="../files/0.1.0/lobby/SandboxVille-Lobby-0.1.0-linux.zip" download>Lobby for Linux</a>
+        </div>
+        <ul class="card-meta mono lobby-meta">
+            <li><span>SandboxVille-Lobby-0.1.0-windows.zip &middot; 2.4 MB</span><span>sha256: 2bf97eb22729d312ddc3bebd812395d54452dcace702bf39b4eb4c6e700f1dab</span></li>
+            <li><span>SandboxVille-Lobby-0.1.0-mac.zip &middot; 2.4 MB</span><span>sha256: e33a0d90bef21f4721a48e0452b330200dc93f840d699fb2482eaa3331281891</span></li>
+            <li><span>SandboxVille-Lobby-0.1.0-linux.zip &middot; 2.4 MB</span><span>sha256: 1dc7a6f0cfe98a64b746bb7333bd43e6c56bd630e72a2ecd357d20db9e055660</span></li>
+        </ul>
+        <p class="requires-line">Every file and its sha256 are listed in <a href="../files/0.1.0/SHA256SUMS.txt">SHA256SUMS.txt</a>. All rights reserved: see LICENSE.txt inside each zip.</p>
+      </div>
+      <div class="room-list">
 
-        <!-- THE DESK -->
-        <article class="room-card" data-touch="files" data-status="full" data-search="the desk paper trading watchlist forecast grade files">
-          <div class="card-top">
-            <span class="badge badge-full"><span class="badge-dot"></span>Works fully today</span>
-            <span class="card-touch-tag mono">Reads files</span>
+      <article class="room-row" id="lobby" data-touch="nothing">
+        <div class="gallery" data-gallery>
+          <ol class="gal-track" tabindex="0" aria-label="The Lobby: 5 real screenshots from the game. Swipe, scroll sideways, or use the arrow buttons.">
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/lobby-2-doorway-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/lobby-2-doorway-640.webp" srcset="../img/rooms/lobby-2-doorway-640.webp 640w, ../img/rooms/lobby-2-doorway-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Lobby as you walk in: the big sign says this is your facility and it is empty on purpose." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>1 of 5. Walking in.</b> Your facility starts empty on purpose. The sign says so.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/lobby-1-door-sign-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/lobby-1-door-sign-640.webp" srcset="../img/rooms/lobby-1-door-sign-640.webp 640w, ../img/rooms/lobby-1-door-sign-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Lobby&#x27;s door sign in the game: no internet, no files, nothing outside itself." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>2 of 5. Door sign.</b> Even the Lobby has a door sign. It touches nothing outside itself.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/lobby-3-job-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/lobby-3-job-640.webp" srcset="../img/rooms/lobby-3-job-640.webp 640w, ../img/rooms/lobby-3-job-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Lobby with the Guide robot, its speech bubble and a lit trail to an EMPTY LOT." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>3 of 5. Doing its job.</b> The Guide lights a trail to an EMPTY LOT, where your next room goes.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/lobby-4-wall-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/lobby-4-wall-640.webp" srcset="../img/rooms/lobby-4-wall-640.webp 640w, ../img/rooms/lobby-4-wall-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Security Office wall showing the pairing and the first room placed, all allowed." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>4 of 5. On the Security Office wall.</b> Pairing your browser and placing a room are lines on the wall too.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/lobby-6-plates-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/lobby-6-plates-640.webp" srcset="../img/rooms/lobby-6-plates-640.webp 640w, ../img/rooms/lobby-6-plates-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Lobby after adding rooms: door plates for the Desk and the Terrarium." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>5 of 5. With rooms added.</b> Every door plate in the Lobby says what that room can touch.</p>
+          </li>
+          </ol>
+          <div class="gal-nav" hidden>
+            <button type="button" class="gal-btn" data-dir="-1" aria-label="Previous screenshot of The Lobby">&larr;</button>
+            <span class="gal-count mono" aria-live="polite">1 / 5</span>
+            <button type="button" class="gal-btn" data-dir="1" aria-label="Next screenshot of The Lobby">&rarr;</button>
           </div>
-          <div class="card-preview">
-            <span class="preview-tag">Real screenshot</span>
-            <img src="../img/door-sign.webp" alt="A real screenshot of The Desk's door sign, reading Reads One Folder You Pick, read-only." width="1920" height="1080" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h3>The Desk</h3>
-            <div class="can-touch">CAN TOUCH: the one folder you pick, read-only. Its paper trades stay inside the room. No real money, ever.</div>
-            <p class="desc">Reads your paper-trade log and grades forecast calls against what actually happened. Never places a trade.</p>
-            <p class="card-meta">the-desk.zip &middot; 5.4 KB<br>sha256: 5d189c07f7b655b1a31755c0b3a008f3c37acfd03b8a3517db69915ea00d6ff3</p>
-            <div class="card-actions">
-              <a class="btn btn-ghost btn-sm" href="the-desk/index.html">View room</a>
-              <a class="btn btn-primary btn-sm" href="dl/the-desk.zip" download>Download .zip</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- THE LIBRARY -->
-        <article class="room-card" data-touch="files" data-status="full" data-search="the library notes folder search read shelves">
-          <div class="card-top">
-            <span class="badge badge-full"><span class="badge-dot"></span>Works fully today</span>
-            <span class="card-touch-tag mono">Reads files</span>
-          </div>
-          <div class="card-preview">
-            <span class="preview-tag">Door sign</span>
-            <div class="sign-panel">
-              <span class="sp-label">FROM room.json</span>
-              <span class="sp-line">fs: read, ONE folder, .md/.txt only</span>
-              <span class="sp-line">network: none</span>
-              <span class="sp-line">tools: list_shelves, search_notes, read_note</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3>The Library</h3>
-            <div class="can-touch">CAN TOUCH: the one folder you pick. Read-only, always.</div>
-            <p class="desc">Turns one folder of your notes into searchable shelves. Pick a folder, and your AI can read every file inside to answer questions about it.</p>
-            <p class="card-meta">the-library.zip &middot; 4.5 KB<br>sha256: 27ec9da158736531e9ea4f51abe20b47ccacee4a91eb45d4168195d176ce9040</p>
-            <div class="card-actions">
-              <a class="btn btn-ghost btn-sm" href="the-library/index.html">View room</a>
-              <a class="btn btn-primary btn-sm" href="dl/the-library.zip" download>Download .zip</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- TERRARIUM -->
-        <article class="room-card" data-touch="nothing" data-status="full" data-search="terrarium tank animals neurons census touch scent live preview">
-          <div class="card-top">
-            <span class="badge badge-full"><span class="badge-dot"></span>Works fully today</span>
+        </div>
+        <div class="room-info">
+          <div class="card-top-row">
+            <span class="badge badge-base"><span class="badge-dot"></span>Comes with the Lobby</span>
             <span class="card-touch-tag mono">Touches nothing</span>
           </div>
-          <div class="card-preview">
-            <span class="preview-tag live">Try it live</span>
-            <div class="sign-panel">
-              <span class="sp-label">RUNS IN YOUR BROWSER, RIGHT NOW</span>
-              <span class="sp-line">30 animals, spiking-neuron brains</span>
-              <span class="sp-line">no install, no files, no network</span>
-            </div>
+          <h3>The Lobby</h3>
+          <p class="desc">Where you start. You add rooms here on the glowing EMPTY LOTS, and every door says what its room can touch.</p>
+          <div class="touch-block">
+            <span class="tb-label mono">What it can touch: its door sign, word for word</span>
+            <pre class="tb-sign">This room can:
+  + keep 0 KB of its own private notes
+Nothing else: no internet, no files, no programs on your computer, no saved secrets, no other rooms.
+SAFE: this room stays entirely inside its own glass box.</pre>
           </div>
-          <div class="card-body">
-            <h3>Terrarium</h3>
-            <div class="can-touch">CAN TOUCH: nothing on your computer. No files, no internet, no programs, no secrets.</div>
-            <p class="desc">A tank of small simulated animals your AI can census, touch, and drop scent for. No script tells them where to go.</p>
-            <p class="card-meta">terrarium.zip &middot; 31.7 KB<br>sha256: 8153f0e04c980112e703cec70d6dcd0f2675738321346646269d04ecd633ca24</p>
-            <div class="card-actions">
-              <a class="btn btn-ghost btn-sm" href="terrarium/index.html">View room</a>
-              <a class="btn btn-primary btn-sm" href="dl/terrarium.zip" download>Download .zip</a>
-            </div>
-          </div>
-        </article>
+          <p class="how-add"><b>No extra download.</b> The Lobby ships inside the SandboxVille Lobby download. It is there the first time you start. <a href="#get-the-lobby">Get the Lobby</a></p>
+        </div>
+      </article>
 
-        <!-- LOBBY -->
-        <article class="room-card" data-touch="nothing" data-status="sign" data-search="lobby front door stop button zero permissions">
-          <div class="card-top">
-            <span class="badge badge-sign"><span class="badge-dot"></span>Door sign only</span>
+      <article class="room-row" id="security-office" data-touch="nothing">
+        <div class="gallery" data-gallery>
+          <ol class="gal-track" tabindex="0" aria-label="The Security Office: 4 real screenshots from the game. Swipe, scroll sideways, or use the arrow buttons.">
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/security-office-2-doorway-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/security-office-2-doorway-640.webp" srcset="../img/rooms/security-office-2-doorway-640.webp 640w, ../img/rooms/security-office-2-doorway-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Security Office seen from its doorway in the Lobby." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>1 of 4. From the doorway.</b> Right next to the Lobby.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/security-office-1-door-sign-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/security-office-1-door-sign-640.webp" srcset="../img/rooms/security-office-1-door-sign-640.webp 640w, ../img/rooms/security-office-1-door-sign-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Security Office door sign in the game: sees everything, touches nothing." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>2 of 4. Door sign.</b> It sees everything and touches nothing.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/security-office-3-job-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/security-office-3-job-640.webp" srcset="../img/rooms/security-office-3-job-640.webp 640w, ../img/rooms/security-office-3-job-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Security Office wall, with a refused read from the Desk in red." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>3 of 4. Doing its job.</b> The Desk tried to read before a folder was lent. The wall shows it: REFUSED, in red.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/security-office-4-wall-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/security-office-4-wall-640.webp" srcset="../img/rooms/security-office-4-wall-640.webp 640w, ../img/rooms/security-office-4-wall-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the full audit log panel over the Security Office wall, allowed lines and one refused line in red." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>4 of 4. The whole log.</b> Press E at the wall to read every line, newest first.</p>
+          </li>
+          </ol>
+          <div class="gal-nav" hidden>
+            <button type="button" class="gal-btn" data-dir="-1" aria-label="Previous screenshot of The Security Office">&larr;</button>
+            <span class="gal-count mono" aria-live="polite">1 / 4</span>
+            <button type="button" class="gal-btn" data-dir="1" aria-label="Next screenshot of The Security Office">&rarr;</button>
+          </div>
+        </div>
+        <div class="room-info">
+          <div class="card-top-row">
+            <span class="badge badge-base"><span class="badge-dot"></span>Comes with the Lobby</span>
             <span class="card-touch-tag mono">Touches nothing</span>
           </div>
-          <div class="card-preview">
-            <span class="preview-tag">Real screenshot</span>
-            <img src="../img/lobby.webp" alt="A real screenshot of the SandboxVille Lobby, with a Connect Your AI kiosk and a small robot." width="1920" height="1080" loading="lazy">
+          <h3>The Security Office</h3>
+          <p class="desc">One big wall that shows every move any room makes, one line each. Anything refused shows in red.</p>
+          <div class="touch-block">
+            <span class="tb-label mono">What it can touch: its door sign, word for word</span>
+            <pre class="tb-sign">This room can:
+  + keep 0 KB of its own private notes
+Nothing else: no internet, no files, no programs on your computer, no saved secrets, no other rooms.
+SAFE: this room stays entirely inside its own glass box.</pre>
           </div>
-          <div class="card-body">
-            <h3>Lobby</h3>
-            <div class="can-touch">CAN TOUCH: nothing outside itself. It's just the front door.</div>
-            <p class="desc">Where every AI arrives and checks in. Shows a kiosk with connection steps and a STOP button that freezes the whole building.</p>
-            <p class="card-meta">lobby.zip &middot; 1.6 KB<br>sha256: c55aa66e0c6f8b2ae7399da7b74ede217688b7f5f8c80a999d179e58e3f24e90</p>
-            <div class="card-actions">
-              <a class="btn btn-ghost btn-sm" href="lobby/index.html">View room</a>
-              <a class="btn btn-primary btn-sm" href="dl/lobby.zip" download>Download .zip</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- SECURITY OFFICE -->
-        <article class="room-card" data-touch="nothing" data-status="sign" data-search="security office audit log wall refused actions">
-          <div class="card-top">
-            <span class="badge badge-sign"><span class="badge-dot"></span>Door sign only</span>
-            <span class="card-touch-tag mono">Touches nothing</span>
-          </div>
-          <div class="card-preview">
-            <span class="preview-tag">Real screenshot</span>
-            <img src="../img/security.webp" alt="A real screenshot of the Security Office audit wall, with a live list of allowed and refused actions." width="1920" height="1080" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h3>Security Office</h3>
-            <div class="can-touch">CAN TOUCH: the log. It only reads. It never acts.</div>
-            <p class="desc">A wall screen showing every room's actions the second they happen, refusals in red. Grants your AI zero tools.</p>
-            <p class="card-meta">security-office.zip &middot; 1.7 KB<br>sha256: 7399ee28f11a0d4607eb8e8482a179f3c13e3ed15802f4ea906eb12c4ea4fe17</p>
-            <div class="card-actions">
-              <a class="btn btn-ghost btn-sm" href="security-office/index.html">View room</a>
-              <a class="btn btn-primary btn-sm" href="dl/security-office.zip" download>Download .zip</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- QUARANTINE WING -->
-        <article class="room-card" data-touch="nothing" data-status="sign" data-search="quarantine wing glass cell new room watch">
-          <div class="card-top">
-            <span class="badge badge-sign"><span class="badge-dot"></span>Door sign only</span>
-            <span class="card-touch-tag mono">Touches nothing</span>
-          </div>
-          <div class="card-preview">
-            <span class="preview-tag">Door sign</span>
-            <div class="sign-panel">
-              <span class="sp-label">FROM room.json</span>
-              <span class="sp-line">fs: none</span>
-              <span class="sp-line">network: none</span>
-              <span class="sp-line">tools for your AI: zero</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3>Quarantine Wing</h3>
-            <div class="can-touch">CAN TOUCH: nothing. An empty glass cell until you release a room from it.</div>
-            <p class="desc">Watch a new room behind glass, with zero permissions, before you ever let it near your files or the internet.</p>
-            <p class="card-meta">quarantine-wing.zip &middot; 1.7 KB<br>sha256: 17ad7b80c09b7df9a08b2b6b8f2273c146c00b0538b3ab2c27c7d6785d6a7bc6</p>
-            <div class="card-actions">
-              <a class="btn btn-ghost btn-sm" href="quarantine-wing/index.html">View room</a>
-              <a class="btn btn-primary btn-sm" href="dl/quarantine-wing.zip" download>Download .zip</a>
-            </div>
-          </div>
-        </article>
+          <p class="how-add"><b>No extra download.</b> The Security Office ships inside the SandboxVille Lobby download. It is there the first time you start. <a href="#get-the-lobby">Get the Lobby</a></p>
+        </div>
+      </article>
 
       </div>
-      <p class="no-results mono" id="no-results">No room matches that search and those filters. Try clearing a filter above.</p>
+    </div>
+  </section>
+
+  <section id="add-rooms" class="step-section">
+    <div class="wrap">
+      <div class="section-head wide">
+        <span class="eyebrow">Step 2</span>
+        <h2 class="section-title">Pick rooms to add.</h2>
+        <p class="section-body">Each room is one add-on, like a DLC. You add only the ones you want. Put the zip in the <span class="mono">add-rooms-here</span> folder inside your SandboxVille folder, just as it is. No unzipping and no restart. Then walk to a glowing EMPTY LOT, press E and pick the room. SandboxVille checks the zip's fingerprint, shows you the room's full door sign, and adds nothing until you press PLACE.</p>
+      </div>
+      <div class="room-list">
+
+      <article class="room-row" id="terrarium" data-touch="nothing">
+        <div class="gallery" data-gallery>
+          <ol class="gal-track" tabindex="0" aria-label="The Terrarium: 5 real screenshots from the game. Swipe, scroll sideways, or use the arrow buttons.">
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/terrarium-2-doorway-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/terrarium-2-doorway-640.webp" srcset="../img/rooms/terrarium-2-doorway-640.webp 640w, ../img/rooms/terrarium-2-doorway-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Terrarium seen from its doorway in the Lobby, with its door plate overhead." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>1 of 5. From the doorway.</b> Placed next to your Lobby. The plate over the door says it stays in its glass box.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/terrarium-1-door-sign-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/terrarium-1-door-sign-640.webp" srcset="../img/rooms/terrarium-1-door-sign-640.webp 640w, ../img/rooms/terrarium-1-door-sign-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Terrarium&#x27;s full door sign in the game, checked and shown before you place the room." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>2 of 5. Door sign.</b> Read before you add it. SandboxVille checks the zip&#x27;s fingerprint, then shows the full sign and waits for you to press PLACE.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/terrarium-3-job-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/terrarium-3-job-640.webp" srcset="../img/rooms/terrarium-3-job-640.webp 640w, ../img/rooms/terrarium-3-job-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Terrarium open behind glass: 30 small animals in the tank and the census answer." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>3 of 5. Doing its job.</b> Opened behind glass. COUNT THE ANIMALS asks the tank, and the answer comes back as plain data.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/terrarium-4-wall-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/terrarium-4-wall-640.webp" srcset="../img/rooms/terrarium-4-wall-640.webp 640w, ../img/rooms/terrarium-4-wall-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Security Office wall with the Terrarium&#x27;s lines on top, each one ALLOWED." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>4 of 5. On the Security Office wall.</b> Every step it took is one line on the wall: mount, boot, the census, all allowed.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/terrarium-5-inside-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/terrarium-5-inside-640.webp" srcset="../img/rooms/terrarium-5-inside-640.webp 640w, ../img/rooms/terrarium-5-inside-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: inside the Terrarium: its wall screen lists what the room can do." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>5 of 5. Inside the room.</b> Its own screen says what it can do, in the same words as its door.</p>
+          </li>
+          </ol>
+          <div class="gal-nav" hidden>
+            <button type="button" class="gal-btn" data-dir="-1" aria-label="Previous screenshot of The Terrarium">&larr;</button>
+            <span class="gal-count mono" aria-live="polite">1 / 5</span>
+            <button type="button" class="gal-btn" data-dir="1" aria-label="Next screenshot of The Terrarium">&rarr;</button>
+          </div>
+        </div>
+        <div class="room-info">
+          <div class="card-top-row">
+            <span class="badge badge-addon"><span class="badge-dot"></span>Add-on room</span>
+            <span class="card-touch-tag mono">Touches nothing</span>
+          </div>
+          <h3>The Terrarium</h3>
+          <p class="desc">Small animals, each run by its own little brain of neurons. Your AI can count them and nudge them, never harm them.</p>
+          <div class="touch-block">
+            <span class="tb-label mono">What it can touch: its door sign, word for word</span>
+            <pre class="tb-sign">This room can:
+  + run its own animation
+  + keep 4 MB of its own private notes
+  + answer questions about itself (census)
+  + let your AI act on it (touch, scent)
+Nothing else: no internet, no files, no programs on your computer, no saved secrets, no other rooms.
+SAFE: this room stays entirely inside its own glass box.</pre>
+          </div>
+          <div class="dl-row">
+            <a class="btn btn-primary" href="../files/0.1.0/rooms/terrarium-0.1.0.zip" download>Download this room</a>
+            <p class="card-meta mono"><span>terrarium-0.1.0.zip &middot; 105.2 KB</span><span>sha256: 2ae66b736cf5e5e9b142a4e62cfaed751edd6174c918fc157e1e196423ea8209</span></p>
+          </div>
+          <p class="how-add"><b>How to add it:</b> put the zip in the <span class="mono">add-rooms-here</span> folder inside your SandboxVille folder. No need to unzip it. Then walk to a glowing EMPTY LOT, press E, read the sign and press PLACE.</p>
+        </div>
+      </article>
+
+      <article class="room-row" id="the-library" data-touch="files">
+        <div class="gallery" data-gallery>
+          <ol class="gal-track" tabindex="0" aria-label="The Library: 5 real screenshots from the game. Swipe, scroll sideways, or use the arrow buttons.">
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/the-library-2-doorway-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/the-library-2-doorway-640.webp" srcset="../img/rooms/the-library-2-doorway-640.webp 640w, ../img/rooms/the-library-2-doorway-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Library seen from its doorway in the Lobby, its plate reading Reads One Folder You Pick." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>1 of 5. From the doorway.</b> The plate over the door: READS ONE FOLDER YOU PICK.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/the-library-1-door-sign-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/the-library-1-door-sign-640.webp" srcset="../img/rooms/the-library-1-door-sign-640.webp 640w, ../img/rooms/the-library-1-door-sign-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Library&#x27;s full door sign in the game, with its red line: it can read one folder you pick, read only." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>2 of 5. Door sign.</b> Its red line says it can read the one folder you pick, read only, and nothing outside it.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/the-library-3-job-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/the-library-3-job-640.webp" srcset="../img/rooms/the-library-3-job-640.webp 640w, ../img/rooms/the-library-3-job-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Library open behind glass, showing a sample notes folder as three shelves." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>3 of 5. Doing its job.</b> With the sample folder lent, it shows your notes as shelves. The answer comes back as data, never as orders.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/the-library-4-wall-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/the-library-4-wall-640.webp" srcset="../img/rooms/the-library-4-wall-640.webp 640w, ../img/rooms/the-library-4-wall-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Security Office wall with the Library&#x27;s lines on top: folder list and list_shelves, allowed." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>4 of 5. On the Security Office wall.</b> Every folder read is a line on the wall.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/the-library-5-inside-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/the-library-5-inside-640.webp" srcset="../img/rooms/the-library-5-inside-640.webp 640w, ../img/rooms/the-library-5-inside-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: inside the Library: its wall screen lists what the room can do, with the red line." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>5 of 5. Inside the room.</b> Its own screen repeats the red line: one folder, read only.</p>
+          </li>
+          </ol>
+          <div class="gal-nav" hidden>
+            <button type="button" class="gal-btn" data-dir="-1" aria-label="Previous screenshot of The Library">&larr;</button>
+            <span class="gal-count mono" aria-live="polite">1 / 5</span>
+            <button type="button" class="gal-btn" data-dir="1" aria-label="Next screenshot of The Library">&rarr;</button>
+          </div>
+        </div>
+        <div class="room-info">
+          <div class="card-top-row">
+            <span class="badge badge-addon"><span class="badge-dot"></span>Add-on room</span>
+            <span class="card-touch-tag mono">Reads one folder you pick</span>
+          </div>
+          <h3>The Library</h3>
+          <p class="desc">Search one folder of your notes. Your AI can read them one at a time, only inside that folder, never change them.</p>
+          <div class="touch-block">
+            <span class="tb-label mono">What it can touch: its door sign, word for word</span>
+            <pre class="tb-sign">This room can:
+  + show its own screen
+  + keep 2 MB of its own private notes
+  + answer questions about itself (list_shelves, search_notes, read_note)
+Nothing else: no internet, no programs on your computer, no saved secrets, no other rooms.
+----------------------------------------
+RED LINE - this room can reach beyond itself:
+  ! Can READ files in the ONE folder you pick: read only (cannot change or delete anything) (only these file types: *.md, *.txt). Nothing outside that folder.
+----------------------------------------</pre>
+          </div>
+          <div class="dl-row">
+            <a class="btn btn-primary" href="../files/0.1.0/rooms/the-library-0.1.0.zip" download>Download this room</a>
+            <p class="card-meta mono"><span>the-library-0.1.0.zip &middot; 10.9 KB</span><span>sha256: 262e1b921d8d710b2cc223664e76084f0625f82ca4bdbda9c09bc01ba3111605</span></p>
+          </div>
+          <p class="how-add"><b>How to add it:</b> put the zip in the <span class="mono">add-rooms-here</span> folder inside your SandboxVille folder. No need to unzip it. Then walk to a glowing EMPTY LOT, press E, read the sign and press PLACE.</p>
+        </div>
+      </article>
+
+      <article class="room-row" id="the-desk" data-touch="files">
+        <div class="gallery" data-gallery>
+          <ol class="gal-track" tabindex="0" aria-label="The Desk: 5 real screenshots from the game. Swipe, scroll sideways, or use the arrow buttons.">
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/the-desk-2-doorway-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/the-desk-2-doorway-640.webp" srcset="../img/rooms/the-desk-2-doorway-640.webp 640w, ../img/rooms/the-desk-2-doorway-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Desk seen from its doorway in the Lobby, its plate reading Reads One Folder You Pick." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>1 of 5. From the doorway.</b> The plate over the door: READS ONE FOLDER YOU PICK.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/the-desk-1-door-sign-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/the-desk-1-door-sign-640.webp" srcset="../img/rooms/the-desk-1-door-sign-640.webp 640w, ../img/rooms/the-desk-1-door-sign-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Desk&#x27;s full door sign in the game, with its red line: it reads three file types in one folder you pick." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>2 of 5. Door sign.</b> It can read three kinds of files in the one folder you pick. Nothing outside it, and it cannot change anything.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/the-desk-3-job-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/the-desk-3-job-640.webp" srcset="../img/rooms/the-desk-3-job-640.webp 640w, ../img/rooms/the-desk-3-job-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Desk open behind glass, showing sample paper positions and graded forecast calls." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>3 of 5. Doing its job.</b> With the sample folder: open paper positions, calls due for grading, and graded calls, 4 right and 0 wrong.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/the-desk-4-wall-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/the-desk-4-wall-640.webp" srcset="../img/rooms/the-desk-4-wall-640.webp 640w, ../img/rooms/the-desk-4-wall-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: the Security Office wall with the Desk&#x27;s lines on top: each file it read, allowed." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>4 of 5. On the Security Office wall.</b> Each file it read is a line on the wall, with the file&#x27;s name.</p>
+          </li>
+          <li class="gal-slide">
+            <a class="gal-img" href="../img/rooms/the-desk-5-inside-1920.webp" target="_blank" rel="noopener"><img src="../img/rooms/the-desk-5-inside-640.webp" srcset="../img/rooms/the-desk-5-inside-640.webp 640w, ../img/rooms/the-desk-5-inside-1280.webp 1280w" sizes="(min-width:1040px) 620px, (min-width:760px) 90vw, 100vw" width="1280" height="720" alt="Real screenshot from SandboxVille: inside the Desk: its wall screen lists what the room can do, with the red line." loading="lazy" decoding="async"></a>
+            <p class="gal-cap"><b>5 of 5. Inside the room.</b> Its own screen says what it can do, red line included.</p>
+          </li>
+          </ol>
+          <div class="gal-nav" hidden>
+            <button type="button" class="gal-btn" data-dir="-1" aria-label="Previous screenshot of The Desk">&larr;</button>
+            <span class="gal-count mono" aria-live="polite">1 / 5</span>
+            <button type="button" class="gal-btn" data-dir="1" aria-label="Next screenshot of The Desk">&rarr;</button>
+          </div>
+        </div>
+        <div class="room-info">
+          <div class="card-top-row">
+            <span class="badge badge-addon"><span class="badge-dot"></span>Add-on room</span>
+            <span class="card-touch-tag mono">Reads one folder you pick</span>
+          </div>
+          <h3>The Desk</h3>
+          <p class="desc">Grade forecasts against what really happened. Paper trades only: it never places a trade.</p>
+          <div class="touch-block">
+            <span class="tb-label mono">What it can touch: its door sign, word for word</span>
+            <pre class="tb-sign">This room can:
+  + show its own screen
+  + keep 2 MB of its own private notes
+  + answer questions about itself (paper_book, due_calls, grade_calls)
+Nothing else: no internet, no programs on your computer, no saved secrets, no other rooms.
+----------------------------------------
+RED LINE - this room can reach beyond itself:
+  ! Can READ files in the ONE folder you pick: read only (cannot change or delete anything) (only these file types: paper-book.tsv, price-forecasts.tsv, scan-*.md). Nothing outside that folder.
+----------------------------------------</pre>
+          </div>
+          <div class="dl-row">
+            <a class="btn btn-primary" href="../files/0.1.0/rooms/the-desk-0.1.0.zip" download>Download this room</a>
+            <p class="card-meta mono"><span>the-desk-0.1.0.zip &middot; 13.9 KB</span><span>sha256: fb01158a223a4602bea5ad2377749e805cfdbceec69bbeb77141394b5fd2e067</span></p>
+          </div>
+          <p class="how-add"><b>How to add it:</b> put the zip in the <span class="mono">add-rooms-here</span> folder inside your SandboxVille folder. No need to unzip it. Then walk to a glowing EMPTY LOT, press E, read the sign and press PLACE.</p>
+        </div>
+      </article>
+
+      </div>
     </div>
   </section>
 
   <section id="honesty" style="border-top:1px solid var(--line);">
     <div class="wrap">
       <div class="section-head wide">
-        <span class="eyebrow">What the badges mean</span>
-        <h2 class="section-title">Two honest states. No hidden third one.</h2>
-      </div>
-      <div class="room-grid" style="margin-top:1.6rem;">
-        <article class="room-card" style="border-top-color:var(--safe-green);">
-          <div class="card-body" style="padding-top:1.2rem;">
-            <span class="badge badge-full"><span class="badge-dot"></span>Works fully today</span>
-            <p class="desc" style="margin-top:.8rem;">Download it, drop it in your <span class="mono">rooms</span> folder, and it mounts and runs inside SandboxVille right now. The Desk, The Library, and Terrarium are here.</p>
-          </div>
-        </article>
-        <article class="room-card" style="border-top-color:var(--sign-blue);">
-          <div class="card-body" style="padding-top:1.2rem;">
-            <span class="badge badge-sign"><span class="badge-dot"></span>Door sign only</span>
-            <p class="desc" style="margin-top:.8rem;">Download it and read exactly what it can touch, printed straight from its own manifest. Wiring it into a live building is the next step for these three. Nothing is hidden either way.</p>
-          </div>
-        </article>
+        <span class="eyebrow">What the door sign means</span>
+        <h2 class="section-title">You read the sign before the room goes in.</h2>
+        <p class="section-body">Every room carries its own list of what it is allowed to do. SandboxVille turns that list into the door sign you see above, before you place the room, and again at its door. A room that can reach past its own glass box says so on a red line. Everything a room does after that shows up on the Security Office wall.</p>
       </div>
     </div>
   </section>

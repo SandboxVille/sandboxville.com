@@ -1,0 +1,60 @@
+{
+ "about": "SandboxVille rooms, one zip each. Put a zip in the add-rooms-here folder of SandboxVille Lobby; SandboxVille checks its sha256 against its own catalog before it opens it.",
+ "version": 1,
+ "rooms": [
+  {
+   "pkg": "terrarium",
+   "id": "io.github.sandboxville/terrarium",
+   "name": "The Terrarium",
+   "version": "0.1.0",
+   "skill": "watch",
+   "blurb": "Small animals, each run by its own little brain of neurons. Your AI can count them and nudge them, never harm them.",
+   "door": "STAYS IN ITS GLASS BOX",
+   "red": false,
+   "tools": [
+    "census",
+    "touch",
+    "scent"
+   ],
+   "zip": "terrarium-0.1.0.zip",
+   "bytes": 107730,
+   "sha256": "2ae66b736cf5e5e9b142a4e62cfaed751edd6174c918fc157e1e196423ea8209"
+  },
+  {
+   "pkg": "the-library",
+   "id": "io.github.sandboxville/the-library",
+   "name": "The Library",
+   "version": "0.1.0",
+   "skill": "remember",
+   "blurb": "Search one folder of your notes. Your AI can read them one at a time, only inside that folder, never change them.",
+   "door": "READS ONE FOLDER YOU PICK",
+   "red": true,
+   "tools": [
+    "list_shelves",
+    "search_notes",
+    "read_note"
+   ],
+   "zip": "the-library-0.1.0.zip",
+   "bytes": 11168,
+   "sha256": "262e1b921d8d710b2cc223664e76084f0625f82ca4bdbda9c09bc01ba3111605"
+  },
+  {
+   "pkg": "the-desk",
+   "id": "io.github.sandboxville/the-desk",
+   "name": "The Desk",
+   "version": "0.1.0",
+   "skill": "judge",
+   "blurb": "Grade forecasts against what really happened. Paper trades only: it never places a trade.",
+   "door": "READS ONE FOLDER YOU PICK",
+   "red": true,
+   "tools": [
+    "paper_book",
+    "due_calls",
+    "grade_calls"
+   ],
+   "zip": "the-desk-0.1.0.zip",
+   "bytes": 14193,
+   "sha256": "fb01158a223a4602bea5ad2377749e805cfdbceec69bbeb77141394b5fd2e067"
+  }
+ ]
+}

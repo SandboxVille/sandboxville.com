@@ -1,61 +1,34 @@
-/* rooms.js: search + filter for the Rooms gallery. No inline scripts (CSP: script-src 'self'). */
+/* rooms.js: the screenshot galleries on the Rooms page. No inline scripts (CSP: script-src 'self').
+   Each gallery is a sideways scroll strip that works with a swipe, a trackpad or the keyboard on its own;
+   this adds the arrow buttons and the "2 / 5" counter. */
 (function(){
-  var grid = document.getElementById('room-grid');
-  if (!grid) return; /* detail pages don't have a grid; nothing to do */
-  var cards = Array.prototype.slice.call(grid.querySelectorAll('.room-card'));
-  var searchInput = document.getElementById('room-search');
-  var touchChips = Array.prototype.slice.call(document.querySelectorAll('[data-touch-filter]'));
-  var statusChips = Array.prototype.slice.call(document.querySelectorAll('[data-status-filter]'));
-  var resultsLine = document.getElementById('results-line');
-  var noResults = document.getElementById('no-results');
-  var state = { q: '', touch: 'all', status: 'all' };
-
-  function setPressed(chips, value){
-    chips.forEach(function(c){
-      c.setAttribute('aria-pressed', c.getAttribute('data-touch-filter') === value || c.getAttribute('data-status-filter') === value ? 'true' : 'false');
-    });
-  }
-
-  function apply(){
-    var q = state.q.trim().toLowerCase();
-    var shown = 0;
-    cards.forEach(function(card){
-      var text = (card.getAttribute('data-search') || '').toLowerCase();
-      var touch = card.getAttribute('data-touch') || '';
-      var status = card.getAttribute('data-status') || '';
-      var matchQ = !q || text.indexOf(q) !== -1;
-      var matchTouch = state.touch === 'all' || touch === state.touch;
-      var matchStatus = state.status === 'all' || status === state.status;
-      var match = matchQ && matchTouch && matchStatus;
-      card.style.display = match ? '' : 'none';
-      if (match) shown++;
-    });
-    if (resultsLine){
-      resultsLine.innerHTML = 'Showing <strong>' + shown + '</strong> of <strong>' + cards.length + '</strong> rooms';
+  var galleries = Array.prototype.slice.call(document.querySelectorAll('[data-gallery]'));
+  galleries.forEach(function(g){
+    var track = g.querySelector('.gal-track');
+    var nav = g.querySelector('.gal-nav');
+    var count = g.querySelector('.gal-count');
+    if (!track || !nav) return;
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.gal-slide'));
+    if (slides.length < 2) return;
+    nav.hidden = false;
+    function current(){
+      var w = track.clientWidth || 1;
+      return Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / w)));
     }
-    if (noResults) noResults.classList.toggle('show', shown === 0);
-  }
-
-  if (searchInput){
-    searchInput.addEventListener('input', function(){
-      state.q = searchInput.value;
-      apply();
+    function show(){ if (count) count.textContent = (current() + 1) + ' / ' + slides.length; }
+    function go(i){
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' });
+    }
+    Array.prototype.slice.call(nav.querySelectorAll('.gal-btn')).forEach(function(b){
+      b.addEventListener('click', function(){ go(current() + parseInt(b.getAttribute('data-dir'), 10)); });
     });
-  }
-  touchChips.forEach(function(chip){
-    chip.addEventListener('click', function(){
-      state.touch = chip.getAttribute('data-touch-filter');
-      setPressed(touchChips, state.touch);
-      apply();
+    track.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(current() + 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); go(current() - 1); }
     });
+    var t = null;
+    track.addEventListener('scroll', function(){ if (t) clearTimeout(t); t = setTimeout(show, 60); }, { passive: true });
+    show();
   });
-  statusChips.forEach(function(chip){
-    chip.addEventListener('click', function(){
-      state.status = chip.getAttribute('data-status-filter');
-      setPressed(statusChips, state.status);
-      apply();
-    });
-  });
-
-  apply();
 })();

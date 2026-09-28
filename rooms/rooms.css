@@ -260,3 +260,51 @@ footer{padding:2.6rem 0 3.4rem;}
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
 }
+
+/* ROOMS PAGE (W2): base game + add-on rooms, each with a strip of real screenshots */
+.two-steps{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);max-width:900px;}
+@media(min-width:760px){.two-steps{grid-template-columns:1fr 1fr;}}
+.two-steps li{background:var(--ink-800);padding:1.1rem 1.2rem;display:flex;gap:.9rem;align-items:flex-start;font-size:.95rem;line-height:1.55;color:var(--paper-dim);}
+.two-steps li b{color:var(--paper);}
+.two-steps li .install-num{margin:0;font-size:1.3rem;line-height:1.2;}
+.two-steps a{color:var(--amber-soft);text-underline-offset:3px;}
+.step-section{padding-top:3.2rem;}
+.lobby-dl{margin-top:1.4rem;border:1px solid var(--line);background:var(--ink-800);padding:1.3rem 1.4rem;display:flex;flex-direction:column;gap:1rem;}
+.lobby-btns{display:flex;flex-wrap:wrap;gap:.6rem;}
+.lobby-meta{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem;}
+.lobby-meta li{display:flex;flex-direction:column;gap:.1rem;word-break:break-all;}
+.lobby-dl .requires-line{margin-top:0;}
+.lobby-dl .requires-line a{color:var(--amber-soft);}
+.room-list{display:flex;flex-direction:column;gap:1.6rem;margin-top:1.8rem;}
+.room-row{display:grid;grid-template-columns:1fr;background:var(--ink-800);border:1px solid var(--line);border-top:3px solid var(--amber);scroll-margin-top:80px;min-width:0;}
+@media(min-width:1040px){.room-row{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}}
+.room-row[data-touch="nothing"]{border-top-color:var(--safe-green);}
+.room-info{padding:1.2rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.85rem;min-width:0;}
+.room-info h3{font-size:1.35rem;}
+.room-info p.desc{font-size:.98rem;line-height:1.6;color:var(--paper-dim);}
+.card-top-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap;}
+.badge-addon{color:var(--amber-soft);}
+.badge-base{color:var(--safe-green);}
+.touch-block{background:var(--ink-950);border:1px solid var(--line);border-left:2px solid var(--amber);padding:.8rem .9rem;min-width:0;}
+.tb-label{display:block;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--paper-mute);margin-bottom:.55rem;}
+.tb-sign{margin:0;font-family:'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace;font-size:.74rem;line-height:1.6;color:var(--amber-soft);white-space:pre-wrap;word-break:break-word;}
+.dl-row{display:flex;flex-direction:column;gap:.6rem;}
+.dl-row .btn{align-self:flex-start;}
+.dl-row .card-meta{flex-direction:column;gap:.15rem;}
+.how-add{font-size:.9rem;line-height:1.6;color:var(--paper-dim);}
+.how-add b{color:var(--paper);}
+.how-add a{color:var(--amber-soft);text-underline-offset:3px;}
+.gallery{position:relative;background:var(--ink-950);min-width:0;border-bottom:1px solid var(--line);}
+@media(min-width:1040px){.gallery{border-bottom:none;border-right:1px solid var(--line);}}
+.gal-track{list-style:none;margin:0;padding:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;}
+.gal-track::-webkit-scrollbar{display:none;}
+.gal-slide{flex:0 0 100%;scroll-snap-align:start;min-width:0;}
+.gal-img{display:block;aspect-ratio:16/9;background:var(--ink-950);}
+.gal-img img{width:100%;height:100%;object-fit:cover;}
+.gal-cap{font-size:.84rem;line-height:1.55;color:var(--paper-dim);padding:.75rem 1rem 0;}
+.gal-cap b{color:var(--amber-soft);font-weight:600;}
+.gal-nav{display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem .9rem;}
+.gal-nav[hidden]{display:none;}
+.gal-btn{font-family:'JetBrains Mono',monospace;font-size:.9rem;min-width:44px;min-height:40px;background:var(--ink-800);color:var(--paper);border:1px solid var(--line);cursor:pointer;border-radius:2px;}
+.gal-btn:hover{border-color:var(--amber);color:var(--amber-soft);}
+.gal-count{font-size:.74rem;color:var(--paper-mute);}
