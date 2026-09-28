@@ -308,3 +308,6 @@ footer{padding:2.6rem 0 3.4rem;}
 .gal-btn{font-family:'JetBrains Mono',monospace;font-size:.9rem;min-width:44px;min-height:40px;background:var(--ink-800);color:var(--paper);border:1px solid var(--line);cursor:pointer;border-radius:2px;}
 .gal-btn:hover{border-color:var(--amber);color:var(--amber-soft);}
 .gal-count{font-size:.74rem;color:var(--paper-mute);}
+
+/* older iPhones (no aspect-ratio): keep every screenshot 16:9 instead of stretching it */
+@supports not (aspect-ratio:1/1){.gal-img{position:relative;height:0;padding-top:56.25%;}.gal-img img{position:absolute;inset:0;}}
