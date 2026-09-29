@@ -246,3 +246,14 @@
     });
   });
 })();
+
+/* Download counts: one cookieless GoatCounter event per click on a .zip link (path download/<file>).
+   No cookies, no personal data; it only counts. Silent if the counter is blocked or unreachable. */
+(function(){
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href$=".zip"]') : null;
+    if (!a) return;
+    var f = (a.getAttribute('href') || '').split('/').pop();
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'download/' + f, title: 'Download ' + f, event: true }); } catch (_) {}
+  }, true);
+})();
