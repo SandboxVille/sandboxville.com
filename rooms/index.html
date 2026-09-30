@@ -63,9 +63,10 @@
         <span class="dot">&middot;</span>
         <span>a <b>sha256</b> fingerprint on every download</span>
       </div>
-      <ol class="two-steps">
-        <li><span class="install-num">1</span><div><b>Get the Lobby.</b> It is the base game. Unzip it and double-click <span class="mono">Start SandboxVille</span>. <a href="#get-the-lobby">Downloads</a></div></li>
-        <li><span class="install-num">2</span><div><b>Pick rooms to add.</b> Download a room, drop the zip in your <span class="mono">add-rooms-here</span> folder, then place it on an EMPTY LOT. <a href="#add-rooms">Rooms</a></div></li>
+      <ol class="setup-steps">
+        <li><span class="install-num">1</span><div><b>Get the Lobby.</b> It is the base game. Extract the ZIP and start it. <a href="#get-the-lobby">Downloads and launch steps</a></div></li>
+        <li><span class="install-num">2</span><div><b>Pick rooms to add.</b> Put each room ZIP in <span class="mono">add-rooms-here</span>, then place it on an EMPTY LOT. <a href="#add-rooms">Rooms</a></div></li>
+        <li><span class="install-num">3</span><div><b>Connect your AI.</b> Bring in a local model, or connect an AI program through the local AI door. <a href="#bring-your-ai">See every connection path</a></div></li>
       </ol>
     </div>
   </header>
@@ -376,6 +377,55 @@ RED LINE - this room can reach beyond itself:
       </article>
 
       </div>
+    </div>
+  </section>
+
+  <section id="bring-your-ai" class="step-section">
+    <div class="wrap">
+      <div class="section-head wide">
+        <span class="eyebrow">Step 3 · Optional</span>
+        <h2 class="section-title">Connect your AI to the Lobby.</h2>
+        <p class="section-body">Your Lobby runs on your computer and opens in your paired browser. The <b>YOUR AI</b> buttons in Gate can add models served by Ollama or LM Studio on that same computer. Other local servers and AI programs have paths below. Keep the Lobby running while your AI is here.</p>
+      </div>
+      <div class="ai-routes">
+        <article class="ai-guide">
+          <span class="ai-route-tag mono">Easy · Local model</span>
+          <h3>Ollama: any model you have pulled</h3>
+          <ol>
+            <li>Install and open <a href="https://ollama.com/download" target="_blank" rel="noopener noreferrer">Ollama</a> on the computer running your Lobby.</li>
+            <li>In PowerShell or Terminal, run <code>ollama pull qwen2.5:3b</code> for a first model (about 1.9 GB), or pull <a href="https://ollama.com/library" target="_blank" rel="noopener noreferrer">another Ollama model</a> that fits your computer.</li>
+            <li>Open your paired Gate from the Lobby kiosk, or use <span class="mono">127.0.0.1:9512/gate.html</span>. Under <b>YOUR AI</b>, press <b>LOOK AGAIN</b> and then <b>ADD</b> beside your model.</li>
+          </ol>
+          <p>If nothing appears, check that Ollama is running and <code>ollama list</code> shows your model. The model server and Lobby must be on the same computer; <span class="mono">127.0.0.1</span> on a second laptop points to that second laptop.</p>
+        </article>
+        <article class="ai-guide">
+          <span class="ai-route-tag mono">Easy · Local model</span>
+          <h3>LM Studio: a model loaded on port 1234</h3>
+          <ol>
+            <li>Install <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer">LM Studio</a> on the computer running your Lobby. Download and load a chat model in LM Studio.</li>
+            <li>In LM Studio's <b>Developer</b> tab, start its <a href="https://lmstudio.ai/docs/developer/core/server" target="_blank" rel="noopener noreferrer">local server</a> on port <b>1234</b>.</li>
+            <li>In SandboxVille Gate, open <b>YOUR AI</b>, press <b>LOOK AGAIN</b>, then <b>ADD</b> beside the LM Studio model.</li>
+          </ol>
+          <p>If Gate does not list it, confirm the server is running on <span class="mono">127.0.0.1:1234</span> and the model is available to that server. Gate detects this port only for LM Studio.</p>
+        </article>
+        <article class="ai-guide">
+          <span class="ai-route-tag mono">Advanced · Other local models</span>
+          <h3>Another OpenAI-compatible server</h3>
+          <p>For a local server such as llama.cpp or vLLM, expose <span class="mono">/v1/chat/completions</span> on this computer. Stop the Lobby and add a seat to <span class="mono">.sandboxville/seats.json</span> in your home folder, then restart it:</p>
+          <pre><code>{ "seats": [
+  { "id": "my-model", "name": "My Model", "kind": "openai",
+    "base": "http://127.0.0.1:8080/v1", "model": "my-model" }
+] }</code></pre>
+          <p>Use the model ID your server exposes and its actual port. The endpoint must be plain HTTP on <span class="mono">localhost</span>, <span class="mono">127.0.0.1</span>, or <span class="mono">[::1]</span>; these seats cannot use an internet URL or an API key. Existing seats in the file should stay in the list.</p>
+        </article>
+        <article class="ai-guide">
+          <span class="ai-route-tag mono">Advanced · AI program</span>
+          <h3>Codex, Claude Code, and other AI clients</h3>
+          <p>An AI program running on this computer can join through the Lobby's local <span class="mono">/ai/</span> door. Its client sends the private <span class="mono">ai-token</span> from your <span class="mono">.sandboxville</span> data folder as a bearer token, claims a body with <span class="mono">POST /ai/claim</span>, then uses the returned body token for room, chat, and movement calls. This is a developer integration: the download does not include a one-click connector for cloud AI services.</p>
+          <p><b>Using ChatGPT or Claude in a browser tab?</b> That tab cannot directly join as a robot. The Lobby's paired browser is your player screen and Gate; its AI door refuses web-page requests. A separate local client would need to bridge the AI service to the door. Keep <span class="mono">ai-token</span> in that local client; never paste it into a web page or chat prompt.</p>
+        </article>
+      </div>
+      <p class="ai-finish">After adding a model, use <b>CHAT</b> in Gate. Try “Qwen, go to the Terrarium and count the animals” after placing that room. The Security Office wall records its steps. <b>REMOVE</b> in Gate sends a local model home. No API key is needed for the Ollama or LM Studio path.</p>
     </div>
   </section>
 
