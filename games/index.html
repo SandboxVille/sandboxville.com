@@ -53,7 +53,7 @@
     <div class="wrap">
       <span class="eyebrow">Games</span>
       <h1 class="rooms-title">Games by <em>SandboxVille</em>.</h1>
-      <p class="rooms-sub">Two free playable builds you run on your own computer. More games and more rooms are coming. Every picture below is a real screenshot from the game.</p>
+      <p class="rooms-sub">Two free technical demos you run on your own computer. More games and more rooms are coming. Every picture below is a real screenshot from the game.</p>
       <div class="rooms-stats mono">
         <span><b>2</b> games</span>
         <span class="dot">&middot;</span>
@@ -65,6 +65,14 @@
       </div>
     </div>
   </header>
+
+  <section class="download-guide" aria-labelledby="download-guide-title">
+    <div class="wrap">
+      <div class="download-guide-head"><span class="eyebrow">START HERE</span><h2 id="download-guide-title">Two games. One simple setup.</h2><p>Pick a game below, download the ZIP for your computer, then extract it before opening the start file. Your browser opens the game on this computer.</p></div>
+      <ol class="download-guide-steps"><li><b>Download</b><span>Choose Windows, Mac or Linux. Each ZIP has a SHA-256 fingerprint beside it.</span></li><li><b>Extract</b><span>Open the extracted folder. Do not run the start file from inside the ZIP.</span></li><li><b>Play</b><span>Run the start file and keep its small server window open while you play.</span></li></ol>
+      <details class="publisher-note"><summary>Why might Windows say “Unknown publisher”?</summary><p>These early technical demo launchers are not yet signed with a SandboxVille code-signing certificate. The included Node.js runtime is signed by the OpenJS Foundation, but that does not identify SandboxVille as the publisher. A Windows warning can still appear; do not turn off Windows protection for the game. Download only from sandboxville.com and compare the ZIP's SHA-256 fingerprint with the one shown beside its button. We are working toward a verified SandboxVille signature.</p></details>
+    </div>
+  </section>
 
   <section id="all-games" class="step-section">
     <div class="wrap">
@@ -132,9 +140,9 @@
             </div>
           </div>
           <ul class="card-meta mono lobby-meta">
-            <li><span>NullParallax-0.1.1-windows.zip &middot; 35.5 MB</span><span>sha256: 0a2a1f61681222a25abae9ede7eb77d8e10266ecd0e6323561d800592e93f501</span></li>
-            <li><span>NullParallax-0.1.1-mac.zip &middot; 2.3 MB</span><span>sha256: 9fa8aa750887070d7eb2672739e2db77e85c67304790cef36ddc663f8290d51b</span></li>
-            <li><span>NullParallax-0.1.1-linux.zip &middot; 2.3 MB</span><span>sha256: 3ca75a8edc1984738ae74deffe0886c344dc7c8f3dee99908038c18290a0792c</span></li>
+            <li><span>NullParallax-0.1.1-windows.zip &middot; 35.5 MB</span><span>sha256: 7c6ff5755674073050f1afd0a66a20ec05ea99a922aa98e0608028188fbfee1b</span></li>
+            <li><span>NullParallax-0.1.1-mac.zip &middot; 2.3 MB</span><span>sha256: 5e9b24383949fbe5d4ddae81236689e059948b6aacf3e6d61901472a5d242ebc</span></li>
+            <li><span>NullParallax-0.1.1-linux.zip &middot; 2.3 MB</span><span>sha256: 3edcc228318b01e3f619440d99b9f10a516818c1b54a44edd2bea6e30e8bb71a</span></li>
           </ul>
           <p class="requires-line">Unzip it and double-click <span class="mono">Start Null Parallax</span>. The game runs in your browser, only on your computer. On Windows the zip carries everything it needs. On Mac and Linux it needs Node.js 18 or newer, a free program; if you do not have it, the start file tells you where to get it. The first start needs the internet. Your saves stay in your browser for the local address and port; the README explains how to keep an older save. Every file and its sha256 are in <a href="../files/np-0.1.1/SHA256SUMS">SHA256SUMS</a>. All rights reserved: see LICENSE.txt inside each zip.</p>
           <p class="how-add"><b>Known rough edges:</b> animals on planets do not move yet, you cannot steer left or right during descent, lava does not glow at night, and mining uses the suit cutter (no laser upgrade yet).</p>
