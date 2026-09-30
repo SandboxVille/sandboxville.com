@@ -1,6 +1,0 @@
-e39d17f758fe354ac319b2e0bc5eb46db076412bca347724289128f44b91d3cd  lobby/SandboxVille-Lobby-0.1.0-windows.zip
-44147f37fed13651a58dfc2ea4c0bda069888477c06af8d0ffaf4330ce89bc3e  lobby/SandboxVille-Lobby-0.1.0-mac.zip
-31d10728b525d5e769a85fa979298b795c0f70276115c222bcf782398ced9c24  lobby/SandboxVille-Lobby-0.1.0-linux.zip
-2ae66b736cf5e5e9b142a4e62cfaed751edd6174c918fc157e1e196423ea8209  rooms/terrarium-0.1.0.zip
-262e1b921d8d710b2cc223664e76084f0625f82ca4bdbda9c09bc01ba3111605  rooms/the-library-0.1.0.zip
-fb01158a223a4602bea5ad2377749e805cfdbceec69bbeb77141394b5fd2e067  rooms/the-desk-0.1.0.zip
